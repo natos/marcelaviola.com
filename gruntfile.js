@@ -8,10 +8,10 @@ module.exports = function(grunt) {
                     "optimizationLevel": 5
                 },
                 "files": [{
-                    "expand": true,                  // Enable dynamic expansion
-                    "cwd": 'static/assets/images/',                   // Src matches are relative to this path
-                    "src": ['**/**/*.{JPG,GIF,PNG,jpg,gif,png}'],   // Actual patterns to match
-                    "dest": 'static/assets/images/'               // Destination path prefix
+                    "expand": true, // Enable dynamic expansion
+                    "cwd": 'static/assets/images/', // Src matches are relative to this path
+                    "src": ['**/**/*.{JPG,GIF,PNG,jpg,gif,png}'], // Actual patterns to match
+                    "dest": 'static/assets/images/' // Destination path prefix
                 }]
             }
         },
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
                     "sizes": [{
                         "name": "x1",
                         "width": 640,
-                    },{
+                    }, {
                         "name": "x2",
                         "width": 1280
                     }]
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                     "cwd": 'src/images/',
                     "src": ['**/*.{JPG,GIF,PNG,jpg,gif,png}'],
                     "custom_dest": 'static/assets/images/{%= path %}/{%= name %}'
-                    // "dest": "tmp/"
+                        // "dest": "tmp/"
                 }]
             }
         },
@@ -57,6 +57,7 @@ module.exports = function(grunt) {
             },
             "build": {
                 "src": [
+                    'src/js/register.js',
                     'bower_components/instagramas/dist/instagramas.js',
                     'src/js/lib/viewport.js',
                     'src/js/lib/smooth-scroll.min.js',
@@ -93,6 +94,6 @@ module.exports = function(grunt) {
     grunt.registerTask('minimize-images', ['imagemin']);
     // Compile web site
     grunt.registerTask('compile', ['uglify', 'watch']);
-    grunt.registerTask('default', 'compile');
+    grunt.registerTask('default', 'uglify');
 
 };
