@@ -1,7 +1,6 @@
 +++
 date = "2016-02-27T23:28:13+01:00"
 title = "shows"
-
 +++
 
 {{< hero-fader size="4" >}}
