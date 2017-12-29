@@ -70,6 +70,11 @@
         return $this.meta.isMobile;
     };
 
+    ImageElement.prototype.isHero = function() {
+        var $this = this;
+        return /hero/.test($this.src);
+    };
+
     ImageElement.prototype.isVertical = function() {
         var $this = this;
         $this.meta.isVertical = false;
@@ -88,7 +93,7 @@
      */
     ImageElement.prototype.resolve = function() {
         var $this = this;
-        if (typeof viewport !== 'undefined' && viewport.isVisible($this.element)) {
+        if (viewport.isVisible($this.element)) {
             $this.useHighRes();
         }
         return $this;
@@ -105,16 +110,11 @@
         if ($this.src === $this.element.src) {
             return $this;
         }
-        // if (!$this.isMobile() && !$this.isVertical()) {
-        //     $this.src = $this.src.replace($this.meta.verticalPosFix + '.', '.');
-        // }
-        // $this.element.className = $this.element.className + ' loading';
         $this.element.setAttribute('data-state', 'loading');
-
-        if ($this.isMobile() || $this.isVertical()) {
+        // Add vertical posfix only for Heros in Mobile or Vertical
+        if ($this.isHero() && ($this.isMobile() || $this.isVertical())) {
             $this.src = $this.src.replace('.', $this.meta.verticalPosFix + '.');
         }
-
         var preload = new Image();
         preload.src = $this.src;
         preload.onload = function() {
