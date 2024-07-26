@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             "build": {
                 "src": [
                     'src/js/register.js',
-                    'bower_components/instagramas/dist/instagramas.js',
+                    // 'bower_components/instagramas/dist/instagramas.js',
                     'src/js/lib/viewport.js',
                     'src/js/lib/smooth-scroll.min.js',
                     'src/js/lib/requestAnimFrame.js',
