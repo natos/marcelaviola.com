@@ -1,7 +1,7 @@
 {
     "name": "marcelaviola.com",
-    "version": "1.1.1",
-    "description": "Marcela Viola Web Site",
+    "version": "2.0.0",
+    "description": "Marcela Viola Coach",
     "main": "gruntfile.js",
     "devDependencies": {
         "grunt": "^1.6.1",

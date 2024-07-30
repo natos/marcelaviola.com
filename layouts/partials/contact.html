@@ -1,0 +1,72 @@
+<section id="contact">
+    <header>
+        <h1>Contact</h1>
+    </header>
+    <figure>
+        <img class="primary-image" alt="" src="/assets/images/contact/x1/contact.jpg" data-lowres="/assets/images/contact/x1/contact.jpg" data-highres="/assets/images/contact/x2/contact.jpg" />
+    </figure>
+    <article class="content">
+
+        <p>You’ve made it this far! you know what you want and this is your time to work on yourself.</p>
+
+        <p>I offer different options to accommodate everybody:</p>
+        
+        <ul>
+            <li>1 on 1 in-person training</li>
+            <li>Small group class</li>
+            <li>Online live coaching</li>
+            <li>Online 4-8 weeks program with weekly check-ins.</li>
+        </ul>
+        
+        <p>Training onboarding form:</p>
+
+        <form action="https://getform.io/f/arolxozb" method="POST">
+            <p>
+                <label>Your name
+                    <input type="text" name="name" placeholder="your name">
+                </label>
+            </p>
+            <p>
+                <label>Your email
+                    <input type="email" name="email" placeholder="your email">
+                </label>
+            </p>
+            <p>
+                <label>Your Age
+                    <input type="text" name="age" placeholder="your age">
+                </label>
+            </p>
+            <p>
+                <label>Your current location
+                    <input type="text" name="current_location" placeholder="your current location">
+                </label>
+            </p>
+            <p>
+                <label>Goals:
+                    <input type="text" name="goals" placeholder="goals">
+                </label>
+            </p>
+            <p>
+                <label>Any injury or medical condition I should be informed?
+                    <input type="text" name="injury" placeholder="injury">
+                </label>
+            </p>
+            <p>
+                <label>How did you find me?
+                    <input type="text" name="foundme" placeholder="foundme">
+                </label>
+            </p>
+            <p>
+                <label>Message:
+                    <input type="text" name="message" placeholder="message">
+                </label>
+            </p>
+            <!-- add hidden Honeypot input to prevent spams -->
+            <input type="hidden" name="_gotcha" style="display:none !important">
+            
+            <button type="submit">Send</button>
+        </form>
+        
+        {{ partial "social.html" . }}
+    </article>
+</section>

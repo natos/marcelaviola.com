@@ -1,8 +1,8 @@
-title = "Marcela Viola"
+title = "Marcela"
 baseurl = "http://www.marcelaviola.com"
 [params]
-  description = "Aerialist, silks, lyra, and straps."
-  keywords = "marcela, viola, aerialist, artist, shows, teacher, silks, lyra, hoop, rope, straps, yoga, healthy, amsterdam, flexibility, classes, lessons"
+  description = "Strength training, Mobility and Nutrition coaching."
+  keywords = "coach, marcela, viola, health, wellness, coaching, personal, trainer, strength, mobility, flexibility, nutrition, training, fitness"
 
 languagecode = "en_US"
 contentdir = "content"
@@ -29,22 +29,18 @@ watch = true
 SectionPagesMenu = "main"
 
 [[menu.main]]
-  weight = 0
-  name = "About"
-  url = "/"
-[[menu.main]]
   weight = 1
-  name = "Shows"
-  url = "/shows/"
+  name = "About"
+  url = "#about"
 [[menu.main]]
   weight = 2
-  name = "Classes"
-  url = "/classes/"
+  name = "Credentials"
+  url = "#credentials"
 [[menu.main]]
   weight = 3
-  name = "Workshops"
-  url = "/workshops/"
+  name = "Services"
+  url = "#services"
 [[menu.main]]
-  weight = 10
-  name = "Contact"
-  url = "/contact/"
+  weight = 4
+  name = "Get in touch"
+  url = "#contact"

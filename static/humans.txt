@@ -3,16 +3,11 @@
 
 Design: Natan Santolo
 Contact: natansantolo.com
-Twitter: @natos
-From: Amstedam, Netherlands
 
 Content: Marcela Viola
 Contact: marcelaviola.com
-Twitter: @pulgamimetica
-From: Amstedam, Netherlands
 
 /* THANKS */
-
 
 /* SITE */
 

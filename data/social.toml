@@ -1,15 +1,18 @@
 [links]
-[links.youtube]
-  name = "Youtube"
-  identifier = "youtube"
-  url = "https://www.youtube.com/@upflychannel/"
-  icon = "fa-brands fa-youtube"
 [links.instagram]
+  weight = 1
   name = "Instagram"
   identifier = "instagram"
   url = "https://www.instagram.com/pulgacion/"
   icon = "fa-brands fa-instagram"
+[links.youtube]
+  weight = 2
+  name = "Youtube"
+  identifier = "youtube"
+  url = "https://www.youtube.com/@upflychannel/"
+  icon = "fa-brands fa-youtube"
 [links.linkedin]
+  weight = 3
   name = "LinkedIn"
   identifier = "linkedin"
   url = "https://www.instagram.com/pulgacion/"
