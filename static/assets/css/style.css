@@ -3,6 +3,12 @@
 /* BASSCSS Reset - http://jxnblk.github.io/basscss */
 html {
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
 body, h1, h2, h3, h4, h5, h6, dl, ol, ul, p,
 button, input, select, textarea { margin: 0; }
@@ -61,6 +67,12 @@ p {
   margin: 40em 0 0 0;
   background-color: #000;
   padding: 4em 1em 1em 1em;
+  scroll-behavior: smooth;
+}
+
+.page section h1 {
+  /* z-index: 1000; */
+  position: relative;
 }
 
 section header {
@@ -130,6 +142,7 @@ footer.global {
   position: relative;
   text-align: center;
   padding: 6em 3em;
+  padding-bottom: 1em;
   margin-top: 90%;
 }
 footer.global::before {
@@ -198,7 +211,7 @@ header.global .name h4 {
 }
 header.global .name h1 {
   line-height: 1em;
-  margin: -14px 0;
+  margin: -14px 16px;
   padding: 0;
   font-size: 4.5em;
   margin-right: .5em;
