@@ -63,10 +63,6 @@ p {
   padding: 4em 1em 1em 1em;
 }
 
-.page section:first-of-type {
-
-}
-
 section header {
   /* position: absolute; */
   width: 100%;
@@ -77,8 +73,8 @@ section .content {
   color: #eee;
   padding: 0 1em;
 }
-section .content a { color: #078191; }
-section .content a:hover { color: #14B6CC; }
+section .content a { color: #FFAAAA; }
+section .content a:hover { color: #FF0082; }
 
 section .primary-image {
   width: 100%;
@@ -183,24 +179,31 @@ a {
 a:hover { color: #B20D61; }
 
 header.global {
-  display: flex;
   position: relative;
   z-index: 1000;
   top: 0; left: 0; right: 0;
   padding: 1em 0;
   background-color: rgba(0, 0, 0, 0.75);
 }
-header.global h1 {
-  line-height: 1em;
-}
-header.global h1 a {
-  color: #fff;
-}
 header.global .name h1,
 header.global .name h4 {
   line-height: 1em;
   margin: 0;
   padding: 0;
+  margin-right: .5em;
+}
+header.global .name h4 {
+  width: 50px;
+  font-size: 1em;
+}
+header.global .name h1 {
+  line-height: 1em;
+  margin: -14px 0;
+  padding: 0;
+  font-size: 4.5em;
+}
+header.global h1 a {
+  color: #fff;
 }
 
 .toggler { display: none; }
@@ -296,6 +299,7 @@ header.global .name h4 {
     padding: 1em;
     height: 5rem;
     position: fixed;
+    display: flex;
     transform: translate3d(0,0,0);
   }
 
@@ -518,7 +522,7 @@ nav.social {
 
 .hero-video {
   position: fixed;
-  margin-top: 40px;
+  margin-top: 80px;
   object-fit: cover;
   width: 100vw;
   height: 100vh;
@@ -526,9 +530,4 @@ nav.social {
   left: 0;
   right: 0;
   /* z-index: -100; */
-}
-
-
-form label {
-  display: block;
 }
