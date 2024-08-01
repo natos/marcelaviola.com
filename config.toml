@@ -42,5 +42,9 @@ SectionPagesMenu = "main"
   url = "#services"
 [[menu.main]]
   weight = 4
+  name = "Testimonials"
+  url = "#testimonials"
+[[menu.main]]
+  weight = 5
   name = "Get in touch"
   url = "#contact"
