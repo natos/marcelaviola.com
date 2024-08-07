@@ -363,6 +363,9 @@ nav.social {
   justify-content: center;
   margin-top: 1.5rem;
 }
+#contact nav.social {
+  position: relative;
+}
 .social-item {
   margin-top: .5em;
   padding: .25em .5em;
