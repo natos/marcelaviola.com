@@ -5,10 +5,10 @@
     "main": "gruntfile.js",
     "devDependencies": {
         "grunt": "^1.6.1",
-        "grunt-contrib-clean": "^1.0.0",
-        "grunt-contrib-imagemin": "^4.0.0",
-        "grunt-contrib-uglify": "^1.0.1",
-        "grunt-contrib-watch": "^1.0.0",
+        "grunt-contrib-clean": "^1.1.0",
+        "grunt-contrib-imagemin": "^2.0.1",
+        "grunt-contrib-uglify": "^1.0.2",
+        "grunt-contrib-watch": "^1.1.0",
         "grunt-responsive-images": "^1.10.1"
     },
     "scripts": {
@@ -23,5 +23,8 @@
     "bugs": {
         "url": "https://github.com/natos/marcelaviola.com/issues"
     },
-    "homepage": "https://github.com/natos/marcelaviola.com"
+    "homepage": "https://github.com/natos/marcelaviola.com",
+    "dependencies": {
+        "gifsicle": "^7.0.1"
+    }
 }
