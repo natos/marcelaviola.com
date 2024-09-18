@@ -674,16 +674,9 @@ nav.social {
   /* z-index: -100; */
 }
 
-@media only screen and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-  .hero-video.mobile {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .hero-video.desktop {
-    display: block;
-  }
+.hero-video.mobile.play,
+.hero-video.desktop.play {
+  display: block;
 }
 
 .testimonial {
