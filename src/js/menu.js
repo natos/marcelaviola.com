@@ -38,10 +38,15 @@ function toggle(event) {
 
         nav = document.getElementById('top');
 
+        links = document.querySelector('nav.global');
+
         toggler = document.querySelector('.toggler');
 
         toggler.addEventListener('click', toggle);
 
+        links.addEventListener('click', function() {
+            toggler.click();
+        });
     }
 
     // start

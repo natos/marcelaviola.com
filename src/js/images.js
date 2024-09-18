@@ -162,6 +162,8 @@
      */
     function Orchestrator(window, document) {
 
+        console.log('data image res')
+
         var i, $img, $imgs = document.getElementsByTagName('img');
 
         for (i = 0; i < $imgs.length; i += 1) {
