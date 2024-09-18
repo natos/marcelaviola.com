@@ -1,6 +1,11 @@
-<video class="hero-video desktop" autoplay loop muted>
+<video class="hero-video desktop" autoplay muted playsinline>
   <source src="{{ $.Site.Data.hero.video.landscape }}" type="video/mp4" />
 </video>
-<video class="hero-video mobile" autoplay loop muted>
+<video class="hero-video mobile" autoplay muted playsinline>
   <source src="{{ $.Site.Data.hero.video.portrait }}" type="video/mp4" />
 </video>
+<script>
+  document.querySelector(".hero-video").addEventListener("click", () => {
+    document.querySelector("video").play();
+  });
+</script>
