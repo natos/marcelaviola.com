@@ -1,0 +1,49 @@
+---
+/**
+ * Base document layout. Replaces the Hugo index.html shell + head/meta partials.
+ * Provides <html>/<head>/<body>, global styles, self-hosted fonts, the fixed
+ * header (name, menu, toggler, social), a slot for page content, and the footer.
+ */
+import "@fontsource/bebas-neue";
+import "@fontsource-variable/work-sans";
+import "../styles/global.css";
+
+import { site } from "../data/site";
+import SEO from "../components/SEO.astro";
+import Menu from "../components/Menu.astro";
+import Social from "../components/Social.astro";
+import Toggler from "../components/Toggler.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.languageCode} class="happy">
+  <head>
+    <SEO title={title} description={description} image={image} />
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+    <header id="top" class="global">
+      <div class="name">
+        <h1>
+          <a href="#top" title={site.description}>{site.title}</a>
+        </h1>
+      </div>
+      <Menu />
+      <Toggler />
+      <Social />
+    </header>
+    <main class="page layout">
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>

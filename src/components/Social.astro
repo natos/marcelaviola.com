@@ -1,0 +1,27 @@
+---
+/**
+ * Social links navigation. Replaces the Hugo social.html partial.
+ * Icons are inlined as SVG via astro-icon (no Font Awesome CDN).
+ */
+import { Icon } from "astro-icon/components";
+import { social } from "../data/social";
+---
+
+<nav class="social" aria-label="Social media">
+  {
+    social.map((link) => (
+      <a
+        class="social-item"
+        href={link.url}
+        title={link.name}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="social-item-icon">
+          <Icon name={link.icon} title={link.name} />
+        </span>
+        <span class="social-item-label">{link.name}</span>
+      </a>
+    ))
+  }
+</nav>
