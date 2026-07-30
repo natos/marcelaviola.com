@@ -3,6 +3,8 @@
  * Full-bleed background hero videos. Replaces the Hugo hero-video.html partial.
  * No UA sniffing / JS: CSS media queries pick portrait vs landscape source.
  * autoplay + muted + playsinline + loop keeps iOS Safari autoplay working.
+ * Posters give an instant first paint; a small script honours
+ * prefers-reduced-motion by pausing on the poster frame.
  */
 import { hero } from "../data/hero";
 ---
@@ -14,6 +16,7 @@ import { hero } from "../data/hero";
   playsinline
   loop
   preload="auto"
+  poster={hero.video.landscapePoster}
   aria-hidden="true"
 >
   <source src={hero.video.landscape} type="video/mp4" />
@@ -25,7 +28,20 @@ import { hero } from "../data/hero";
   playsinline
   loop
   preload="auto"
+  poster={hero.video.portraitPoster}
   aria-hidden="true"
 >
   <source src={hero.video.portrait} type="video/mp4" />
 </video>
+
+<script is:inline>
+  // Respect users who prefer reduced motion: don't autoplay the hero videos,
+  // leave the poster frame showing instead.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("video.hero-video").forEach((video) => {
+      video.removeAttribute("autoplay");
+      video.pause();
+    });
+  }
+</script>
+

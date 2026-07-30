@@ -45,5 +45,13 @@ const { title, description, image } = Astro.props;
       <slot />
       <Footer />
     </main>
+    <script is:inline>
+      // Register the service worker for offline support / PWA install.
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js", { scope: "/" });
+        });
+      }
+    </script>
   </body>
 </html>

@@ -4,7 +4,8 @@
  * Emits charset, viewport, description/keywords, Open Graph, Twitter card,
  * canonical, and favicon. Per-page title/description override the defaults.
  */
-import { site } from "../data/site";
+import { site, person } from "../data/site";
+import { social } from "../data/social";
 
 interface Props {
   title?: string;
@@ -22,10 +23,38 @@ const {
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const absoluteImage = new URL(image, site.url).href;
 const pageTitle = title === site.title ? site.title : `${title} — ${site.title}`;
+
+// Structured data: the site (WebSite) and its subject (Person). No numeric
+// ratings are asserted — the testimonials carry no scores, so we avoid
+// fabricating a schema.org aggregateRating.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: `${site.url}/`,
+      name: site.title,
+      description: site.description,
+      inLanguage: site.languageCode,
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: person.name,
+      jobTitle: person.jobTitle,
+      url: `${site.url}/`,
+      image: new URL(person.image, site.url).href,
+      description: site.description,
+      sameAs: social.map((s) => s.url),
+    },
+  ],
+};
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
 <title>{pageTitle}</title>
 <meta name="author" content={site.author} />
 <meta name="description" content={description} />
@@ -50,4 +79,13 @@ const pageTitle = title === site.title ? site.title : `${title} — ${site.title
 <meta name="twitter:image" content={absoluteImage} />
 
 <link rel="icon" href="/assets/images/favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(structuredData)}
+/>

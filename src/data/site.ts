@@ -15,6 +15,16 @@ export const site = {
   ogImage: "/assets/images/contact/x2/contact.jpg",
 } as const;
 
+/**
+ * The person the site is about (drives schema.org Person JSON-LD).
+ * Distinct from `site.author`, which credits the site's developer.
+ */
+export const person = {
+  name: "Marcela Viola",
+  jobTitle: "Strength, Mobility & Nutrition Coach",
+  image: "/assets/images/contact/x2/contact.jpg",
+} as const;
+
 export interface NavItem {
   name: string;
   url: string;

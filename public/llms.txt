@@ -4,18 +4,11 @@
 
 Marcela has 20+ years of experience as an aerialist, yoga teacher, handstand practitioner, and strength coach. She is NASM and ELEIKO certified, co-founded a coaching app in Singapore where she runs her personal-training practice, and coaches group and private aerial, mobility, and conditioning classes. Coaching is offered 1-on-1 in person, in small groups, live online, and via 4–8 week online programs with weekly check-ins.
 
-This is a single-page marketing site with additional pages for classes, shows, and workshops. The primary calls to action are the training onboarding form and email contact.
+This is a single-page marketing site. The primary calls to action are the training onboarding form and email contact.
 
 ## Main
 
-- [Home](https://www.marcelaviola.com/): Overview of Marcela's coaching, including About, Credentials, Services (Nutrition, Strength, Mobility), Testimonials, and Contact.
-- [Contact](https://www.marcelaviola.com/contact/): Ways to work with Marcela (1-on-1, small group, online live, online programs), the training onboarding form, and email/social links.
-
-## Services
-
-- [Classes](https://www.marcelaviola.com/classes/): Aerial silks and hoop, yoga, flexibility, and private classes, including schedules and booking details.
-- [Shows](https://www.marcelaviola.com/shows/): Aerial and circus performance offerings.
-- [Workshops](https://www.marcelaviola.com/workshops/): Workshops for groups and circus companies.
+- [Home](https://www.marcelaviola.com/): Overview of Marcela's coaching, including About, Credentials, Services (Nutrition, Strength, Mobility), Testimonials, and Contact. Ways to work with Marcela (1-on-1, small group, online live, online programs), the training onboarding form, and email/social links.
 
 ## Contact
 
