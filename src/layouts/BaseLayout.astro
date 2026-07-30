@@ -52,6 +52,16 @@ const { title, description, image } = Astro.props;
           navigator.serviceWorker.register("/service-worker.js", { scope: "/" });
         });
       }
+
+      // The site name links to "#top" (the fixed header), which browsers can't
+      // scroll to. Intercept it and scroll the document to the top instead.
+      // Leaving `behavior` unset honours the CSS scroll-behavior (and its
+      // prefers-reduced-motion override).
+      document.querySelector('.name a[href="#top"]')?.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0 });
+        history.replaceState(null, "", location.pathname);
+      });
     </script>
   </body>
 </html>
