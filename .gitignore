@@ -5,7 +5,8 @@ bower_components
 *.ignore
 .note_*
 
-public
+# Astro build output & cache
+dist
+.astro
 
 .hugo_build.lock
-package-lock.json

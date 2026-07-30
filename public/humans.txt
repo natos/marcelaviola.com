@@ -1,0 +1,17 @@
+/* TEAM */
+
+Design: Natan Santolo
+Contact: natansantolo.com
+
+Content: Marcela Viola
+Contact: marcelaviola.com
+
+/* THANKS */
+
+/* SITE */
+
+Doctype: HTML5
+Language: English
+Standards: HTML5, CSS3
+Components: Astro, TypeScript
+LLMs: /llms.txt
