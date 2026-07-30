@@ -698,9 +698,17 @@ nav.social {
   /* z-index: -100; */
 }
 
-.hero-video.mobile.play,
-.hero-video.desktop.play {
-  display: block;
+/* JS-free device selection: portrait video on small screens, landscape on wide */
+@media (width < 760px) {
+  .hero-video.mobile {
+    display: block;
+  }
+}
+
+@media (width >= 760px) {
+  .hero-video.desktop {
+    display: block;
+  }
 }
 
 .testimonial {

@@ -1,0 +1,31 @@
+---
+/**
+ * Full-bleed background hero videos. Replaces the Hugo hero-video.html partial.
+ * No UA sniffing / JS: CSS media queries pick portrait vs landscape source.
+ * autoplay + muted + playsinline + loop keeps iOS Safari autoplay working.
+ */
+import { hero } from "../data/hero";
+---
+
+<video
+  class="hero-video desktop"
+  autoplay
+  muted
+  playsinline
+  loop
+  preload="auto"
+  aria-hidden="true"
+>
+  <source src={hero.video.landscape} type="video/mp4" />
+</video>
+<video
+  class="hero-video mobile"
+  autoplay
+  muted
+  playsinline
+  loop
+  preload="auto"
+  aria-hidden="true"
+>
+  <source src={hero.video.portrait} type="video/mp4" />
+</video>
