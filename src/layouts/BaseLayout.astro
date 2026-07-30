@@ -47,10 +47,19 @@ const { title, description, image } = Astro.props;
     </main>
     <script is:inline>
       // Register the service worker for offline support / PWA install.
+      // Skip localhost so a stale dev cache never masks fresh builds; on
+      // localhost, proactively unregister any worker left over from testing.
       if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/service-worker.js", { scope: "/" });
-        });
+        const isLocalhost = ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
+        if (isLocalhost) {
+          navigator.serviceWorker
+            .getRegistrations()
+            .then((regs) => regs.forEach((r) => r.unregister()));
+        } else {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/service-worker.js", { scope: "/" });
+          });
+        }
       }
 
       // The site name links to "#top" (the fixed header), which browsers can't
