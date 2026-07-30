@@ -12,7 +12,7 @@ export const site = {
     "coach, marcela, viola, health, wellness, coaching, personal, trainer, strength, mobility, flexibility, nutrition, training, fitness",
   author: "Natan Santolo",
   languageCode: "en-US",
-  ogImage: "/assets/images/contact/x2/contact.jpg",
+  ogImage: "/og-image.jpg",
 } as const;
 
 /**
@@ -22,7 +22,7 @@ export const site = {
 export const person = {
   name: "Marcela Viola",
   jobTitle: "Strength, Mobility & Nutrition Coach",
-  image: "/assets/images/contact/x2/contact.jpg",
+  image: "/og-image.jpg",
 } as const;
 
 export interface NavItem {
