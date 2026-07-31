@@ -21,7 +21,7 @@ export interface Highlight {
 export const highlights: Highlight[] = [
   { phrase: "A force of nature", name: "Pin" },
   { phrase: "One of the strongest people I know", name: "Burke" },
-  { phrase: "She pushes me, too", name: "Heather" },
+  { phrase: "Growth I can measure", name: "Heather" },
   { phrase: "Progress without injuries", name: "Asa" },
 ];
 
