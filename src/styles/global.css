@@ -351,6 +351,20 @@ iframe {
     grid-template-columns: 1.7fr 1fr 1fr;
     gap: var(--space-2xl);
   }
+
+  /* Keep copyright, credits and back-to-top on a single horizontal line. */
+  .site-footer-bottom {
+    flex-wrap: nowrap;
+  }
+
+  .footer-copy {
+    white-space: nowrap;
+  }
+
+  .footer-credits {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .footer-wordmark {
