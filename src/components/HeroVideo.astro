@@ -7,6 +7,7 @@
  * prefers-reduced-motion by pausing on the poster frame.
  */
 import { hero } from "../data/hero";
+const { copy } = hero;
 ---
 
 <video
@@ -33,6 +34,24 @@ import { hero } from "../data/hero";
 >
   <source src={hero.video.portrait} type="video/mp4" />
 </video>
+
+<div class="hero-overlay" data-hero>
+  <div class="hero-content">
+    <p class="hero-kicker">{copy.kicker}</p>
+    <h2 class="hero-title">
+      {copy.title.map((line) => <span class="hero-title-line">{line}</span>)}
+    </h2>
+    <p class="hero-lede">{copy.lede}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={copy.primaryCta.url}>{copy.primaryCta.label}</a>
+      <a class="btn btn-ghost" href={copy.secondaryCta.url}>{copy.secondaryCta.label}</a>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#about" aria-label="Scroll to content">
+    <span class="hero-scroll-label">Scroll</span>
+    <span class="hero-scroll-chevron" aria-hidden="true"></span>
+  </a>
+</div>
 
 <script is:inline>
   // Respect users who prefer reduced motion: don't autoplay the hero videos,
