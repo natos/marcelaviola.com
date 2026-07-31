@@ -344,7 +344,7 @@ iframe {
 
 @media screen and (width >= 768px) {
   .site-footer {
-    padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+    padding-top: var(--space-3xl);
   }
 
   .site-footer-inner {
@@ -364,6 +364,13 @@ iframe {
   .footer-credits {
     flex: 1;
     min-width: 0;
+  }
+}
+
+/* Match the header's horizontal padding so footer columns line up with it. */
+@media screen and (width >= 1024px) {
+  .site-footer {
+    padding-inline: var(--space-xl);
   }
 }
 
