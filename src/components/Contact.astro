@@ -6,9 +6,7 @@ import SectionImage from "./SectionImage.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Social from "./Social.astro";
 import contactImg from "../images/contact/contact.jpg";
-
-const onboardingForm =
-  "https://forms.zohopublic.com/strongwithmarce/form/CounselingIntakeForm/formperma/8USVH11UWDlS7BZzV5T-NTyTmDyxdC4QonTF-DyAqRA";
+import { contact } from "../data/site";
 ---
 
 <section id="contact" class="reverse">
@@ -16,31 +14,33 @@ const onboardingForm =
   <SectionImage src={contactImg} alt="Marcela Viola" />
   <article class="content">
     <p>
-      You've made it this far! you know what you want and this is your time to
+      You've made it this far! You know what you want and this is your time to
       work on yourself.
     </p>
 
     <p>I offer different options to accommodate everybody:</p>
 
     <ul>
-      <li>1 on 1 in-person training</li>
+      <li>1-on-1 in-person training</li>
       <li>Small group class</li>
       <li>Online live coaching</li>
-      <li>Online 4-8 weeks program with weekly check-ins.</li>
+      <li>Online 4-8 week program with weekly check-ins</li>
     </ul>
 
-    <p>
-      <a href={onboardingForm} target="_blank" rel="noopener noreferrer">
-        Start with the training onboarding form.
+    <div class="contact-cta">
+      <a
+        class="btn btn-primary"
+        href={contact.onboardingForm}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Start the onboarding form
       </a>
-    </p>
+      <a class="btn btn-ghost" href={`mailto:${contact.email}`}>Email me</a>
+    </div>
 
-    <p>
-      <a href="mailto:strongwithmarce@gmail.com"
-        >You can reach out to me by email</a
-      >, or on my social media:
-    </p>
-
+    <p class="contact-social-label">Or find me on social:</p>
     <Social />
   </article>
 </section>
+

@@ -4,7 +4,7 @@
  * Emits charset, viewport, description/keywords, Open Graph, Twitter card,
  * canonical, and favicon. Per-page title/description override the defaults.
  */
-import { site, person } from "../data/site";
+import { site, person, offerings } from "../data/site";
 import { social } from "../data/social";
 import { hero } from "../data/hero";
 
@@ -49,6 +49,15 @@ const structuredData = {
       description: site.description,
       sameAs: social.map((s) => s.url),
     },
+    ...offerings.map((offering, index) => ({
+      "@type": "Service",
+      "@id": `${site.url}/#service-${index + 1}`,
+      name: offering.name,
+      description: offering.description,
+      serviceType: offering.name,
+      areaServed: "Singapore",
+      provider: { "@id": `${site.url}/#person` },
+    })),
   ],
 };
 ---

@@ -49,6 +49,7 @@ const { title, description, image } = Astro.props;
       <slot />
       <Footer />
     </main>
+    <a class="sticky-cta" href="#contact">Start your journey</a>
     <script is:inline>
       // Register the service worker for offline support / PWA install.
       // Skip localhost so a stale dev cache never masks fresh builds; on
@@ -103,12 +104,30 @@ const { title, description, image } = Astro.props;
 
       // 2. Condense the header once the hero is scrolled past.
       const header = document.querySelector("header.global");
-      if (header) {
-        const onScroll = () => {
-          header.classList.toggle("is-scrolled", window.scrollY > window.innerHeight * 0.6);
-        };
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
+      const stickyCta = document.querySelector(".sticky-cta");
+      let pastHero = false;
+      let contactInView = false;
+      const syncChrome = () => {
+        header?.classList.toggle("is-scrolled", pastHero);
+        stickyCta?.classList.toggle("is-visible", pastHero && !contactInView);
+      };
+      const onScroll = () => {
+        pastHero = window.scrollY > window.innerHeight * 0.6;
+        syncChrome();
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Hide the sticky CTA once the contact section is on screen.
+      const contactSection = document.getElementById("contact");
+      if (contactSection && "IntersectionObserver" in window) {
+        new IntersectionObserver(
+          (entries) => {
+            contactInView = entries[0].isIntersecting;
+            syncChrome();
+          },
+          { rootMargin: "0px 0px -35% 0px", threshold: 0 },
+        ).observe(contactSection);
       }
 
       // 3. Highlight the nav item for the section currently in view.

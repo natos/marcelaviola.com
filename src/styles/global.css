@@ -258,6 +258,19 @@ section .content a:hover {
   text-decoration-color: currentcolor;
 }
 
+/* Buttons inside body copy shouldn't inherit the underlined link treatment. */
+section .content a.btn {
+  text-decoration: none;
+}
+
+section .content a.btn-primary {
+  color: var(--color-accent-contrast);
+}
+
+section .content a.btn-ghost {
+  color: var(--color-heading);
+}
+
 section .primary-image {
   width: 100%;
   height: auto;
@@ -1021,6 +1034,64 @@ nav.social {
   font-size: var(--text-md);
   letter-spacing: var(--tracking-wide);
   color: var(--color-accent);
+}
+
+/* Contact conversion block */
+.contact-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.contact-social-label {
+  margin: var(--space-md) 0 var(--space-2xs);
+  padding: 0;
+  color: var(--color-text-muted);
+}
+
+/* Sticky floating CTA — appears after the hero, hidden while contact is in view */
+.sticky-cta {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85em 1.5em;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-accent-contrast);
+  background-color: var(--color-accent);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: none;
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    background-color var(--transition);
+}
+
+.sticky-cta.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.sticky-cta:hover {
+  background-color: var(--color-accent-hover);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .sticky-cta {
+    transition: opacity var(--transition);
+    transform: none;
+  }
 }
 
 /* Skip-to-content link — visible only on keyboard focus */

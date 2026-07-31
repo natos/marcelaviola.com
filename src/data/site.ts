@@ -47,3 +47,31 @@ export const credits = {
   ],
   author: { name: "Natan", url: "https://www.natansantolo.com" },
 } as const;
+
+/** Contact channels — single source of truth for the form URL and email. */
+export const contact = {
+  email: "strongwithmarce@gmail.com",
+  onboardingForm:
+    "https://forms.zohopublic.com/strongwithmarce/form/CounselingIntakeForm/formperma/8USVH11UWDlS7BZzV5T-NTyTmDyxdC4QonTF-DyAqRA",
+  areaServed: "Singapore",
+} as const;
+
+/** Coaching services — powers the on-page copy and schema.org Service markup. */
+export const offerings = [
+  {
+    name: "Nutrition Coaching",
+    description:
+      "Build better habits around food and learn to fuel properly for your activity level and goals.",
+  },
+  {
+    name: "Strength Training",
+    description:
+      "Get stronger, gain muscle and train with a simple, sustainable plan built around you.",
+  },
+  {
+    name: "Mobility Coaching",
+    description:
+      "Improve your range of motion, ease nagging pain and move with control and confidence.",
+  },
+] as const;
+
