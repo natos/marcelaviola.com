@@ -3,25 +3,20 @@
  * Testimonials section. Replaces the Hugo testimonials.html partial.
  * Content is driven by src/data/testimonials.ts.
  */
-import SectionImage from "./SectionImage.astro";
 import SectionHeading from "./SectionHeading.astro";
 import { testimonials } from "../data/testimonials";
-import testimonialImg from "../images/v/240221 R6ii - R6II6409.jpg";
 ---
 
-<section id="testimonials">
+<section id="testimonials" class="testimonials-section">
   <SectionHeading index={4} eyebrow="Testimonials" title="What clients say" />
-  <SectionImage src={testimonialImg} alt="Marcela Viola" />
-  <article class="content">
+  <ul class="testimonial-grid">
     {
       testimonials.map((testimonial) => (
-        <figure class="testimonial">
-          <blockquote>
-            <p>{testimonial.quote}</p>
-          </blockquote>
-          <figcaption>{testimonial.name}</figcaption>
-        </figure>
+        <li class="testimonial-card">
+          <blockquote>{testimonial.quote}</blockquote>
+          <p class="testimonial-author">{testimonial.name}</p>
+        </li>
       ))
     }
-  </article>
+  </ul>
 </section>
