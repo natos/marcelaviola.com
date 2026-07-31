@@ -406,6 +406,8 @@ header.global {
   backdrop-filter: blur(10px);
   transform: translateY(-100%);
   transition: transform 0.4s var(--ease-out);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Hidden over the hero; slides down once the user starts scrolling. */
@@ -765,6 +767,7 @@ nav.social {
   height: 100vh;
   height: 100svh;
   overflow: hidden;
+  isolation: isolate;
   background-color: var(--color-bg);
 }
 
@@ -772,10 +775,12 @@ nav.social {
   display: none;
   position: absolute;
   inset: 0;
+  z-index: 0;
   object-fit: cover;
   width: 100%;
   height: 100%;
-  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* JS-free device selection: portrait video on small screens, landscape on wide */
@@ -800,10 +805,14 @@ nav.social {
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: calc(var(--header-h) + var(--space-xl)) var(--space-lg) var(--space-2xl);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
   background:
     linear-gradient(
       90deg,

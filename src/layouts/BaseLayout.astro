@@ -118,19 +118,28 @@ const { title, description, image } = Astro.props;
       const syncChrome = () => {
         stickyCta?.classList.toggle("is-visible", pastHero && !contactInView);
       };
-      const onScroll = () => {
+      let ticking = false;
+      const update = () => {
+        ticking = false;
         const y = window.scrollY;
         pastHero = y > window.innerHeight * 0.6;
         header?.classList.toggle("is-revealed", y > 64);
         syncChrome();
         // Subtle cinematic exit: fade + drift the hero content as it leaves.
+        // translate3d keeps the overlay on its own compositor layer so the
+        // text doesn't repaint against every video frame.
         if (heroOverlay && !reduce) {
           const progress = Math.min(Math.max(y / heroHeight, 0), 1);
           heroOverlay.style.opacity = String(1 - progress);
-          heroOverlay.style.transform = `translateY(${progress * -4}vh)`;
+          heroOverlay.style.transform = `translate3d(0, ${progress * -4}vh, 0)`;
         }
       };
-      onScroll();
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      };
+      update();
       window.addEventListener("scroll", onScroll, { passive: true });
 
       // Hide the sticky CTA once the contact section is on screen.
