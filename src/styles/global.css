@@ -53,15 +53,15 @@ summary {
 }
 
 body {
-  color: #eee;
-  font-family: "Work Sans Variable", sans-serif;
+  color: var(--color-text);
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-style: normal;
-  font-size: 18px;
+  font-size: var(--text-base);
   font-weight: 300;
-  line-height: 1.618;
+  line-height: var(--leading-normal);
   min-height: 100%;
-  background-color: #000;
+  background-color: var(--color-bg);
 }
 
 body * {
@@ -86,41 +86,40 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-style: normal;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-heading);
 }
 
 h1 {
-  font-size: 4.236rem;
+  font-size: var(--text-2xl);
 }
 
 h2 {
-  font-size: 2.618rem;
+  font-size: var(--text-lg);
 }
 
 h3 {
-  font-size: 1.618rem;
-  font-weight: 600;
+  font-size: var(--text-md);
 }
 
 h4 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-base);
 }
 
 h5 {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
 }
 
 h6 {
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: var(--text-xs);
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: var(--text-base);
 }
 
 /* lists */
@@ -157,8 +156,8 @@ p:last-of-type {
 .page section {
   position: relative;
   margin: 100vh 0 0;
-  background-color: #000;
-  padding: 3em 1em 1em;
+  background-color: var(--color-bg);
+  padding: var(--space-section) var(--space-lg);
   scroll-behavior: smooth;
 }
 
@@ -172,16 +171,22 @@ section header {
 
 section .content {
   position: relative;
-  color: #eee;
+  max-width: var(--measure);
+  color: var(--color-text);
   padding: 0;
 }
 
 section .content a {
-  color: #faa;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 0.2em;
+  transition: color var(--transition);
 }
 
 section .content a:hover {
-  color: #ff0082;
+  color: var(--color-link-hover);
+  text-decoration-color: currentcolor;
 }
 
 section .primary-image {
