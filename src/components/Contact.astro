@@ -3,6 +3,7 @@
  * Contact section. Replaces the Hugo contact.html partial.
  */
 import SectionImage from "./SectionImage.astro";
+import SectionHeading from "./SectionHeading.astro";
 import Social from "./Social.astro";
 import contactImg from "../images/contact/contact.jpg";
 
@@ -10,10 +11,8 @@ const onboardingForm =
   "https://forms.zohopublic.com/strongwithmarce/form/CounselingIntakeForm/formperma/8USVH11UWDlS7BZzV5T-NTyTmDyxdC4QonTF-DyAqRA";
 ---
 
-<section id="contact">
-  <header>
-    <h1>Contact</h1>
-  </header>
+<section id="contact" class="reverse">
+  <SectionHeading index={5} eyebrow="Get in touch" title="Ready when you are" />
   <SectionImage src={contactImg} alt="Marcela Viola" />
   <article class="content">
     <p>

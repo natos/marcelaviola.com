@@ -7,12 +7,11 @@ import servicesImg from "../images/services/services.jpg";
 import nutritionImg from "../images/nutrition/nutrition.jpg";
 import strengthImg from "../images/strength/strenght.jpg";
 import mobilityImg from "../images/mobility/mobility.jpg";
+import SectionHeading from "./SectionHeading.astro";
 ---
 
 <section id="services">
-  <header>
-    <h1>Services</h1>
-  </header>
+  <SectionHeading index={3} eyebrow="Services" title="Ways we can work together" />
   <SectionImage src={servicesImg} alt="Marcela Viola demonstrating an exercise" />
   <article class="content">
     <p>
@@ -39,10 +38,10 @@ import mobilityImg from "../images/mobility/mobility.jpg";
   </article>
 </section>
 
-<section class="services">
+<section class="services reverse">
   <SectionImage src={nutritionImg} alt="Wholesome food for nutrition coaching" />
   <article class="content">
-    <h2>Nutrition Coaching</h2>
+    <h3>Nutrition Coaching</h3>
     <p>Build better habits around food.</p>
     <p>
       Learn what you need to eat to fuel properly for your activity level and life
@@ -70,7 +69,7 @@ import mobilityImg from "../images/mobility/mobility.jpg";
 <section class="services">
   <SectionImage src={strengthImg} alt="Marcela Viola strength training with weights" />
   <article class="content">
-    <h2>Strength Training</h2>
+    <h3>Strength Training</h3>
     <p>
       Either you are new to training or you've been around for a bit but you do
       not see the results you want and you are ready to get serious, I have a
@@ -88,10 +87,10 @@ import mobilityImg from "../images/mobility/mobility.jpg";
   </article>
 </section>
 
-<section class="services">
+<section class="services reverse">
   <SectionImage src={mobilityImg} alt="Marcela Viola demonstrating a mobility exercise" />
   <article class="content">
-    <h2>Mobility Coaching</h2>
+    <h3>Mobility Coaching</h3>
     <p>
       If you are tired of that nagging lower back pain or you keep getting injured
       in the same spot over and over or you want to take your athletic performance

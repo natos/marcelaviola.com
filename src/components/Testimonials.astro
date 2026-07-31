@@ -4,14 +4,13 @@
  * Content is driven by src/data/testimonials.ts.
  */
 import SectionImage from "./SectionImage.astro";
+import SectionHeading from "./SectionHeading.astro";
 import { testimonials } from "../data/testimonials";
 import testimonialImg from "../images/v/240221 R6ii - R6II6409.jpg";
 ---
 
 <section id="testimonials">
-  <header>
-    <h1>Testimonials</h1>
-  </header>
+  <SectionHeading index={4} eyebrow="Testimonials" title="What clients say" />
   <SectionImage src={testimonialImg} alt="Marcela Viola" />
   <article class="content">
     {

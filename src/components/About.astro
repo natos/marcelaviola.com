@@ -3,13 +3,12 @@
  * About section. Replaces the Hugo about.html partial.
  */
 import SectionImage from "./SectionImage.astro";
+import SectionHeading from "./SectionHeading.astro";
 import aboutImg from "../images/about/about.jpg";
 ---
 
 <section id="about">
-  <header>
-    <h1>About</h1>
-  </header>
+  <SectionHeading index={1} eyebrow="About" title="Coaching rooted in real experience" />
   <SectionImage src={aboutImg} alt="Marcela Viola training in the gym" />
   <article class="content">
     <p>

@@ -157,7 +157,7 @@ p:last-of-type {
   position: relative;
   margin: 100vh 0 0;
   background-color: var(--color-bg);
-  padding: var(--space-section) var(--space-lg);
+  padding: calc(var(--header-h) + var(--space-xl)) var(--space-lg) var(--space-section);
   scroll-behavior: smooth;
 }
 
@@ -165,8 +165,48 @@ p:last-of-type {
   position: relative;
 }
 
-section header {
+section header,
+.section-head {
   width: 100%;
+  margin-bottom: var(--space-xl);
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-sm);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.section-number {
+  color: var(--color-accent);
+}
+
+.section-eyebrow-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.section-eyebrow-label::before {
+  content: "";
+  width: var(--space-xl);
+  height: 1px;
+  background-color: var(--color-border-strong);
+}
+
+.section-title {
+  margin: 0;
+  padding: 0;
+  max-width: 20ch;
+  font-size: var(--text-xl);
 }
 
 section .content {
@@ -203,13 +243,22 @@ section.services {
   .page section {
     display: flex;
     flex-flow: row wrap;
-    place-content: flex-start center;
     align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--space-lg) var(--space-2xl);
   }
 
   section .content,
   section figure {
-    width: 50%;
+    width: calc(50% - var(--space-2xl) / 2);
+  }
+
+  section.reverse figure {
+    order: 2;
+  }
+
+  section.reverse .content {
+    order: 1;
   }
 }
 
@@ -309,15 +358,15 @@ header.global {
   background-color: rgb(0 0 0 / 75%);
 }
 
-header.global .name h1 {
+header.global .name .brand {
+  display: inline-block;
   line-height: 1em;
   margin: -14px 0.5em 16px 16px;
   padding: 0;
+  font-family: var(--font-display);
   font-size: 3.8em;
-}
-
-header.global h1 a {
-  color: #fff;
+  color: var(--color-heading);
+  text-decoration: none;
 }
 
 .toggler {

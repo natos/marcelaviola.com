@@ -38,9 +38,9 @@ const { copy } = hero;
 <div class="hero-overlay" data-hero>
   <div class="hero-content">
     <p class="hero-kicker">{copy.kicker}</p>
-    <h2 class="hero-title">
+    <h1 class="hero-title">
       {copy.title.map((line) => <span class="hero-title-line">{line}</span>)}
-    </h2>
+    </h1>
     <p class="hero-lede">{copy.lede}</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href={copy.primaryCta.url}>{copy.primaryCta.label}</a>
