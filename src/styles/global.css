@@ -579,7 +579,12 @@ nav.social {
 #contact nav.social {
   position: relative;
   display: flex;
-  margin-bottom: 3rem;
+  justify-content: flex-start;
+  margin: 0 0 var(--space-lg) -0.5rem;
+}
+
+#contact .social-item {
+  padding-inline: 0.5rem;
 }
 
 .social-item {
