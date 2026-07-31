@@ -6,6 +6,7 @@
  */
 import { site, person } from "../data/site";
 import { social } from "../data/social";
+import { hero } from "../data/hero";
 
 interface Props {
   title?: string;
@@ -60,6 +61,20 @@ const structuredData = {
 <meta name="description" content={description} />
 <meta name="keywords" content={site.keywords} />
 <link rel="canonical" href={canonical} />
+
+<!-- Preload the device-appropriate hero poster (the LCP image). -->
+<link
+  rel="preload"
+  as="image"
+  href={hero.video.landscapePoster}
+  media="(min-width: 760px)"
+/>
+<link
+  rel="preload"
+  as="image"
+  href={hero.video.portraitPoster}
+  media="(max-width: 759px)"
+/>
 
 <!-- Open Graph -->
 <meta property="og:title" content={pageTitle} />
