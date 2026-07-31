@@ -396,35 +396,33 @@ header.global {
   top: 0;
   left: 0;
   right: 0;
-  padding-top: 1rem;
-  background-color: var(--color-header-bg);
-  transition:
-    padding var(--transition),
-    background-color var(--transition),
-    box-shadow var(--transition);
-}
-
-header.global.is-scrolled {
-  padding-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: var(--header-h);
+  padding: var(--space-2xs) var(--space-lg);
   background-color: rgb(0 0 0 / 88%);
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
+  transform: translateY(-100%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+/* Hidden over the hero; slides down once the user starts scrolling. */
+header.global.is-revealed {
+  transform: translateY(0);
 }
 
 header.global .name .brand {
   display: inline-block;
-  line-height: 1em;
-  margin: -14px 0.5em 16px 16px;
+  line-height: 1;
+  margin: 0;
   padding: 0;
   font-family: var(--font-display);
-  font-size: 3.8em;
+  font-size: 2.6rem;
+  letter-spacing: 0.01em;
   color: var(--color-heading);
   text-decoration: none;
-  transition: font-size var(--transition);
-}
-
-header.global.is-scrolled .name .brand {
-  font-size: 2.8em;
 }
 
 .toggler {
@@ -434,9 +432,11 @@ header.global.is-scrolled .name .brand {
 @media screen and (width <= 1023px) {
   .happy nav.global {
     position: fixed;
-    transform: translate3d(0, -200%, 0);
+    top: calc(var(--header-h) - var(--space-2xs));
+    left: 0;
+    width: 100vw;
+    transform: translate3d(0, -160%, 0);
     background-color: #000;
-    width: 100%;
   }
 
   .happy .open nav.global {
@@ -508,12 +508,12 @@ header.global.is-scrolled .name .brand {
 
 @media screen and (width >= 1024px) {
   header.global {
-    padding: 1em;
-    height: 5rem;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    transform: translate3d(0, 0, 0);
+    padding: 0 var(--space-xl);
+    gap: var(--space-lg);
+  }
+
+  header.global .name {
+    margin-right: auto;
   }
 }
 
