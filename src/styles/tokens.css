@@ -1,0 +1,90 @@
+/*
+ * Design tokens — the single source of truth for colour, type, space, and
+ * motion. Everything else in the stylesheet should reference these variables
+ * rather than hard-coded values, so the visual system stays consistent.
+ */
+
+:root {
+  /* ---- Colour ------------------------------------------------------------ */
+  --color-bg: #000;
+  --color-surface: #0e0e10;
+  --color-surface-2: #16161a;
+  --color-elevated: #1d1d22;
+
+  --color-text: #f2f2f2;
+  --color-text-muted: #a6a6ad;
+  --color-heading: #fff;
+
+  --color-accent: #ff0082;
+  --color-accent-hover: #ff3d9e;
+  --color-accent-contrast: #fff;
+  --color-link: #ff9ecb;
+  --color-link-hover: #ff0082;
+
+  --color-border: rgb(255 255 255 / 12%);
+  --color-border-strong: rgb(255 255 255 / 24%);
+  --color-header-bg: rgb(0 0 0 / 72%);
+  --color-overlay: rgb(0 0 0 / 55%);
+
+  /* ---- Typography -------------------------------------------------------- */
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Work Sans Variable", "Work Sans", system-ui, sans-serif;
+
+  /* Fluid type scale (major third-ish), fluid between ~360px and ~1240px. */
+  --text-xs: clamp(0.75rem, 0.71rem + 0.18vw, 0.85rem);
+  --text-sm: clamp(0.88rem, 0.83rem + 0.22vw, 1rem);
+  --text-base: clamp(1rem, 0.94rem + 0.3vw, 1.18rem);
+  --text-md: clamp(1.18rem, 1.05rem + 0.6vw, 1.5rem);
+  --text-lg: clamp(1.5rem, 1.24rem + 1.2vw, 2.25rem);
+  --text-xl: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
+  --text-2xl: clamp(2.6rem, 1.8rem + 3.8vw, 4.75rem);
+  --text-display: clamp(3.25rem, 2rem + 6.4vw, 7.5rem);
+
+  --leading-tight: 1.08;
+  --leading-snug: 1.28;
+  --leading-normal: 1.6;
+
+  --tracking-display: 0.012em;
+  --tracking-wide: 0.08em;
+
+  /* ---- Space ------------------------------------------------------------- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Fluid section padding for a consistent vertical rhythm. */
+  --space-section: clamp(3.5rem, 2rem + 6vw, 8rem);
+
+  /* Readable measure + full-bleed content container. */
+  --measure: 66ch;
+  --container: min(96rem, 100% - 2 * var(--space-lg));
+
+  /* ---- Radius / border --------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation --------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+  --shadow: 0 12px 32px -12px rgb(0 0 0 / 65%);
+  --shadow-lg: 0 24px 64px -20px rgb(0 0 0 / 70%);
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --transition: 0.2s ease;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- Layout ------------------------------------------------------------ */
+  --header-h: 5rem;
+
+  --z-base: 1;
+  --z-header: 1000;
+  --z-toggler: 1001;
+  --z-skip: 2000;
+}

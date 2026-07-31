@@ -1,0 +1,45 @@
+---
+/**
+ * Contact section. Replaces the Hugo contact.html partial.
+ */
+import SectionImage from "./SectionImage.astro";
+import SectionHeading from "./SectionHeading.astro";
+import Social from "./Social.astro";
+import contactImg from "../images/contact/contact.jpg";
+import { contact } from "../data/site";
+---
+
+<section id="contact" class="reverse">
+  <SectionHeading index={5} eyebrow="Get in touch" title="Ready when you are" />
+  <SectionImage src={contactImg} alt="Marcela Viola" />
+  <article class="content">
+    <p>
+      You've made it this far! You know what you want and this is your time to
+      work on yourself.
+    </p>
+
+    <p>I offer different options to accommodate everybody:</p>
+
+    <ul>
+      <li>1-on-1 in-person training</li>
+      <li>Small group class</li>
+      <li>Online live coaching</li>
+      <li>Online 4-8 week program with weekly check-ins</li>
+    </ul>
+
+    <div class="contact-cta">
+      <a
+        class="btn btn-primary"
+        href={contact.onboardingForm}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Let's get started
+      </a>
+    </div>
+
+    <p class="contact-social-label">Or find me on social:</p>
+    <Social />
+  </article>
+</section>
+

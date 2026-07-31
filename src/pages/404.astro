@@ -1,0 +1,59 @@
+---
+/**
+ * 404 page. Cloudflare Pages serves /404.html automatically for unmatched
+ * routes. Kept intentionally minimal: the site is a single-page app whose nav
+ * is anchor-based, so a full header would only produce dead links here.
+ */
+import "@fontsource/bebas-neue";
+import "@fontsource-variable/work-sans";
+import "../styles/global.css";
+
+import { site } from "../data/site";
+import SEO from "../components/SEO.astro";
+---
+
+<!doctype html>
+<html lang={site.languageCode} class="happy">
+  <head>
+    <SEO title="Page not found" description="Sorry, that page doesn't exist." />
+  </head>
+  <body>
+    <main class="not-found">
+      <p class="not-found__code">404</p>
+      <h1>Page not found</h1>
+      <p>Sorry, but we couldn't find the page you're looking for.</p>
+      <p>
+        <a href="/">Head back home &rarr;</a>
+      </p>
+    </main>
+  </body>
+</html>
+
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .not-found__code {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(4rem, 20vw, 10rem);
+    line-height: 1;
+    margin: 0;
+    color: #ff0082;
+  }
+
+  .not-found h1 {
+    margin: 0;
+  }
+
+  .not-found a {
+    color: #ff0082;
+  }
+</style>

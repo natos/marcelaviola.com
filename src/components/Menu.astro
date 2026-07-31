@@ -1,0 +1,17 @@
+---
+/**
+ * Primary navigation. Replaces the Hugo menu.html partial.
+ * Anchors scroll to sections on the one-page home layout.
+ */
+import { nav } from "../data/site";
+---
+
+<nav class="global" id="primary-nav" aria-label="Primary">
+  {
+    nav.map((item) => (
+      <a class="nav-item" href={item.url}>
+        {item.name}
+      </a>
+    ))
+  }
+</nav>

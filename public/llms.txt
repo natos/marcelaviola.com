@@ -1,0 +1,19 @@
+# Marcela Viola
+
+> Marcela Viola is a holistic health and movement coach based between Singapore and Amsterdam, specializing in strength training, mobility/flexibility, and nutrition coaching. She builds tailored, sustainable programs that help everyday clients and athletes move better, eat better, and build lasting healthy habits.
+
+Marcela has 20+ years of experience as an aerialist, yoga teacher, handstand practitioner, and strength coach. She is NASM and ELEIKO certified, co-founded a coaching app in Singapore where she runs her personal-training practice, and coaches group and private aerial, mobility, and conditioning classes. Coaching is offered 1-on-1 in person, in small groups, live online, and via 4–8 week online programs with weekly check-ins.
+
+This is a single-page marketing site. The primary calls to action are the training onboarding form and email contact.
+
+## Main
+
+- [Home](https://www.marcelaviola.com/): Overview of Marcela's coaching, including About, Credentials, Services (Nutrition, Strength, Mobility), Testimonials, and Contact. Ways to work with Marcela (1-on-1, small group, online live, online programs), the training onboarding form, and email/social links.
+
+## Contact
+
+- Email: strongwithmarce@gmail.com
+- Training onboarding form: https://forms.zohopublic.com/strongwithmarce/form/CounselingIntakeForm/formperma/8USVH11UWDlS7BZzV5T-NTyTmDyxdC4QonTF-DyAqRA
+- Instagram: https://www.instagram.com/pulgacion/
+- YouTube: https://www.youtube.com/@upflychannel/
+- LinkedIn: https://www.linkedin.com/in/marcelaviola/

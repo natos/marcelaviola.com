@@ -1,0 +1,95 @@
+---
+/**
+ * Hero banner — a self-contained 100svh section with an autoplaying, muted,
+ * looping background video. The video scrolls away with the page (no fixed
+ * positioning). CSS media queries pick portrait vs landscape source with no
+ * UA sniffing; posters give an instant first paint. A small script honours
+ * prefers-reduced-motion (poster only) and pauses the video off-screen.
+ */
+import { hero } from "../data/hero";
+const { copy } = hero;
+---
+
+<section class="hero" aria-label="Introduction" data-hero>
+  <video
+    class="hero-video desktop"
+    autoplay
+    muted
+    playsinline
+    loop
+    preload="auto"
+    poster={hero.video.landscapePoster}
+    aria-hidden="true"
+  >
+    <source src={hero.video.landscape} type="video/mp4" />
+  </video>
+  <video
+    class="hero-video mobile"
+    autoplay
+    muted
+    playsinline
+    loop
+    preload="auto"
+    poster={hero.video.portraitPoster}
+    aria-hidden="true"
+  >
+    <source src={hero.video.portrait} type="video/mp4" />
+  </video>
+
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <p class="hero-kicker">{copy.kicker}</p>
+      <h1 class="hero-title">
+        {copy.title.map((line) => <span class="hero-title-line">{line}</span>)}
+      </h1>
+      <p class="hero-lede">{copy.lede}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={copy.primaryCta.url}>{copy.primaryCta.label}</a>
+        <a class="btn btn-ghost" href={copy.secondaryCta.url}>{copy.secondaryCta.label}</a>
+      </div>
+    </div>
+    <a class="hero-scroll" href="#about" aria-label="Scroll to content">
+      <span class="hero-scroll-label">Scroll</span>
+      <span class="hero-scroll-chevron" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const videos = Array.from(document.querySelectorAll("video.hero-video"));
+    if (!videos.length) return;
+
+    // Respect reduced motion: never autoplay, leave the poster frame showing.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      videos.forEach((video) => {
+        video.removeAttribute("autoplay");
+        video.pause();
+      });
+      return;
+    }
+
+    // Pause the hero video once it scrolls out of view (saves battery + data),
+    // and only ever play the source that's actually displayed for this viewport.
+    const hero = document.querySelector(".hero");
+    if (hero && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const onScreen = entries[0].isIntersecting;
+          videos.forEach((video) => {
+            const displayed = video.offsetParent !== null;
+            if (onScreen && displayed) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0 },
+      );
+      observer.observe(hero);
+    }
+  })();
+</script>
+
+

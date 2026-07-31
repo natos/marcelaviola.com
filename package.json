@@ -1,30 +1,45 @@
 {
     "name": "marcelaviola.com",
-    "version": "3.0.0",
-    "description": "Marcela Viola Coach",
-    "main": "gruntfile.js",
-    "devDependencies": {
-        "grunt": "^1.6.1",
-        "grunt-contrib-clean": "^1.1.0",
-        "grunt-contrib-imagemin": "^2.0.1",
-        "grunt-contrib-uglify": "^1.0.2",
-        "grunt-contrib-watch": "^1.1.0",
-        "grunt-responsive-images": "^1.10.1"
-    },
+    "version": "4.0.0",
+    "description": "Marcela Viola — holistic health & movement coaching",
+    "type": "module",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "check": "astro check",
+        "lint": "eslint . && stylelint \"src/styles/**/*.css\" --allow-empty-input",
+        "format": "prettier --write ."
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/natos/marcelaviola.com.git"
     },
-    "author": "",
+    "author": "Natan Santolo",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/natos/marcelaviola.com/issues"
     },
-    "homepage": "https://github.com/natos/marcelaviola.com",
+    "homepage": "https://www.marcelaviola.com",
     "dependencies": {
-        "gifsicle": "^7.0.1"
+        "@astrojs/sitemap": "^3.7.3",
+        "@fontsource-variable/work-sans": "^5.3.0",
+        "@fontsource/bebas-neue": "^5.3.0",
+        "@iconify-json/fa6-brands": "^1.2.6",
+        "astro": "^7.1.6",
+        "astro-icon": "^1.1.5"
+    },
+    "devDependencies": {
+        "@astrojs/check": "^0.9.10",
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.8.0",
+        "eslint-plugin-astro": "^1.7.0",
+        "prettier": "^3.9.6",
+        "prettier-plugin-astro": "^0.14.1",
+        "stylelint": "^17.14.1",
+        "stylelint-config-standard": "^40.0.0",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.65.0"
     }
 }

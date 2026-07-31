@@ -1,0 +1,85 @@
+---
+/**
+ * Site footer — a branded, three-column closing block.
+ * Brand + tagline + social, primary navigation, and contact channels, with a
+ * hairline-separated bottom bar carrying copyright, credits and back-to-top.
+ */
+import { Icon } from "astro-icon/components";
+import { credits, nav, person, contact } from "../data/site";
+import { social } from "../data/social";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">
+      <a class="footer-wordmark" href="#top">Marcela</a>
+      <p class="footer-tagline">Strength, mobility &amp; nutrition coaching.</p>
+      <p class="footer-location">
+        Based in {contact.areaServed} · In person &amp; online
+      </p>
+      <nav class="footer-social" aria-label="Social media">
+        {
+          social.map((link) => (
+            <a
+              href={link.url}
+              title={link.name}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name={link.icon} title={link.name} />
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <h2 class="footer-heading">Explore</h2>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.url}>{item.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="footer-contact">
+      <h2 class="footer-heading">Get in touch</h2>
+      <ul>
+        <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        <li>
+          <a
+            href={contact.onboardingForm}
+            target="_blank"
+            rel="noopener noreferrer">Start the onboarding form</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer-bottom">
+    <p class="footer-copy">&copy; {year} {person.name}. All rights reserved.</p>
+    <p class="footer-credits">
+      Photography by {
+        credits.photographers.map((p, i) => (
+          <>
+            <a href={p.url} target="_blank" rel="noopener noreferrer">
+              {p.handle}
+            </a>
+            {i < credits.photographers.length - 1 ? " & " : ""}
+          </>
+        ))
+      } · Crafted with <span class="footer-heart">❤</span> by <a
+        href={credits.author.url}
+        target="_blank"
+        rel="noopener noreferrer">{credits.author.name}</a
+      >
+    </p>
+    <a class="footer-top" href="#top">Back to top ↑</a>
+  </div>
+</footer>

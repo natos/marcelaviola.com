@@ -1,0 +1,47 @@
+---
+/**
+ * Mobile menu toggle. Replaces the Hugo toggler.html partial + menu.js.
+ * Accessible <button> with aria-expanded/aria-controls; closes on link click
+ * and Escape. Toggles the `.open` class on the header (parity with old CSS).
+ */
+---
+
+<button
+  class="toggler"
+  type="button"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+  aria-controls="primary-nav"
+>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<script>
+  const header = document.getElementById("top");
+  const toggler = document.querySelector<HTMLButtonElement>(".toggler");
+  const nav = document.getElementById("primary-nav");
+
+  function setOpen(open: boolean) {
+    if (!header || !toggler) return;
+    header.classList.toggle("open", open);
+    toggler.classList.toggle("open", open);
+    toggler.setAttribute("aria-expanded", String(open));
+  }
+
+  toggler?.addEventListener("click", () => {
+    setOpen(!header?.classList.contains("open"));
+  });
+
+  // Close the menu when a navigation link is chosen.
+  nav?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) setOpen(false);
+  });
+
+  // Close on Escape for keyboard users.
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+</script>

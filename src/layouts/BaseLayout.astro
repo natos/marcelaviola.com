@@ -1,0 +1,183 @@
+---
+/**
+ * Base document layout. Replaces the Hugo index.html shell + head/meta partials.
+ * Provides <html>/<head>/<body>, global styles, self-hosted fonts, the fixed
+ * header (name, menu, toggler, social), a slot for page content, and the footer.
+ */
+import "@fontsource/bebas-neue";
+import "@fontsource-variable/work-sans";
+import "../styles/tokens.css";
+import "../styles/global.css";
+
+import { site } from "../data/site";
+import SEO from "../components/SEO.astro";
+import Menu from "../components/Menu.astro";
+import Social from "../components/Social.astro";
+import Toggler from "../components/Toggler.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.languageCode} class="happy">
+  <head>
+    <script is:inline>
+      // Mark that JS is available so scroll-reveal styles only hide content
+      // when we can actually reveal it (no-JS users see everything).
+      document.documentElement.classList.add("js");
+    </script>
+    <SEO title={title} description={description} image={image} />
+  </head>
+  <body>
+    <a class="skip-link" href="#about">Skip to content</a>
+    <header id="top" class="global">
+      <div class="name">
+        <a class="brand" href="#top" title={site.description}>{site.title}</a>
+      </div>
+      <Menu />
+      <Toggler />
+      <Social />
+    </header>
+    <main class="page layout">
+      <slot />
+      <Footer />
+    </main>
+    <a class="sticky-cta" href="#contact">Start your journey</a>
+    <script is:inline>
+      // Register the service worker for offline support / PWA install.
+      // Skip localhost so a stale dev cache never masks fresh builds; on
+      // localhost, proactively unregister any worker left over from testing.
+      if ("serviceWorker" in navigator) {
+        const isLocalhost = ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
+        if (isLocalhost) {
+          navigator.serviceWorker
+            .getRegistrations()
+            .then((regs) => regs.forEach((r) => r.unregister()));
+        } else {
+          window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/service-worker.js", { scope: "/" });
+          });
+        }
+      }
+
+      // The site name links to "#top" (the fixed header), which browsers can't
+      // scroll to. Intercept it and scroll the document to the top instead.
+      // Leaving `behavior` unset honours the CSS scroll-behavior (and its
+      // prefers-reduced-motion override).
+      document.querySelector('.name a[href="#top"]')?.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0 });
+        history.replaceState(null, "", location.pathname);
+      });
+    </script>
+    <script>
+      // Progressive motion enhancements — all gated behind reduced-motion.
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // 1. Scroll-reveal: fade content in as it enters the viewport.
+      const revealEls = document.querySelectorAll(
+        ".section-head, .page section .content, .testimonial-card",
+      );
+      if (reduce || !("IntersectionObserver" in window)) {
+        revealEls.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        const revealObserver = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+        );
+        revealEls.forEach((el) => revealObserver.observe(el));
+      }
+
+      // 2. Reveal the header once the user starts scrolling; condense chrome.
+      const header = document.querySelector("header.global");
+      const stickyCta = document.querySelector(".sticky-cta");
+      const heroOverlay = document.querySelector(".hero .hero-overlay");
+      let pastHero = false;
+      let contactInView = false;
+      let heroHeight = window.innerHeight;
+      const measureHero = () => {
+        const hero = document.querySelector(".hero");
+        heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+      };
+      measureHero();
+      window.addEventListener("resize", measureHero, { passive: true });
+      const syncChrome = () => {
+        stickyCta?.classList.toggle("is-visible", pastHero && !contactInView);
+      };
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const y = window.scrollY;
+        pastHero = y > window.innerHeight * 0.6;
+        header?.classList.toggle("is-revealed", y > 64);
+        syncChrome();
+        // Subtle cinematic exit: fade + drift the hero content as it leaves.
+        // translate3d keeps the overlay on its own compositor layer so the
+        // text doesn't repaint against every video frame.
+        if (heroOverlay && !reduce) {
+          const progress = Math.min(Math.max(y / heroHeight, 0), 1);
+          heroOverlay.style.opacity = String(1 - progress);
+          heroOverlay.style.transform = `translate3d(0, ${progress * -4}vh, 0)`;
+        }
+      };
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      };
+      update();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Hide the sticky CTA once the contact section is on screen.
+      const contactSection = document.getElementById("contact");
+      if (contactSection && "IntersectionObserver" in window) {
+        new IntersectionObserver(
+          (entries) => {
+            contactInView = entries[0].isIntersecting;
+            syncChrome();
+          },
+          { rootMargin: "0px 0px -35% 0px", threshold: 0 },
+        ).observe(contactSection);
+      }
+
+      // 3. Highlight the nav item for the section currently in view.
+      const navLinks = new Map();
+      document.querySelectorAll('nav.global a[href^="#"]').forEach((link) => {
+        const id = link.getAttribute("href")?.slice(1);
+        if (id) navLinks.set(id, link);
+      });
+      if (navLinks.size && "IntersectionObserver" in window) {
+        const spy = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const active = navLinks.get(entry.target.id);
+              if (!active) return;
+              navLinks.forEach((link) => link.classList.remove("is-active"));
+              active.classList.add("is-active");
+            });
+          },
+          { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+        );
+        navLinks.forEach((_, id) => {
+          const section = document.getElementById(id);
+          if (section) spy.observe(section);
+        });
+      }
+    </script>
+  </body>
+</html>
