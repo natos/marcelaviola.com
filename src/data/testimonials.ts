@@ -9,6 +9,22 @@ export interface Testimonial {
   quote: string;
 }
 
+/**
+ * Short, punchy pull-quotes surfaced as an editorial lead-in above the full
+ * verbatim testimonials. Each is a (near-)verbatim fragment from a review.
+ */
+export interface Highlight {
+  phrase: string;
+  name: string;
+}
+
+export const highlights: Highlight[] = [
+  { phrase: "A force of nature", name: "Pin" },
+  { phrase: "One of the strongest people I know", name: "Burke" },
+  { phrase: "She pushes me, too", name: "Heather" },
+  { phrase: "Progress without injuries", name: "Asa" },
+];
+
 export const testimonials: Testimonial[] = [
   {
     name: "Burke",

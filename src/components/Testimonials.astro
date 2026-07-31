@@ -4,11 +4,21 @@
  * Content is driven by src/data/testimonials.ts.
  */
 import SectionHeading from "./SectionHeading.astro";
-import { testimonials } from "../data/testimonials";
+import { testimonials, highlights } from "../data/testimonials";
 ---
 
 <section id="testimonials" class="testimonials-section">
   <SectionHeading index={4} eyebrow="Testimonials" title="What clients say" />
+  <ul class="testimonial-highlights" aria-label="Highlights from client reviews">
+    {
+      highlights.map((highlight) => (
+        <li class="highlight">
+          <p class="highlight-phrase">{highlight.phrase}</p>
+          <p class="highlight-name">{highlight.name}</p>
+        </li>
+      ))
+    }
+  </ul>
   <ul class="testimonial-grid">
     {
       testimonials.map((testimonial) => (
