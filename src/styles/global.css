@@ -153,9 +153,9 @@ p:last-of-type {
   margin: 0 auto;
 }
 
-.page section {
+.page section:not(.hero) {
   position: relative;
-  margin: 100vh 0 0;
+  margin: 0;
   background-color: var(--color-bg);
   padding: calc(var(--header-h) + var(--space-xl)) var(--space-lg) var(--space-section);
   scroll-behavior: smooth;
@@ -282,7 +282,7 @@ section.services {
 }
 
 @media screen and (width >= 1024px) {
-  .page section {
+  .page section:not(.hero) {
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
@@ -755,16 +755,22 @@ nav.social {
   Hero Video
 */
 
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
 .hero-video {
   display: none;
-  position: fixed;
-  margin-top: 0;
+  position: absolute;
+  inset: 0;
   object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
 }
 
 /* JS-free device selection: portrait video on small screens, landscape on wide */
@@ -782,11 +788,12 @@ nav.social {
 
 /*
  * Hero overlay — headline, value proposition, CTAs and a scroll cue layered
- * over the fixed video. No z-index so incoming sections (later in the DOM)
- * paint over it as the page scrolls, preserving the fixed-video parallax.
+ * over the video. It scrolls away with the hero section (no fixed
+ * positioning) and fades out slightly as the page scrolls, via a
+ * scroll-linked opacity/transform set in the layout's motion script.
  */
 .hero-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;

@@ -105,8 +105,16 @@ const { title, description, image } = Astro.props;
       // 2. Condense the header once the hero is scrolled past.
       const header = document.querySelector("header.global");
       const stickyCta = document.querySelector(".sticky-cta");
+      const heroOverlay = document.querySelector(".hero .hero-overlay");
       let pastHero = false;
       let contactInView = false;
+      let heroHeight = window.innerHeight;
+      const measureHero = () => {
+        const hero = document.querySelector(".hero");
+        heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+      };
+      measureHero();
+      window.addEventListener("resize", measureHero, { passive: true });
       const syncChrome = () => {
         header?.classList.toggle("is-scrolled", pastHero);
         stickyCta?.classList.toggle("is-visible", pastHero && !contactInView);
@@ -114,6 +122,12 @@ const { title, description, image } = Astro.props;
       const onScroll = () => {
         pastHero = window.scrollY > window.innerHeight * 0.6;
         syncChrome();
+        // Subtle cinematic exit: fade + drift the hero content as it leaves.
+        if (heroOverlay && !reduce) {
+          const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+          heroOverlay.style.opacity = String(1 - progress);
+          heroOverlay.style.transform = `translateY(${progress * -4}vh)`;
+        }
       };
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
