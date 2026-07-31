@@ -209,6 +209,35 @@ section header,
   font-size: var(--text-xl);
 }
 
+/* Scroll-reveal — only active when JS is present; no-JS users see everything.
+   Reduced-motion users get the content with no transform/transition. */
+.js .section-head,
+.js .page section .content,
+.js .testimonial-card {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+
+.js .section-head.is-visible,
+.js .page section .content.is-visible,
+.js .testimonial-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .js .section-head,
+  .js .page section .content,
+  .js .testimonial-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 section .content {
   position: relative;
   max-width: var(--measure);
@@ -355,7 +384,18 @@ header.global {
   left: 0;
   right: 0;
   padding-top: 1rem;
-  background-color: rgb(0 0 0 / 75%);
+  background-color: var(--color-header-bg);
+  transition:
+    padding var(--transition),
+    background-color var(--transition),
+    box-shadow var(--transition);
+}
+
+header.global.is-scrolled {
+  padding-top: 0.25rem;
+  background-color: rgb(0 0 0 / 88%);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
 header.global .name .brand {
@@ -367,6 +407,11 @@ header.global .name .brand {
   font-size: 3.8em;
   color: var(--color-heading);
   text-decoration: none;
+  transition: font-size var(--transition);
+}
+
+header.global.is-scrolled .name .brand {
+  font-size: 2.8em;
 }
 
 .toggler {
@@ -483,6 +528,10 @@ nav.global {
 .nav-item.active,
 .nav-item:hover {
   color: #fff;
+}
+
+.nav-item.is-active {
+  color: var(--color-accent);
 }
 
 .nav-item.active {
