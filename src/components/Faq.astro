@@ -1,0 +1,29 @@
+---
+/**
+ * FAQ — native <details> disclosures (keyboard and screen-reader friendly,
+ * no JS). Content is driven by src/data/faq.ts, which also feeds the
+ * schema.org FAQPage markup in SEO.astro.
+ */
+import SectionHeading from "./SectionHeading.astro";
+import { faqs } from "../data/faq";
+
+interface Props {
+  index: number;
+}
+
+const { index } = Astro.props;
+---
+
+<section id="faq" class="faq-section">
+  <SectionHeading index={index} eyebrow="FAQ" title="Questions, answered" />
+  <div class="faq-list">
+    {
+      faqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-question">{faq.question}</summary>
+          <p class="faq-answer">{faq.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

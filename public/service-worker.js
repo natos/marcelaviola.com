@@ -7,10 +7,12 @@
  * precache a minimal app shell and use runtime caching:
  *   - navigations  -> network-first (fresh HTML, offline fallback to cached "/")
  *   - static GETs  -> stale-while-revalidate (fast, self-healing)
+ *   - video / range requests -> not handled (the browser streams them directly;
+ *     intercepting partial responses breaks playback in Safari)
  *
  * Bump CACHE_VERSION to invalidate old caches on deploy.
  */
-const CACHE_VERSION = "v3";
+const CACHE_VERSION = "v4";
 const CACHE = `mv-${CACHE_VERSION}`;
 const OFFLINE_URL = "/";
 const PRECACHE = ["/", "/manifest.webmanifest", "/icon-192.png"];
@@ -40,6 +42,11 @@ self.addEventListener("fetch", (event) => {
 
   // Only handle same-origin GET requests.
   if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) {
+    return;
+  }
+
+  // Leave video and other partial-content requests to the network.
+  if (request.destination === "video" || request.headers.has("range")) {
     return;
   }
 

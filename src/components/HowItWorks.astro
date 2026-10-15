@@ -1,0 +1,35 @@
+---
+/**
+ * "How it works" — the four-step coaching process as a numbered row.
+ * Content is driven by src/data/process.ts.
+ */
+import SectionHeading from "./SectionHeading.astro";
+import { process } from "../data/process";
+
+interface Props {
+  index: number;
+}
+
+const { index } = Astro.props;
+---
+
+<section id="how-it-works" class="process-section">
+  <SectionHeading
+    index={index}
+    eyebrow="How it works"
+    title="From first message to real progress"
+  />
+  <ol class="process-steps">
+    {
+      process.map((step, i) => (
+        <li class="process-step">
+          <span class="process-step-number" aria-hidden="true">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <h3 class="process-step-title">{step.title}</h3>
+          <p class="process-step-text">{step.description}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
