@@ -16,14 +16,14 @@ interface Props {
 }
 
 const {
-  title = site.title,
+  title,
   description = site.description,
   image = site.ogImage,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const absoluteImage = new URL(image, site.url).href;
-const pageTitle = title === site.title ? site.title : `${title} — ${site.title}`;
+const pageTitle = title ? `${title} — ${site.name}` : site.homeTitle;
 
 // Structured data: the site (WebSite) and its subject (Person). No numeric
 // ratings are asserted — the testimonials carry no scores, so we avoid
@@ -35,7 +35,7 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${site.url}/#website`,
       url: `${site.url}/`,
-      name: site.title,
+      name: site.name,
       description: site.description,
       inLanguage: site.languageCode,
     },
@@ -46,7 +46,7 @@ const structuredData = {
       jobTitle: person.jobTitle,
       url: `${site.url}/`,
       image: new URL(person.image, site.url).href,
-      description: site.description,
+      description: person.description,
       sameAs: social.map((s) => s.url),
     },
     ...offerings.map((offering, index) => ({
@@ -92,7 +92,7 @@ const structuredData = {
 <meta property="og:image" content={absoluteImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:site_name" content={site.title} />
+<meta property="og:site_name" content={site.name} />
 <meta property="og:description" content={description} />
 <meta property="og:locale" content="en_US" />
 

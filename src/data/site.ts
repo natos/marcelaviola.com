@@ -5,9 +5,15 @@
  */
 
 export const site = {
+  /** Short brand name shown in the header and footer wordmark. */
   title: "Marcela",
+  /** Full name used as the site name in search results and link previews. */
+  name: "Marcela Viola",
+  /** Home page <title>; other pages render as "<page> — Marcela Viola". */
+  homeTitle: "Marcela Viola — Strength, Mobility & Nutrition Coach in Singapore",
   url: "https://www.marcelaviola.com",
-  description: "Strength training, Mobility and Nutrition coaching.",
+  description:
+    "Personal strength, mobility and nutrition coaching with Marcela Viola, a NASM-certified coach. 1-on-1 training in Singapore and online coaching worldwide.",
   keywords:
     "coach, marcela, viola, health, wellness, coaching, personal, trainer, strength, mobility, flexibility, nutrition, training, fitness",
   author: "Natan Santolo",
@@ -22,6 +28,8 @@ export const site = {
 export const person = {
   name: "Marcela Viola",
   jobTitle: "Strength, Mobility & Nutrition Coach",
+  description:
+    "Holistic strength, mobility and nutrition coach based in Singapore, with 20+ years as an aerialist, yoga teacher and strength coach.",
   image: "/og-image.jpg",
 } as const;
 

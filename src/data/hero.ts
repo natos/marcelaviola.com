@@ -11,7 +11,7 @@ export const hero = {
     portraitPoster: "/assets/videos/hero-portrait-poster.jpg",
   },
   copy: {
-    kicker: "Marcela Viola · Holistic Coach",
+    kicker: "Marcela Viola · Personal Coach in Singapore",
     title: ["Get stronger.", "Move freer.", "Feel better."],
     lede: "Personalised strength, mobility and nutrition coaching for everyday people and athletes — one-on-one in Singapore and online worldwide.",
     primaryCta: { label: "Start your journey", url: "#contact" },

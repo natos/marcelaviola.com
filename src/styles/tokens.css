@@ -18,6 +18,10 @@
   --color-accent: #ff0082;
   --color-accent-hover: #ff3d9e;
   --color-accent-contrast: #fff;
+  /* Filled buttons: a slightly deeper pink so white label text meets WCAG AA
+     (4.76:1, hover 5.7:1). The brighter accent stays for text on black. */
+  --color-accent-fill: #e00072;
+  --color-accent-fill-hover: #c80066;
   --color-link: #ff9ecb;
   --color-link-hover: #ff0082;
 

@@ -1028,13 +1028,13 @@ nav.social {
 }
 
 .btn-primary {
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-fill);
   color: var(--color-accent-contrast);
   box-shadow: var(--shadow);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent-hover);
+  background-color: var(--color-accent-fill-hover);
   color: var(--color-accent-contrast);
 }
 
@@ -1304,7 +1304,7 @@ nav.social {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-accent-contrast);
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-fill);
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-lg);
   opacity: 0;
@@ -1323,7 +1323,7 @@ nav.social {
 }
 
 .sticky-cta:hover {
-  background-color: var(--color-accent-hover);
+  background-color: var(--color-accent-fill-hover);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

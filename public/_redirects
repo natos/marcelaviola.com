@@ -1,0 +1,15 @@
+# Cloudflare Pages redirects.
+# https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# Pages from the old Hugo site, removed in the Astro migration. Permanent
+# redirects keep any inbound links and search rankings pointing somewhere useful.
+/classes/                  /#services  301
+/classes                   /#services  301
+/workshops/                /#services  301
+/workshops                 /#services  301
+/shows/                    /#about     301
+/shows                     /#about     301
+/contact/                  /#contact   301
+/contact                   /#contact   301
+/post/angular-switchery/   /           301
+/post/angular-switchery    /           301
