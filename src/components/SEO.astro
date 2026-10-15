@@ -4,60 +4,126 @@
  * Emits charset, viewport, description/keywords, Open Graph, Twitter card,
  * canonical, and favicon. Per-page title/description override the defaults.
  */
-import { site, person, offerings } from "../data/site";
+import { site, person, offerings, contact } from "../data/site";
 import { social } from "../data/social";
 import { hero } from "../data/hero";
+import { credentials } from "../data/credentials";
+import type { Faq } from "../data/faq";
 
 interface Props {
   title?: string;
   description?: string;
   /** Path or absolute URL for the social share image. */
   image?: string;
+  /** Alt text for the share image; defaults to the site card's. */
+  imageAlt?: string;
+  /** Questions shown on the page, emitted as schema.org FAQPage markup. */
+  faqs?: Faq[];
 }
 
 const {
   title,
   description = site.description,
   image = site.ogImage,
+  imageAlt = site.ogImageAlt,
+  faqs = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const absoluteImage = new URL(image, site.url).href;
 const pageTitle = title ? `${title} — ${site.name}` : site.homeTitle;
 
-// Structured data: the site (WebSite) and its subject (Person). No numeric
-// ratings are asserted — the testimonials carry no scores, so we avoid
-// fabricating a schema.org aggregateRating.
+const id = (fragment: string) => `${site.url}/#${fragment}`;
+
+// Where coaching is offered: in person in Singapore, online anywhere.
+const areaServed = [
+  { "@type": "Country", name: contact.areaServed },
+  { "@type": "Place", name: "Worldwide (online coaching)" },
+];
+
+// Structured data for search engines and AI assistants. No numeric ratings
+// are asserted: the testimonials carry no scores, and Google ignores (and
+// may penalise) review markup a business publishes about itself.
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": `${site.url}/#website`,
+      "@id": id("website"),
       url: `${site.url}/`,
       name: site.name,
       description: site.description,
       inLanguage: site.languageCode,
+      publisher: { "@id": id("business") },
     },
     {
       "@type": "Person",
-      "@id": `${site.url}/#person`,
+      "@id": id("person"),
       name: person.name,
       jobTitle: person.jobTitle,
+      description: person.description,
       url: `${site.url}/`,
       image: new URL(person.image, site.url).href,
-      description: person.description,
+      email: `mailto:${contact.email}`,
+      knowsAbout: person.knowsAbout,
+      hasCredential: credentials.map((credential) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: credential.title,
+        credentialCategory: "certification",
+        recognizedBy: { "@type": "Organization", name: credential.issuer },
+        dateCreated: String(credential.year),
+      })),
+      worksFor: { "@id": id("business") },
       sameAs: social.map((s) => s.url),
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": id("business"),
+      name: `${person.name} Coaching`,
+      description: site.description,
+      url: `${site.url}/`,
+      image: absoluteImage,
+      logo: new URL("/icon-512.png", site.url).href,
+      email: contact.email,
+      founder: { "@id": id("person") },
+      areaServed,
+      knowsAbout: person.knowsAbout,
+      sameAs: social.map((s) => s.url),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Coaching services",
+        itemListElement: offerings.map((_, index) => ({
+          "@type": "Offer",
+          itemOffered: { "@id": id(`service-${index + 1}`) },
+        })),
+      },
     },
     ...offerings.map((offering, index) => ({
       "@type": "Service",
-      "@id": `${site.url}/#service-${index + 1}`,
+      "@id": id(`service-${index + 1}`),
       name: offering.name,
       description: offering.description,
       serviceType: offering.name,
-      areaServed: "Singapore",
-      provider: { "@id": `${site.url}/#person` },
+      areaServed,
+      availableChannel: [
+        { "@type": "ServiceChannel", name: "In person (Singapore)" },
+        { "@type": "ServiceChannel", name: "Online" },
+      ],
+      provider: { "@id": id("business") },
     })),
+    ...(faqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${canonical}#faq`,
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          },
+        ]
+      : []),
   ],
 };
 ---
@@ -75,13 +141,13 @@ const structuredData = {
 <link
   rel="preload"
   as="image"
-  href={hero.video.landscapePoster}
+  href={hero.video.landscape.poster}
   media="(min-width: 760px)"
 />
 <link
   rel="preload"
   as="image"
-  href={hero.video.portraitPoster}
+  href={hero.video.portrait.poster}
   media="(max-width: 759px)"
 />
 
@@ -92,6 +158,7 @@ const structuredData = {
 <meta property="og:image" content={absoluteImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
 <meta property="og:site_name" content={site.name} />
 <meta property="og:description" content={description} />
 <meta property="og:locale" content="en_US" />
@@ -101,6 +168,7 @@ const structuredData = {
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
 
 <link rel="icon" href="/assets/images/favicon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />

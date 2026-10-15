@@ -35,14 +35,16 @@ npm run format    # prettier --write
 ## Project structure
 
 ```
-public/            Static assets copied verbatim (CNAME, robots, llms.txt,
-                   manifest, service worker, icons, videos, favicon)
+public/            Static assets copied verbatim (CNAME, robots, redirects,
+                   headers, manifest, service worker, icons, videos, share
+                   image, favicon)
 src/
   components/      Astro UI components (SEO, Menu, Social, sections, …)
-  data/            Typed site content (site, social, hero, testimonials, …)
+  data/            Typed site content (site, social, hero, testimonials, faq,
+                   process, …) — also feeds structured data and llms.txt
   images/          Source images processed by astro:assets
   layouts/         BaseLayout (document shell, header, footer)
-  pages/           Routes (index.astro, 404.astro)
+  pages/           Routes (index.astro, 404.astro, llms.txt.ts)
   styles/          global.css
 astro.config.mjs   Astro config (site URL, trailing slash, integrations)
 ```

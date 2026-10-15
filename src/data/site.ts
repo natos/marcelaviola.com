@@ -19,6 +19,8 @@ export const site = {
   author: "Natan Santolo",
   languageCode: "en-US",
   ogImage: "/og-image.jpg",
+  ogImageAlt:
+    "Marcela Viola smiling, beside the words: personal coach in Singapore and online — strength, mobility and nutrition coaching.",
 } as const;
 
 /**
@@ -30,7 +32,20 @@ export const person = {
   jobTitle: "Strength, Mobility & Nutrition Coach",
   description:
     "Holistic strength, mobility and nutrition coach based in Singapore, with 20+ years as an aerialist, yoga teacher and strength coach.",
-  image: "/og-image.jpg",
+  /** Square headshot (800×800) for knowledge panels and structured data. */
+  image: "/marcela-viola.jpg",
+  /** Areas of expertise, for schema.org `knowsAbout`. */
+  knowsAbout: [
+    "Strength training",
+    "Weightlifting",
+    "Mobility training",
+    "Flexibility training",
+    "Nutrition coaching",
+    "Pre- and postnatal fitness",
+    "Aerial arts",
+    "Handstands",
+    "Yoga",
+  ],
 } as const;
 
 export interface NavItem {
@@ -44,6 +59,7 @@ export const nav: NavItem[] = [
   { name: "Credentials", url: "#credentials" },
   { name: "Services", url: "#services" },
   { name: "Testimonials", url: "#testimonials" },
+  { name: "FAQ", url: "#faq" },
   { name: "Get in touch", url: "#contact" },
 ];
 
