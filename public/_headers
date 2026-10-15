@@ -4,13 +4,15 @@
 # Security headers for every response.
 # The *.clarity.ms / c.bing.com sources allow Microsoft Clarity analytics
 # (loaded in BaseLayout) to load its script and send session data.
+# static.cloudflareinsights.com / cloudflareinsights.com allow the Cloudflare
+# Web Analytics beacon, which Cloudflare injects into every page.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.clarity.ms https://c.bing.com; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.clarity.ms; connect-src 'self' https://*.clarity.ms https://c.bing.com; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.clarity.ms https://c.bing.com; media-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.clarity.ms https://static.cloudflareinsights.com; connect-src 'self' https://*.clarity.ms https://c.bing.com https://cloudflareinsights.com; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
 
 # Content-hashed, immutable assets — cache forever.
 /_astro/*
