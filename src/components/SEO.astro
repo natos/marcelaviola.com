@@ -4,11 +4,12 @@
  * Emits charset, viewport, description/keywords, Open Graph, Twitter card,
  * canonical, and favicon. Per-page title/description override the defaults.
  */
-import { site, person, offerings, contact } from "../data/site";
+import { site, person, contact, type Breadcrumb } from "../data/site";
 import { social } from "../data/social";
 import { hero } from "../data/hero";
 import { credentials } from "../data/credentials";
 import type { Faq } from "../data/faq";
+import { getServices, servicePath } from "../data/services";
 
 interface Props {
   title?: string;
@@ -19,6 +20,8 @@ interface Props {
   imageAlt?: string;
   /** Questions shown on the page, emitted as schema.org FAQPage markup. */
   faqs?: Faq[];
+  /** Trail from the home page, emitted as schema.org BreadcrumbList. */
+  breadcrumbs?: Breadcrumb[];
 }
 
 const {
@@ -27,7 +30,10 @@ const {
   image = site.ogImage,
   imageAlt = site.ogImageAlt,
   faqs = [],
+  breadcrumbs = [],
 } = Astro.props;
+
+const services = await getServices();
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const absoluteImage = new URL(image, site.url).href;
@@ -92,25 +98,50 @@ const structuredData = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Coaching services",
-        itemListElement: offerings.map((_, index) => ({
+        itemListElement: services.map((service) => ({
           "@type": "Offer",
-          itemOffered: { "@id": id(`service-${index + 1}`) },
+          itemOffered: { "@id": `${site.url}${servicePath(service)}#service` },
         })),
       },
     },
-    ...offerings.map((offering, index) => ({
-      "@type": "Service",
-      "@id": id(`service-${index + 1}`),
-      name: offering.name,
-      description: offering.description,
-      serviceType: offering.name,
-      areaServed,
-      availableChannel: [
-        { "@type": "ServiceChannel", name: "In person (Singapore)" },
-        { "@type": "ServiceChannel", name: "Online" },
-      ],
-      provider: { "@id": id("business") },
-    })),
+    ...services.map((service) => {
+      // Channels come from the formats listed on the service page.
+      const inPerson = service.data.formats.some((f) => f.includes(contact.areaServed));
+      const online = service.data.formats.some((f) => /online/i.test(f));
+      return {
+        "@type": "Service",
+        "@id": `${site.url}${servicePath(service)}#service`,
+        url: `${site.url}${servicePath(service)}`,
+        name: service.data.name,
+        description: service.data.summary,
+        serviceType: service.data.name,
+        areaServed: [
+          ...(inPerson ? [{ "@type": "Country", name: contact.areaServed }] : []),
+          ...(online ? [{ "@type": "Place", name: "Worldwide (online coaching)" }] : []),
+        ],
+        availableChannel: [
+          ...(inPerson ? [{ "@type": "ServiceChannel", name: `In person (${contact.areaServed})` }] : []),
+          ...(online ? [{ "@type": "ServiceChannel", name: "Online" }] : []),
+        ],
+        provider: { "@id": id("business") },
+      };
+    }),
+    ...(breadcrumbs.length
+      ? [
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${canonical}#breadcrumbs`,
+            itemListElement: [{ name: "Home", path: "/" }, ...breadcrumbs].map(
+              (crumb, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: crumb.name,
+                item: `${site.url}${crumb.path}`,
+              }),
+            ),
+          },
+        ]
+      : []),
     ...(faqs.length
       ? [
           {

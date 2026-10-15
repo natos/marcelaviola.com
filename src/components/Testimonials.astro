@@ -5,10 +5,16 @@
  */
 import SectionHeading from "./SectionHeading.astro";
 import { testimonials, highlights } from "../data/testimonials";
+
+interface Props {
+  index?: number;
+}
+
+const { index } = Astro.props;
 ---
 
 <section id="testimonials" class="testimonials-section">
-  <SectionHeading index={5} eyebrow="Testimonials" title="What clients say" />
+  <SectionHeading index={index} eyebrow="Testimonials" title="What clients say" />
   <ul class="testimonial-highlights" aria-label="Highlights from client reviews">
     {
       highlights.map((highlight) => (

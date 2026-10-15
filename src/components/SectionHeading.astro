@@ -4,19 +4,22 @@
  * Gives every section a consistent, editorial structure.
  */
 interface Props {
-  index: number;
+  /** Section number on the home page; omit on pages without numbering. */
+  index?: number;
   eyebrow: string;
   title: string;
+  /** "h1" when the section heading is the page title. */
+  level?: "h1" | "h2";
 }
 
-const { index, eyebrow, title } = Astro.props;
-const number = String(index).padStart(2, "0");
+const { index, eyebrow, title, level: Heading = "h2" } = Astro.props;
+const number = index === undefined ? undefined : String(index).padStart(2, "0");
 ---
 
 <header class="section-head">
   <p class="section-eyebrow">
-    <span class="section-number">{number}</span>
+    {number && <span class="section-number">{number}</span>}
     <span class="section-eyebrow-label">{eyebrow}</span>
   </p>
-  <h2 class="section-title">{title}</h2>
+  <Heading class="section-title">{title}</Heading>
 </header>

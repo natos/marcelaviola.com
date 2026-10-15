@@ -16,6 +16,7 @@ import Social from "../components/Social.astro";
 import Toggler from "../components/Toggler.astro";
 import Footer from "../components/Footer.astro";
 import type { Faq } from "../data/faq";
+import type { Breadcrumb } from "../data/site";
 
 interface Props {
   title?: string;
@@ -23,9 +24,11 @@ interface Props {
   image?: string;
   /** Questions shown on the page, emitted as schema.org FAQPage markup. */
   faqs?: Faq[];
+  /** Trail from the home page, emitted as schema.org BreadcrumbList. */
+  breadcrumbs?: Breadcrumb[];
 }
 
-const { title, description, image, faqs } = Astro.props;
+const { title, description, image, faqs, breadcrumbs } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,7 +39,13 @@ const { title, description, image, faqs } = Astro.props;
       // when we can actually reveal it (no-JS users see everything).
       document.documentElement.classList.add("js");
     </script>
-    <SEO title={title} description={description} image={image} faqs={faqs} />
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      faqs={faqs}
+      breadcrumbs={breadcrumbs}
+    />
     <!-- Microsoft Clarity (vendor snippet, kept verbatim). -->
     <script is:inline type="text/javascript">
       /* eslint-disable prefer-rest-params */
@@ -48,16 +57,16 @@ const { title, description, image, faqs } = Astro.props;
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#about">Skip to content</a>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header id="top" class="global">
       <div class="name">
-        <a class="brand" href="#top" title={site.name}>{site.title}</a>
+        <a class="brand" href="/" title={site.name}>{site.title}</a>
       </div>
       <Menu />
       <Toggler />
       <Social />
     </header>
-    <main class="page layout">
+    <main id="main" class="page layout">
       <slot />
       <Footer />
     </main>
@@ -79,11 +88,11 @@ const { title, description, image, faqs } = Astro.props;
         }
       }
 
-      // The site name links to "#top" (the fixed header), which browsers can't
-      // scroll to. Intercept it and scroll the document to the top instead.
-      // Leaving `behavior` unset honours the CSS scroll-behavior (and its
-      // prefers-reduced-motion override).
-      document.querySelector('.name a[href="#top"]')?.addEventListener("click", (event) => {
+      // On the home page the site name (a link to "/") scrolls back to the top
+      // instead of reloading. Leaving `behavior` unset honours the CSS
+      // scroll-behavior (and its prefers-reduced-motion override).
+      document.querySelector('.name a[href="/"]')?.addEventListener("click", (event) => {
+        if (location.pathname !== "/") return;
         event.preventDefault();
         window.scrollTo({ top: 0 });
         history.replaceState(null, "", location.pathname);
@@ -168,9 +177,12 @@ const { title, description, image, faqs } = Astro.props;
 
       // 3. Highlight the nav item for the section currently in view.
       const navLinks = new Map();
-      document.querySelectorAll('nav.global a[href^="#"]').forEach((link) => {
-        const id = link.getAttribute("href")?.slice(1);
-        if (id) navLinks.set(id, link);
+      // Links are "#id" (this page) or "/#id" (the home page); track only
+      // those pointing at a section of the current page.
+      document.querySelectorAll('nav.global a[href*="#"]').forEach((link) => {
+        const [path, id] = (link.getAttribute("href") ?? "").split("#");
+        if (path && path !== location.pathname) return;
+        if (id && document.getElementById(id)) navLinks.set(id, link);
       });
       if (navLinks.size && "IntersectionObserver" in window) {
         const spy = new IntersectionObserver(

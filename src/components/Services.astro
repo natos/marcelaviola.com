@@ -1,110 +1,37 @@
 ---
 /**
- * Services section. Replaces the Hugo services.html partial.
+ * Services section on the home page: a short introduction and a card per
+ * service page. The detailed copy for each service lives on its own page
+ * (src/content/services/*.md).
  */
-import SectionImage from "./SectionImage.astro";
-import servicesImg from "../images/services/services.jpg";
-import nutritionImg from "../images/nutrition/nutrition.jpg";
-import strengthImg from "../images/strength/strenght.jpg";
-import mobilityImg from "../images/mobility/mobility.jpg";
 import SectionHeading from "./SectionHeading.astro";
+import ServiceCards from "./ServiceCards.astro";
+import { getServices } from "../data/services";
+
+interface Props {
+  index?: number;
+}
+
+const { index } = Astro.props;
+const services = await getServices();
 ---
 
-<section id="services">
-  <SectionHeading index={3} eyebrow="Services" title="Ways we can work together" />
-  <SectionImage src={servicesImg} alt="Marcela Viola demonstrating an exercise" />
-  <article class="content">
+<section id="services" class="services-section">
+  <SectionHeading
+    index={index}
+    eyebrow="Services"
+    title="Ways we can work together"
+  />
+  <div class="services-intro">
     <p>
-      Do you want to make better food choices and all the internet information is
-      overwhelming?
+      Whether you want to make better food choices, finally feel confident in
+      the gym, or move without that everlasting back or neck pain — whatever the
+      starting point is, you can feel and perform better.
     </p>
     <p>
-      Do you want to start working out but you don't know where to start at the
-      gym and you don't know what to do with all the equipment?
+      Every program starts with understanding you: what is important to you and
+      what your goals are.
     </p>
-    <p>
-      Do you want to move better, relieve back or neck everlasting pain, and feel
-      free to move any way you want?
-    </p>
-    <p>You came to the right place!</p>
-    <p>
-      I want to understand YOU, I want to know what is important to you and what
-      your goals are.
-    </p>
-    <p>
-      I want to show you that whatever the starting point is, you can feel and
-      perform better.
-    </p>
-  </article>
-</section>
-
-<section class="services reverse">
-  <SectionImage src={nutritionImg} alt="Wholesome food for nutrition coaching" />
-  <article class="content">
-    <h3>Nutrition Coaching</h3>
-    <p>Build better habits around food.</p>
-    <p>
-      Learn what you need to eat to fuel properly for your activity level and life
-      demands.
-    </p>
-    <p>
-      I help everyday clients improve their relationship with food, and understand
-      the basics of wholesome nutrition to feel better from the inside out.
-    </p>
-    <p>
-      I coach athletes and individuals with specific goals for lifestyle and
-      performance:
-    </p>
-    <ul>
-      <li>Calorie targets</li>
-      <li>Body recomposition</li>
-      <li>Macro planning</li>
-      <li>Meal prepping</li>
-      <li>Eating out and staying on track</li>
-      <li>Grocery list</li>
-    </ul>
-  </article>
-</section>
-
-<section class="services">
-  <SectionImage src={strengthImg} alt="Marcela Viola strength training with weights" />
-  <article class="content">
-    <h3>Strength Training</h3>
-    <p>
-      Either you are new to training or you've been around for a bit but you do
-      not see the results you want and you are ready to get serious, I have a
-      solution for you ;)
-    </p>
-    <p>I want to understand you to help you get where you want to be:</p>
-    <ul>
-      <li>Do you want to get stronger?</li>
-      <li>Gain muscle?</li>
-      <li>Lose body fat and get leaner?</li>
-      <li>Test how heavy you can lift?</li>
-      <li>Get a simple routine to do every day and feel replenished.</li>
-    </ul>
-    <p>No goal is too big or small and you can do anything you commit to do!</p>
-  </article>
-</section>
-
-<section class="services reverse">
-  <SectionImage src={mobilityImg} alt="Marcela Viola demonstrating a mobility exercise" />
-  <article class="content">
-    <h3>Mobility Coaching</h3>
-    <p>
-      If you are tired of that nagging lower back pain or you keep getting injured
-      in the same spot over and over or you want to take your athletic performance
-      to the next level, you need to start working on your mobility.
-    </p>
-    <p>
-      Mobility training combines different methods to improve your full ROM (range
-      of motion) and your capacity to move through your full ROM with control and
-      awareness.
-    </p>
-    <p>
-      Having proper mobility requires so much more than stretching, you will be
-      training your flexibility together with the needed strength to support your
-      muscles and joints.
-    </p>
-  </article>
+  </div>
+  <ServiceCards services={services} />
 </section>

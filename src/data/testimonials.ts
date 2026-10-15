@@ -52,3 +52,7 @@ export const testimonials: Testimonial[] = [
       "I've been training with Marcela for five months, both in person and online, and I’m really happy with the experience. The exercise programs she created were not only targeted and effective, but also balanced to be challenging yet achievable so that I can progress without feeling overwhelmed. Beyond physical goals, she has also helped me increase my body awareness and understand more about how my muscles work. This has been incredibly useful in enabling me to train independently outside our sessions.",
   },
 ];
+
+/** Testimonials by client name, in the order given (unknown names skipped). */
+export const testimonialsByName = (names: string[]): Testimonial[] =>
+  names.flatMap((name) => testimonials.filter((t) => t.name === name));

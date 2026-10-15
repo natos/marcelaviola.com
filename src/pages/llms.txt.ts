@@ -4,13 +4,15 @@
  * it can't drift from what the site says.
  */
 import type { APIRoute } from "astro";
-import { site, person, offerings, contact } from "../data/site";
+import { site, person, contact } from "../data/site";
+import { getServices, servicePath } from "../data/services";
 import { social } from "../data/social";
 import { credentials } from "../data/credentials";
 import { faqs } from "../data/faq";
 import { process } from "../data/process";
 
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
+  const services = await getServices();
   const lines = [
     `# ${person.name}`,
     "",
@@ -18,11 +20,14 @@ export const GET: APIRoute = () => {
     "",
     "Marcela has 20+ years of experience as an aerialist, yoga teacher, handstand practitioner and strength coach, and has been an entrepreneur for over 10 years. She founded her own company in Amsterdam, leading group classes for kids and adults, workshops, and consulting for circus companies around Europe, the USA and Norway. She recently co-founded a coaching app in Singapore, where she runs her personal-training practice, and coaches aerial, mobility and conditioning classes at Milan Pole Dance Studio.",
     "",
-    "This is a single-page site. The primary calls to action are the training onboarding form and email.",
+    "The primary calls to action are the training onboarding form and email.",
     "",
     "## Services",
     "",
-    ...offerings.map((o) => `- ${o.name}: ${o.description}`),
+    ...services.map(
+      (s) =>
+        `- [${s.data.name}](${site.url}${servicePath(s)}): ${s.data.summary}`,
+    ),
     "",
     "## Ways to work together",
     "",
@@ -45,6 +50,11 @@ export const GET: APIRoute = () => {
     "## Pages",
     "",
     `- [Home](${site.url}/): About, credentials, services, how it works, testimonials, FAQ and contact.`,
+    `- [About Marcela](${site.url}/about/): Her background, approach and credentials.`,
+    ...services.map(
+      (s) =>
+        `- [${s.data.name}](${site.url}${servicePath(s)}): ${s.data.description}`,
+    ),
     "",
     "## Contact",
     "",

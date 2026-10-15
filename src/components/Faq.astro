@@ -5,13 +5,14 @@
  * schema.org FAQPage markup in SEO.astro.
  */
 import SectionHeading from "./SectionHeading.astro";
-import { faqs } from "../data/faq";
+import { faqs as homeFaqs, type Faq } from "../data/faq";
 
 interface Props {
-  index: number;
+  index?: number;
+  faqs?: Faq[];
 }
 
-const { index } = Astro.props;
+const { index, faqs = homeFaqs } = Astro.props;
 ---
 
 <section id="faq" class="faq-section">

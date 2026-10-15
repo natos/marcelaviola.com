@@ -1,0 +1,19 @@
+---
+// About page — Marcela's full story and credentials.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../components/About.astro";
+import Credentials from "../components/Credentials.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<BaseLayout
+  title="About Marcela Viola"
+  description="Marcela Viola is a Singapore-based strength, mobility and nutrition coach with 20 years as an aerialist, yoga teacher and coach. Her story and credentials."
+  breadcrumbs={[{ name: "About", path: "/about/" }]}
+>
+  <About full />
+  <Credentials />
+  <Testimonials />
+  <Contact />
+</BaseLayout>

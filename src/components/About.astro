@@ -1,15 +1,34 @@
 ---
 /**
  * About section. Replaces the Hugo about.html partial.
+ * The home page shows a short introduction that links to /about/, which
+ * renders the full story (`full`).
  */
 import SectionImage from "./SectionImage.astro";
 import SectionHeading from "./SectionHeading.astro";
 import aboutImg from "../images/about/about.jpg";
+
+interface Props {
+  index?: number;
+  /** Render the full story (the /about/ page) instead of the home summary. */
+  full?: boolean;
+}
+
+const { index, full = false } = Astro.props;
 ---
 
 <section id="about">
-  <SectionHeading index={1} eyebrow="About" title="Coaching rooted in real experience" />
-  <SectionImage src={aboutImg} alt="Marcela Viola training in the gym" />
+  <SectionHeading
+    index={index}
+    eyebrow={full ? "About Marcela Viola" : "About"}
+    title="Coaching rooted in real experience"
+    level={full ? "h1" : "h2"}
+  />
+  <SectionImage
+    src={aboutImg}
+    alt="Marcela Viola training in the gym"
+    eager={full}
+  />
   <article class="content">
     <p>
       I'm a holistic coach experienced in developing tailored training and
@@ -17,29 +36,36 @@ import aboutImg from "../images/about/about.jpg";
     </p>
 
     <p>
-      For the past 20 years, I've been an aerialist, a yoga teacher, a handstands
-      practitioner, a gym rat, a vegetarian, a vegan (very very briefly), and a
-      protein junkie.
+      For the past 20 years, I've been an aerialist, a yoga teacher, a
+      handstands practitioner, a gym rat, a vegetarian, a vegan (very very
+      briefly), and a protein junkie.
     </p>
 
-    <p>
-      I have been an entrepreneur for over 10 years. I founded my own company in
-      Amsterdam leading group classes for kids and adults, workshops, and
-      consulting for circus companies around Europe, USA, and Norway.
-    </p>
+    {
+      full && (
+        <>
+          <p>
+            I have been an entrepreneur for over 10 years. I founded my own
+            company in Amsterdam leading group classes for kids and adults,
+            workshops, and consulting for circus companies around Europe, USA,
+            and Norway.
+          </p>
 
-    <p>
-      I recently co-founded my coaching app in Singapore where I run my personal
-      trainer practice. I'm also a Milan Pole Dance Studio coach for group and
-      private aerial, mobility, and conditioning classes.
-    </p>
+          <p>
+            I recently co-founded my coaching app in Singapore where I run my
+            personal trainer practice. I'm also a Milan Pole Dance Studio coach
+            for group and private aerial, mobility, and conditioning classes.
+          </p>
 
-    <p>
-      Through my own trial and error and the experiences I collected from my
-      students and clients, I learned to combine the best of the many
-      disciplines, training methods, diets, and habits to optimize a healthy
-      lifestyle that fits you and your unique routine.
-    </p>
+          <p>
+            Through my own trial and error and the experiences I collected from
+            my students and clients, I learned to combine the best of the many
+            disciplines, training methods, diets, and habits to optimize a
+            healthy lifestyle that fits you and your unique routine.
+          </p>
+        </>
+      )
+    }
 
     <p>I specialize in:</p>
     <ul>
@@ -53,5 +79,15 @@ import aboutImg from "../images/about/about.jpg";
       I work side by side with my clients making every decision together and
       learning to pivot and adapt as we progress towards our goals.
     </p>
+
+    {
+      !full && (
+        <p>
+          <a class="text-link" href="/about/">
+            Read Marcela's story &rarr;
+          </a>
+        </p>
+      )
+    }
   </article>
 </section>

@@ -1,6 +1,6 @@
 ---
-// Home page — the single-page site. Replaces the Hugo index.html layout.
-// Composes the section components in reading order.
+// Home page — the story-led overview. Each service has its own page
+// (src/pages/[service].astro); the Services section links to them.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroVideo from "../components/HeroVideo.astro";
 import About from "../components/About.astro";
@@ -15,11 +15,11 @@ import { faqs } from "../data/faq";
 
 <BaseLayout faqs={faqs}>
   <HeroVideo />
-  <About />
-  <Credentials />
-  <Services />
+  <About index={1} />
+  <Credentials index={2} />
+  <Services index={3} />
   <HowItWorks index={4} />
-  <Testimonials />
+  <Testimonials index={5} />
   <Faq index={6} />
-  <Contact />
+  <Contact index={7} />
 </BaseLayout>

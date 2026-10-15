@@ -1,0 +1,134 @@
+---
+/**
+ * Service page template — one page per file in src/content/services/.
+ * Sections: intro, who it's for, approach (the Markdown body), formats,
+ * how it works, testimonials, FAQ, related services and contact.
+ */
+import { render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SectionImage from "../components/SectionImage.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Faq from "../components/Faq.astro";
+import ServiceCards from "../components/ServiceCards.astro";
+import Contact from "../components/Contact.astro";
+import { getServices, servicePath, type Service } from "../data/services";
+import { testimonialsByName } from "../data/testimonials";
+
+export async function getStaticPaths() {
+  const services = await getServices();
+  return services.map((service) => ({
+    params: { service: service.id },
+    props: { service, all: services },
+  }));
+}
+
+interface Props {
+  service: Service;
+  all: Service[];
+}
+
+const { service, all } = Astro.props;
+const { data } = service;
+const { Content } = await render(service);
+const testimonials = testimonialsByName(data.testimonials);
+const related = data.related
+  .map((id) => all.find((s) => s.id === id))
+  .filter((s): s is Service => Boolean(s));
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  faqs={data.faqs}
+  breadcrumbs={[{ name: data.name, path: servicePath(service) }]}
+>
+  <section class="service-hero">
+    <div class="content service-hero-text">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><span aria-current="page">{data.name}</span></li>
+        </ol>
+      </nav>
+      <h1 class="service-title">{data.headline}</h1>
+      <p class="service-promise">{data.promise}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start your journey</a>
+        <a class="btn btn-ghost" href="#how-it-works">How it works</a>
+      </div>
+    </div>
+    <SectionImage src={data.image} alt={data.imageAlt} eager />
+  </section>
+
+  {
+    data.reviewNotes.length > 0 && (
+      <aside class="review-notes" aria-label="Draft review notes">
+        <p class="review-notes-title">
+          Draft for review — open questions for Marcela
+        </p>
+        <ul>
+          {data.reviewNotes.map((note) => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      </aside>
+    )
+  }
+
+  <section id="who-its-for">
+    <SectionHeading eyebrow="Who it's for" title="Is this for you?" />
+    <ul class="audience-list">
+      {data.audience.map((item) => <li class="audience-item">{item}</li>)}
+    </ul>
+  </section>
+
+  <section id="approach">
+    <SectionHeading
+      eyebrow="The approach"
+      title={`How ${data.name.toLowerCase()} works with Marcela`}
+    />
+    <div class="content content-wide">
+      <Content />
+    </div>
+  </section>
+
+  <section id="formats">
+    <SectionHeading eyebrow="Formats" title="Ways to train" />
+    <ul class="format-list">
+      {data.formats.map((format) => <li class="format-item">{format}</li>)}
+    </ul>
+  </section>
+
+  <HowItWorks />
+
+  {
+    testimonials.length > 0 && (
+      <section id="testimonials">
+        <SectionHeading eyebrow="Testimonials" title="What clients say" />
+        <ul class="service-testimonials">
+          {testimonials.map((testimonial) => (
+            <li class="testimonial-card">
+              <blockquote>{testimonial.quote}</blockquote>
+              <p class="testimonial-author">{testimonial.name}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {data.faqs.length > 0 && <Faq faqs={data.faqs} />}
+
+  {
+    related.length > 0 && (
+      <section id="related">
+        <SectionHeading eyebrow="Related coaching" title="Pair it with" />
+        <ServiceCards services={related} />
+      </section>
+    )
+  }
+
+  <Contact />
+</BaseLayout>

@@ -1,19 +1,22 @@
 ---
 /**
- * Site footer — a branded, three-column closing block.
- * Brand + tagline + social, primary navigation, and contact channels, with a
+ * Site footer — a branded, four-column closing block.
+ * Brand + tagline + social, service pages, primary navigation, and contact
+ * channels, with a
  * hairline-separated bottom bar carrying copyright, credits and back-to-top.
  */
 import { Icon } from "astro-icon/components";
 import { credits, nav, person, contact } from "../data/site";
 import { social } from "../data/social";
+import { getServices, servicePath } from "../data/services";
 const year = new Date().getFullYear();
+const services = await getServices();
 ---
 
 <footer class="site-footer">
   <div class="site-footer-inner">
     <div class="footer-brand">
-      <a class="footer-wordmark" href="#top">Marcela</a>
+      <a class="footer-wordmark" href="/">Marcela</a>
       <p class="footer-tagline">Strength, mobility &amp; nutrition coaching.</p>
       <p class="footer-location">
         Based in {contact.areaServed} · In person &amp; online
@@ -33,6 +36,19 @@ const year = new Date().getFullYear();
         }
       </nav>
     </div>
+
+    <nav class="footer-nav" aria-label="Coaching services">
+      <h2 class="footer-heading">Coaching</h2>
+      <ul>
+        {
+          services.map((service) => (
+            <li>
+              <a href={servicePath(service)}>{service.data.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
 
     <nav class="footer-nav" aria-label="Footer">
       <h2 class="footer-heading">Explore</h2>
@@ -80,6 +96,6 @@ const year = new Date().getFullYear();
         rel="noopener noreferrer">{credits.author.name}</a
       >
     </p>
-    <a class="footer-top" href="#top">Back to top ↑</a>
+    <a class="footer-top" href="#main">Back to top ↑</a>
   </div>
 </footer>
