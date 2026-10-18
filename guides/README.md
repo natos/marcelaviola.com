@@ -9,7 +9,7 @@ This folder holds the guides' design system and design explorations. It is separ
 | Source | Where |
 | --- | --- |
 | Visual Identity Lookbook (Marcela, v1.0, 13 Oct 2026) | [Notion](https://app.notion.com/p/Visual-identity-lookbook-3f8c4e70a1e68069afcefe73ff86857f) is the source of truth. Snapshot in [`design-system/lookbook/`](design-system/lookbook/visual-identity-lookbook.md) |
-| Moodboard and sample pages | [Miro](https://miro.com/app/board/uXjVEZS0RqM=/). Not captured yet: we still need access |
+| Moodboard and sample pages | [Miro](https://miro.com/app/board/uXjVEZS0RqM=/). Not captured yet: the connected Miro account can't open it |
 | Photography | Marcela's own shoots, reused from the website (`src/images/`), resized in [`assets/photos/`](assets/photos) |
 | Signature mark | `src/images/logo/logo.png`, copied to [`assets/brand/signature.png`](assets/brand/signature.png) |
 
@@ -21,8 +21,9 @@ guides/
     README.md      Design system v0.1: principles, tokens, type, components, templates, open decisions
     tokens.css     Colour, type, spacing and radius tokens shared by every direction
     lookbook/      Snapshot of Marcela's Notion lookbook and its palette images
-  directions/      Five HTML design directions, 4 sample pages each (6 × 9 in)
-    index.html     Gallery of all five, side by side (generated)
+  directions/      HTML design directions, 4 sample pages each (6 × 9 in)
+                   01–05 round 1 (broad), 06–11 round 2 (02 cover + 01 pages)
+    index.html     Gallery of every direction, side by side (generated)
   assets/          Photos and brand marks used by the directions
   scripts/         Render to PDF/PNG and build the gallery
   exports/         Generated PDFs and PNGs (git-ignored)

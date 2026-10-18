@@ -130,6 +130,21 @@ Every direction uses the same sample content (*Strong Foundations*, Training gui
 
 All five fonts are free (SIL Open Font License) and install on a Mac, so they work in Pages.
 
+### Round 2: cover from 02, reading pages from 01
+
+Natan's feedback on round 1: the 02 cover plus the 01 reading pages. Round 2 starts from exactly that (06) and varies the cover and the typography. The 01 page layouts stay the same in all six.
+
+| # | Direction | Type | What changes |
+| --- | --- | --- | --- |
+| 06 | **Hybrid** | Bebas Neue (cover only) + Plus Jakarta Sans | The requested combination, as is |
+| 07 | **Arch Panel** | Bebas + Jakarta | Photo with a Soft White arch panel. Bebas used for numbers inside |
+| 08 | **Split** | Bebas + Jakarta | Photo over an aubergine block. Aubergine band on every page |
+| 09 | **Framed** | Barlow Condensed + Barlow | Rounded photo frame, italic condensed title, uppercase headings |
+| 10 | **Topic Duotone** | Bebas + Jakarta | Cover photo tinted in the topic colour. Adds a collection page |
+| 11 | **Arch Light** | Bebas + Jakarta | Light cover with an arch portrait. Bebas headings inside |
+
+The open question in round 2 is how far Bebas goes: the cover only (06), numbers (07), or all headings (11). The cover-only version keeps the reading pages calmest. Bebas headings link more strongly to the website.
+
 ## 6. Open decisions
 
 | Decision | Recommendation | Why it matters |
@@ -139,4 +154,4 @@ All five fonts are free (SIL Open Font License) and install on a Mac, so they wo
 | **Page size** | 6 × 9 in (above) | Every layout depends on it. Confirm before refining a direction |
 | **Paywall delivery** | Decide later. The design doesn't depend on it | Options: Gumroad / Lemon Squeezy / Stripe links from the site |
 | **Lookbook §9 (technical)** | Fill in with Marcela: file size, links, naming, licensing | Still blank in the lookbook |
-| **Miro moodboard** | Get access and add the key references here | Lookbook §3–4 and sample pages point to it |
+| **Miro moodboard** | Get access and add the key references here. The connected Miro account (Affinidi team) can't open the board yet | Lookbook §3–4 and sample pages point to it |

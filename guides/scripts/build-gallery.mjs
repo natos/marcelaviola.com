@@ -19,6 +19,17 @@ const notes = {
   "03": ["Organic Flow", "Illustration-led. Soft blobs, pebble-cropped photos, pill rows and a dotted path that carries you through the steps.", "Figtree", "The softest and most approachable."],
   "04": ["Colour Block", "Each guide owns its topic colour as a big confident field. Wide type and chunky rounded tiles make the collection read as a system.", "Archivo Expanded", "The collection to look like a set on a store page."],
   "05": ["Aubergine", "Dark covers and closers echo the website's dark look. Light reading pages, with blush as the only spark.", "Manrope", "A premium feel that supports a paywall."],
+  "06": ["Hybrid", "The cover from 02 with the reading pages from 01. Bebas Neue for the cover title only, Plus Jakarta Sans everywhere else.", "Bebas Neue + Plus Jakarta Sans", "The combination we liked, as is."],
+  "07": ["Arch Panel", "Full-bleed photo with a Soft White arch panel holding the title. Bebas comes back inside as the face for numbers: stats, steps, page numbers.", "Bebas Neue + Plus Jakarta Sans", "A light, friendly cover that still has the 02 energy."],
+  "08": ["Split", "Photo on top, an aubergine block below with a rounded edge. A thin aubergine band carries the cover into every reading page.", "Bebas Neue + Plus Jakarta Sans", "The strongest visual thread from cover to content."],
+  "09": ["Framed", "A different condensed voice: Barlow Condensed, italic on the cover for movement. Photo framed with rounded corners instead of full bleed.", "Barlow Condensed + Barlow", "A sportier, more active tone than Bebas."],
+  "10": ["Topic Duotone", "The cover photo is tinted in the topic colour, so each guide is recognisable by colour alone. Extra page shows all five topics together.", "Bebas Neue + Plus Jakarta Sans", "A collection that reads as a set at thumbnail size."],
+  "11": ["Arch Light", "A light cover with a tall arch portrait and a Bebas title cut into it. Bebas headings run through the reading pages.", "Bebas Neue + Plus Jakarta Sans", "Warmth and personality, with Marcela's face up front."],
+};
+
+const rounds = {
+  "01": ["Round 1", "Five broad directions from the lookbook."],
+  "06": ["Round 2", "The cover from 02 on the reading pages from 01, then five variations on that combination."],
 };
 
 const files = (await readdir(dir)).filter((f) => /^\d\d-.*\.html$/.test(f)).sort();
@@ -35,6 +46,7 @@ for (const file of files) {
   styles += html.split("<!--direction-style-->")[1].split("<!--/direction-style-->")[0].replace(/<\/?style>/g, "");
   const pages = html.split("<!--direction-pages-->")[1].split("<!--/direction-pages-->")[0];
   nav += `<a href="#d${id}"><b>${id}</b>${name}</a>`;
+  if (rounds[id]) sections += `<div class="round"><h2>${rounds[id][0]}</h2><p>${rounds[id][1]}</p></div>`;
   sections += `
     <section class="direction" id="d${id}">
       <header class="direction-head">
@@ -68,6 +80,9 @@ const chrome = `
   .toc a { display: inline-flex; gap: 8px; align-items: center; padding: 8px 14px; border-radius: 999px; background: var(--g-card); color: var(--g-ink); text-decoration: none; font-weight: 700; font-size: 14px; border: 1px solid var(--g-line); }
   .toc a b { color: #8755a0; }
   .toc a:hover, .toc a:focus-visible { border-color: #8755a0; outline: none; }
+  .round { margin-top: 72px; padding-top: 24px; border-top: 2px solid var(--g-ink); display: grid; gap: 4px; }
+  .round h2 { margin: 0; font-size: 22px; font-weight: 800; }
+  .round p { margin: 0; color: var(--g-soft); font-size: 15px; }
   .direction { margin-top: 56px; display: grid; gap: 20px; }
   .direction-head { display: grid; gap: 8px; max-width: 760px; }
   .direction-head .num { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #8755a0; }
@@ -90,8 +105,8 @@ const fontLinks = [...fonts, "https://fonts.googleapis.com/css2?family=Manrope:w
 const intro = `
   <header class="intro">
     <p class="eyebrow">Strong with Marce · Guides</p>
-    <h1>Five design directions for the guides</h1>
-    <p>Same sample guide in each, so we compare design and not content: a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
+    <h1>Design directions for the guides</h1>
+    <p>Same sample guide in each, so we compare design and not content. Round 2 builds on the cover from 02 and the reading pages from 01. Each shows a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
     <nav class="toc" aria-label="Directions">${nav}</nav>
   </header>`;
 
