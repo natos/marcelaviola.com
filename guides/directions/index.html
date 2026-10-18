@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Strong with Marce Guides · Design directions</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,100,400&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" />
@@ -146,6 +146,432 @@
   }
 }
 
+    
+      /* Direction 12 · Editorial (Marcela's pick)
+         Direction 02 with the tips from 01, checked against the Miro moodboard:
+         light pages, no black, one panel per page at most. Charts follow her
+         references: big numerals, horizontal scales, labels on the marks. */
+      .d12 .page {
+        --ink: var(--swm-aubergine);
+        --accent: var(--swm-orchid);
+        --topic: var(--swm-topic-training);
+        --display: "Bebas Neue", "Arial Narrow", sans-serif;
+
+        background: var(--swm-white);
+        color: var(--ink);
+        font-family: "Work Sans", system-ui, sans-serif;
+        font-size: var(--swm-text-base);
+        line-height: var(--swm-leading);
+        padding: var(--swm-margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--swm-space-3);
+      }
+
+      .d12 .page.nutrition {
+        --topic: var(--swm-topic-nutrition);
+      }
+
+      .d12 .display,
+      .d12 h1,
+      .d12 h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: 0.005em;
+      }
+
+      .d12 h2 {
+        font-size: 52px;
+      }
+
+      .d12 h3 {
+        font-size: var(--swm-text-sm);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .d12 .head {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--swm-space-2);
+        align-items: end;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: var(--swm-space-2);
+      }
+
+      .d12 .num {
+        font-family: var(--display);
+        font-size: 128px;
+        line-height: 0.72;
+        color: var(--swm-blush);
+      }
+
+      .d12 .nutrition .num {
+        color: var(--topic);
+      }
+
+      .d12 .kicker {
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .d12 .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .source {
+        font-size: var(--swm-text-xs);
+        line-height: 1.4;
+        color: var(--swm-ink-soft);
+      }
+
+      /* Cover (from 02) */
+      .d12 .cover {
+        padding: 0;
+        color: #fff;
+        background: var(--ink);
+      }
+
+      .d12 .cover img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 40% 30%;
+      }
+
+      .d12 .cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(69 38 79 / 0%) 35%, rgb(69 38 79 / 92%) 72%);
+      }
+
+      .d12 .cover-body {
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+        padding: var(--swm-margin);
+        display: grid;
+        gap: var(--swm-space-2);
+      }
+
+      .d12 .tag {
+        justify-self: start;
+        background: var(--swm-blush);
+        color: var(--ink);
+        border-radius: var(--swm-radius-pill);
+        padding: 6px 16px;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d12 h1 {
+        font-size: 128px;
+        line-height: 0.84;
+      }
+
+      .d12 h1 span {
+        color: var(--swm-blush);
+      }
+
+      .d12 .cover p {
+        max-width: 400px;
+        line-height: 1.4;
+      }
+
+      .d12 .cover .byline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgb(255 255 255 / 30%);
+        padding-top: var(--swm-space-2);
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d12 .cover .signature {
+        width: 110px;
+        color: #fff;
+      }
+
+      /* Tip (from 01) */
+      .d12 .tip {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        background: var(--swm-blush);
+        border-radius: var(--swm-radius-md);
+        padding: var(--swm-space-2) var(--swm-space-3);
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d12 .tip svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Stat trio */
+      .d12 .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--swm-line);
+      }
+
+      .d12 .stats div {
+        padding: 14px 12px 0 0;
+        display: grid;
+        gap: 6px;
+        align-content: start;
+      }
+
+      .d12 .stats div + div {
+        border-left: 1px solid var(--swm-line);
+        padding-left: 14px;
+      }
+
+      .d12 .stats .display {
+        font-size: 68px;
+        line-height: 0.8;
+        color: var(--accent);
+      }
+
+      .d12 .stats p {
+        font-size: var(--swm-text-xs);
+        line-height: 1.35;
+      }
+
+      .d12 .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+      }
+
+      .d12 .week span {
+        display: grid;
+        place-items: center;
+        height: 54px;
+        border-radius: var(--swm-radius-sm);
+        border: 2px solid var(--swm-line);
+        font-family: var(--display);
+        font-size: 24px;
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .week .on {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .d12 .legend {
+        display: flex;
+        gap: var(--swm-space-3);
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+        margin-top: -12px;
+      }
+
+      .d12 .legend span::before {
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        margin-right: 6px;
+        vertical-align: -1px;
+        background: var(--c);
+        border: 2px solid var(--b, var(--c));
+      }
+
+      /* Practical (from 02) */
+      .d12 .rows {
+        list-style: none;
+        padding: 0;
+        counter-reset: ex;
+      }
+
+      .d12 .rows li {
+        counter-increment: ex;
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: var(--swm-space-2);
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--swm-line);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .d12 .rows li::before {
+        content: counter(ex, decimal-leading-zero);
+        font-family: var(--display);
+        font-size: 30px;
+        line-height: 1;
+        color: var(--topic);
+      }
+
+      .d12 .rows b {
+        font-weight: 600;
+      }
+
+      .d12 .rows span {
+        font-size: var(--swm-text-sm);
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .band {
+        margin: 0 calc(var(--swm-margin) * -1);
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        background: var(--swm-lavender);
+      }
+
+      .d12 .band img {
+        width: 220px;
+        height: 290px;
+        object-fit: cover;
+      }
+
+      .d12 .band > div {
+        padding: var(--swm-space-3);
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .d12 .band ol {
+        padding-left: 22px;
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+        display: grid;
+        gap: 8px;
+      }
+
+      .d12 .band li::marker {
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      /* Action */
+      .d12 .checklist {
+        list-style: none;
+        padding: 0;
+      }
+
+      .d12 .checklist li {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--swm-line);
+        line-height: 1.35;
+      }
+
+      .d12 .checklist li::before {
+        content: "";
+        width: 26px;
+        height: 26px;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+      }
+
+      .d12 .closer {
+        margin: auto calc(var(--swm-margin) * -1) calc(var(--swm-margin) * -1);
+        background: var(--ink);
+        color: #fff;
+        padding: var(--swm-space-4) var(--swm-margin);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--swm-space-3);
+        align-items: end;
+        border-radius: var(--swm-radius-lg) var(--swm-radius-lg) 0 0;
+      }
+
+      .d12 .closer .display {
+        font-size: 50px;
+      }
+
+      .d12 .closer .display span {
+        color: var(--swm-blush);
+      }
+
+      .d12 .closer .signature {
+        width: 110px;
+        color: var(--swm-blush);
+      }
+
+      /* Charts */
+      .d12 figure {
+        display: grid;
+        gap: 10px;
+      }
+
+      .d12 figure svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+
+      .d12 .big {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+      }
+
+      .d12 .big .display {
+        font-size: 112px;
+        line-height: 0.8;
+        color: var(--accent);
+      }
+
+      .d12 .big p {
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+        max-width: 250px;
+      }
+
+      .d12 .zones {
+        display: grid;
+        grid-template-columns: 5fr 3fr 2fr;
+        gap: 6px;
+        font-size: var(--swm-text-xs);
+        line-height: 1.3;
+      }
+
+      .d12 .zones b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .d12 .zones .target b {
+        color: var(--accent);
+      }
+    
+    
     
       /* Direction 01 · Signature
          Soft White pages, arch-cropped photos, lavender panels and Marcela's
@@ -4337,9 +4763,277 @@
   <header class="intro">
     <p class="eyebrow">Strong with Marce · Guides</p>
     <h1>Design directions for the guides</h1>
-    <p>Same sample guide in each, so we compare design and not content. Round 2 builds on the cover from 02 and the reading pages from 01. Each shows a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
-    <nav class="toc" aria-label="Directions"><a href="#d01"><b>01</b>Signature</a><a href="#d02"><b>02</b>Bold Editorial</a><a href="#d03"><b>03</b>Organic Flow</a><a href="#d04"><b>04</b>Colour Block</a><a href="#d05"><b>05</b>Aubergine</a><a href="#d06"><b>06</b>Hybrid</a><a href="#d07"><b>07</b>Arch Panel</a><a href="#d08"><b>08</b>Split</a><a href="#d09"><b>09</b>Framed</a><a href="#d10"><b>10</b>Topic Duotone</a><a href="#d11"><b>11</b>Arch Light</a></nav>
-  </header><div class="round"><h2>Round 1</h2><p>Five broad directions from the lookbook.</p></div>
+    <p>Same sample guide in each, so we compare design and not content. Round 3 is Marcela's pick. Each shows a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
+    <nav class="toc" aria-label="Directions"><a href="#d12"><b>12</b>Editorial</a><a href="#d01"><b>01</b>Signature</a><a href="#d02"><b>02</b>Bold Editorial</a><a href="#d03"><b>03</b>Organic Flow</a><a href="#d04"><b>04</b>Colour Block</a><a href="#d05"><b>05</b>Aubergine</a><a href="#d06"><b>06</b>Hybrid</a><a href="#d07"><b>07</b>Arch Panel</a><a href="#d08"><b>08</b>Split</a><a href="#d09"><b>09</b>Framed</a><a href="#d10"><b>10</b>Topic Duotone</a><a href="#d11"><b>11</b>Arch Light</a></nav>
+  </header><div class="round"><h2>Round 3</h2><p>Marcela chose 02 with the tips from 01, and asked for stronger charts and diagrams.</p></div>
+    <section class="direction" id="d12">
+      <header class="direction-head">
+        <p class="num">Direction 12</p>
+        <h2>Editorial</h2>
+        <p>Marcela's pick: Direction 02 with the tips from 01, checked against her Miro notes. Adds four chart and diagram pages: an effort scale, a progression chart, a movement diagram and a Nutrition bar chart.</p>
+        <dl><div><dt>Type</dt><dd>Bebas Neue + Work Sans</dd></div><div><dt>Choose it for</dt><dd>The direction to refine into templates.</dd></div><div><dt>File</dt><dd><a href="12-editorial.html">12-editorial.html</a></dd></div></dl>
+      </header>
+      <div class="rail">
+    <div class="spread d12">
+      <!-- Cover -->
+      <section class="page cover">
+        <img src="../assets/photos/barbell.jpg" alt="Marcela kneeling beside a loaded barbell in a gym" />
+        <div class="cover-body">
+          <span class="tag">Training · Guide 01</span>
+          <h1>Strong<br /><span>Foundations</span></h1>
+          <p>Your first four weeks of strength training. Three 40-minute sessions a week, built around a busy life.</p>
+          <div class="byline"><span>Strong with Marce</span><span class="signature" role="img" aria-label="Marcela Viola"></span></div>
+        </div>
+      </section>
+
+      <!-- Educational content -->
+      <section class="page">
+        <div class="head">
+          <span class="num">01</span>
+          <div>
+            <p class="kicker">Why strength matters</p>
+            <h2>Muscle is your long-term health investment</h2>
+          </div>
+        </div>
+        <p>
+          From around our 30s, muscle and strength start to decline, unless we give the body a reason to keep them.
+          Strength training is that reason.
+        </p>
+        <div class="stats">
+          <div><span class="display">2+</span><p>strength days a week, as the WHO recommends</p></div>
+          <div><span class="display">120</span><p>minutes a week: 3 sessions of 40 min</p></div>
+          <div><span class="display">12</span><p>sessions to build the habit in 4 weeks</p></div>
+        </div>
+        <div class="week" role="img" aria-label="Example week: strength on Monday, Wednesday and Friday, rest on the other days">
+          <span class="on">M</span><span>T</span><span class="on">W</span><span>T</span><span class="on">F</span><span>S</span><span>S</span>
+        </div>
+        <p class="legend"><span style="--c: var(--swm-orchid)">Strength session</span><span style="--c: transparent; --b: var(--swm-line)">Rest or walk</span></p>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Start lighter than you think.</b> Weeks one and two are about learning each movement well. The weight comes later.</p>
+        </aside>
+        <p class="source">WHO Guidelines on Physical Activity and Sedentary Behaviour, 2020.</p>
+        <div class="foot"><span>Strong Foundations</span><span>04</span></div>
+      </section>
+
+      <!-- Practical -->
+      <section class="page">
+        <div class="head">
+          <span class="num">03</span>
+          <div>
+            <p class="kicker">Session A · 40 min</p>
+            <h2>Your first full-body session</h2>
+          </div>
+        </div>
+        <ol class="rows">
+          <li><b>Goblet squat</b><span>3 × 8 · 90 s</span></li>
+          <li><b>Incline push-up</b><span>3 × 8 · 60 s</span></li>
+          <li><b>One-arm row</b><span>3 × 10 / side · 60 s</span></li>
+          <li><b>Glute bridge</b><span>3 × 12 · 60 s</span></li>
+          <li><b>Dead bug</b><span>3 × 6 / side · 45 s</span></li>
+        </ol>
+        <div class="band">
+          <img src="../assets/photos/med-ball.jpg" alt="Marcela demonstrating a squat holding a weighted ball" />
+          <div>
+            <h3>How to: goblet squat</h3>
+            <ol>
+              <li>Hold the weight at your chest, elbows pointing down.</li>
+              <li>Feet just wider than hips, toes slightly out.</li>
+              <li>Sit down between your heels, chest tall.</li>
+              <li>Push the floor away to stand. Breathe out on the way up.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="foot"><span>Strong Foundations</span><span>09</span></div>
+      </section>
+
+      <!-- Diagram: effort scale -->
+      <section class="page">
+        <div class="head">
+          <span class="num">04</span>
+          <div>
+            <p class="kicker">How hard should it feel?</p>
+            <h2>Train at a 6 to 8 out of 10</h2>
+          </div>
+        </div>
+        <div class="big">
+          <span class="display">6–8</span>
+          <p>Finish each set with <b>2 to 4 reps</b> still in the tank. Hard enough to change, easy enough to repeat.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 120" role="img" aria-label="Effort scale from 1 to 10. Levels 6 to 8 are the target zone for working sets.">
+            <g font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="26" text-anchor="middle">
+              <rect x="0" y="34" width="44" height="52" rx="10" fill="#efe7f6" /><text x="22" y="70" fill="#6b5573">1</text>
+              <rect x="49" y="34" width="44" height="52" rx="10" fill="#e4d7f1" /><text x="71" y="70" fill="#6b5573">2</text>
+              <rect x="98" y="34" width="44" height="52" rx="10" fill="#d8c7ea" /><text x="120" y="70" fill="#45264f">3</text>
+              <rect x="147" y="34" width="44" height="52" rx="10" fill="#cbb6e2" /><text x="169" y="70" fill="#45264f">4</text>
+              <rect x="196" y="34" width="44" height="52" rx="10" fill="#b99fd5" /><text x="218" y="70" fill="#45264f">5</text>
+              <rect x="245" y="34" width="44" height="52" rx="10" fill="#8755a0" /><text x="267" y="70" fill="#fff">6</text>
+              <rect x="294" y="34" width="44" height="52" rx="10" fill="#76488e" /><text x="316" y="70" fill="#fff">7</text>
+              <rect x="343" y="34" width="44" height="52" rx="10" fill="#653b7c" /><text x="365" y="70" fill="#fff">8</text>
+              <rect x="392" y="34" width="44" height="52" rx="10" fill="#45264f" /><text x="414" y="70" fill="#fff">9</text>
+              <rect x="441" y="34" width="44" height="52" rx="10" fill="#45264f" /><text x="463" y="70" fill="#f2c2d1">10</text>
+            </g>
+            <path d="M245 22 V12 H387 V22" stroke="#8755a0" stroke-width="3" fill="none" stroke-linecap="round" />
+            <text x="316" y="8" font-size="13" font-weight="700" fill="#8755a0" text-anchor="middle" letter-spacing="1">YOUR WORKING SETS</text>
+            <path d="M245 98 H387" stroke="#f2c2d1" stroke-width="8" stroke-linecap="round" />
+          </svg>
+          <div class="zones">
+            <div><b>1–5</b>Easy to moderate. Your warm-up sets live here</div>
+            <div class="target"><b>6–8</b>2–4 reps left. Breathing hard, form solid</div>
+            <div><b>9–10</b>Max effort. Not needed yet</div>
+          </div>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>If your form breaks, the set is over.</b> That rep doesn't count, even if you can force it up.</p>
+        </aside>
+        <div class="foot"><span>Strong Foundations</span><span>10</span></div>
+      </section>
+
+      <!-- Chart: progression (values to scale) -->
+      <section class="page">
+        <div class="head">
+          <span class="num">05</span>
+          <div>
+            <p class="kicker">Progress you can see</p>
+            <h2>Your goblet squat, week by week</h2>
+          </div>
+        </div>
+        <p>Add reps first, then weight. Small steps each week add up to a big change in a month.</p>
+        <figure>
+          <svg viewBox="0 0 488 300" role="img" aria-label="Column chart of total kilograms lifted per goblet squat session: week 1 192 kg, week 2 240 kg, week 3 240 kg, week 4 300 kg">
+            <!-- scale: 300 kg = 220 px, baseline y=250 -->
+            <g stroke="#e9e1ef" stroke-width="1"><path d="M40 30 H488 M40 103.3 H488 M40 176.7 H488" /></g>
+            <path d="M40 250 H488" stroke="#45264f" stroke-width="2" />
+            <g font-size="12" fill="#6b5573" text-anchor="end"><text x="32" y="34">300</text><text x="32" y="107">200</text><text x="32" y="181">100</text><text x="32" y="254">0 kg</text></g>
+            <rect x="62" y="109.2" width="80" height="140.8" rx="12" fill="#e4d7f1" />
+            <rect x="170" y="74" width="80" height="176" rx="12" fill="#c7b4e0" />
+            <rect x="278" y="74" width="80" height="176" rx="12" fill="#a98bcc" />
+            <rect x="386" y="30" width="80" height="220" rx="12" fill="#8755a0" />
+            <g font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="30" text-anchor="middle" fill="#45264f">
+              <text x="102" y="100">192</text><text x="210" y="65">240</text><text x="318" y="65">240</text>
+            </g>
+            <g font-size="13" font-weight="600" fill="#45264f" text-anchor="middle">
+              <text x="102" y="272">Week 1</text><text x="210" y="272">Week 2</text><text x="318" y="272">Week 3</text><text x="426" y="272">Week 4</text>
+            </g>
+            <g font-size="12" fill="#6b5573" text-anchor="middle">
+              <text x="102" y="290">3 × 8 · 8 kg</text><text x="210" y="290">3 × 10 · 8 kg</text><text x="318" y="290">3 × 8 · 10 kg</text><text x="426" y="290">3 × 10 · 10 kg</text>
+            </g>
+            <text x="426" y="60" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="30" text-anchor="middle" fill="#fff">300</text>
+            <path d="M152 18 C 250 -6, 330 -4, 376 14" stroke="#d995a8" stroke-width="2.5" fill="none" stroke-dasharray="2 6" stroke-linecap="round" />
+            <text x="200" y="12" font-size="13" font-weight="700" fill="#45264f">+56% in four weeks</text>
+          </svg>
+          <p class="source">Total kg lifted per session = sets × reps × weight. Example plan with an 8 kg kettlebell.</p>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Write it down.</b> A note on your phone with the date, weight and reps is all the tracking you need.</p>
+        </aside>
+        <div class="foot"><span>Strong Foundations</span><span>11</span></div>
+      </section>
+
+      <!-- Diagram: movement anatomy -->
+      <section class="page">
+        <div class="head">
+          <span class="num">06</span>
+          <div>
+            <p class="kicker">Inside the movement</p>
+            <h2>What a goblet squat works</h2>
+          </div>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 360" role="img" aria-label="Side view of a person in a goblet squat. Main muscles: quadriceps and glutes. Supporting: core and upper back.">
+            <ellipse cx="200" cy="336" rx="150" ry="10" fill="#efe7f6" />
+            <!-- body -->
+            <g stroke="#d8c7ea" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <path d="M196 116 L168 214" stroke-width="44" />
+              <path d="M168 214 L262 226" stroke-width="40" />
+              <path d="M262 226 L246 318" stroke-width="30" />
+              <path d="M240 326 L290 328" stroke-width="18" />
+              <path d="M200 122 L214 178 L244 150" stroke-width="18" />
+            </g>
+            <circle cx="210" cy="80" r="28" fill="#d8c7ea" />
+            <!-- weight -->
+            <circle cx="262" cy="150" r="20" fill="#45264f" />
+            <path d="M250 132 Q262 116 274 132" stroke="#45264f" stroke-width="6" fill="none" />
+            <!-- primary muscles -->
+            <path d="M178 204 L254 214" stroke="#8755a0" stroke-width="16" stroke-linecap="round" />
+            <ellipse cx="160" cy="222" rx="22" ry="20" fill="#8755a0" />
+            <!-- supporting muscles -->
+            <path d="M210 134 L190 196" stroke="#d995a8" stroke-width="9" stroke-linecap="round" />
+            <path d="M182 112 L170 150" stroke="#d995a8" stroke-width="9" stroke-linecap="round" />
+            <!-- labels -->
+            <g font-size="14" font-weight="700" fill="#45264f">
+              <path d="M240 208 L330 190 H350" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="356" y="186">Quads</text><text x="356" y="203" font-weight="400" font-size="12" fill="#6b5573">front of the thighs</text>
+              <path d="M146 236 L80 262 H60" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="0" y="258">Glutes</text><text x="0" y="275" font-weight="400" font-size="12" fill="#6b5573">power to stand</text>
+              <path d="M198 170 L330 120 H350" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="356" y="116">Core</text><text x="356" y="133" font-weight="400" font-size="12" fill="#6b5573">keeps you upright</text>
+              <path d="M174 128 L80 112 H60" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="0" y="108">Upper back</text><text x="0" y="125" font-weight="400" font-size="12" fill="#6b5573">chest tall</text>
+            </g>
+          </svg>
+        </figure>
+        <p class="legend"><span style="--c: var(--swm-orchid)">Main muscles</span><span style="--c: var(--swm-topic-nutrition)">Supporting muscles</span></p>
+        <p>Squats train the muscles you use to get up from a chair, climb stairs and lift a child. That's why they open every session.</p>
+        <div class="foot"><span>Strong Foundations</span><span>12</span></div>
+      </section>
+
+      <!-- Chart: nutrition topic (bars to scale) -->
+      <section class="page nutrition">
+        <div class="head">
+          <span class="num">02</span>
+          <div>
+            <p class="kicker">Nutrition · Protein</p>
+            <h2>Where your protein comes from</h2>
+          </div>
+        </div>
+        <p>Grams of protein in 100 g of common foods. Mix animal and plant sources across the day.</p>
+        <figure>
+          <svg viewBox="0 0 488 330" role="img" aria-label="Bar chart of protein per 100 grams: chicken breast 31, salmon 22, almonds 21, firm tofu 16, eggs 13, Greek yoghurt 10, lentils 9">
+            <!-- scale: 31 g = 270 px, bars start x=170 -->
+            <g font-size="14" fill="#45264f">
+              <text x="0" y="27">Chicken breast, cooked</text><rect x="170" y="8" width="270" height="28" rx="14" fill="#d995a8" /><text x="450" y="31" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">31</text>
+              <text x="0" y="73">Salmon, cooked</text><rect x="170" y="54" width="191.6" height="28" rx="14" fill="#d995a8" /><text x="371.6" y="77" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">22</text>
+              <text x="0" y="119">Almonds</text><rect x="170" y="100" width="182.9" height="28" rx="14" fill="#9caf9a" /><text x="362.9" y="123" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">21</text>
+              <text x="0" y="165">Firm tofu</text><rect x="170" y="146" width="139.4" height="28" rx="14" fill="#9caf9a" /><text x="319.4" y="169" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">16</text>
+              <text x="0" y="211">Eggs</text><rect x="170" y="192" width="113.2" height="28" rx="14" fill="#d995a8" /><text x="293.2" y="215" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">13</text>
+              <text x="0" y="257">Greek yoghurt</text><rect x="170" y="238" width="87.1" height="28" rx="14" fill="#d995a8" /><text x="267.1" y="261" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">10</text>
+              <text x="0" y="303">Lentils, cooked</text><rect x="170" y="284" width="78.4" height="28" rx="14" fill="#9caf9a" /><text x="258.4" y="307" font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="28">9</text>
+            </g>
+          </svg>
+          <p class="legend"><span style="--c: var(--swm-topic-nutrition)">Animal</span><span style="--c: var(--swm-topic-mobility)">Plant</span></p>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Build every meal around a protein.</b> A palm-sized portion is an easy starting point.</p>
+        </aside>
+        <p class="source">Approximate values, USDA FoodData Central. Shown in the Nutrition topic colour.</p>
+        <div class="foot"><span>Fuel to Move</span><span>06</span></div>
+      </section>
+
+      <!-- Checklist / action plan -->
+      <section class="page">
+        <div class="head">
+          <span class="num">→</span>
+          <div>
+            <p class="kicker">Action plan</p>
+            <h2>Your first week</h2>
+          </div>
+        </div>
+        <ul class="checklist">
+          <li>Pick three days and block 40 minutes in your calendar</li>
+          <li>Find a dumbbell or kettlebell. 4–8 kg is a good start</li>
+          <li>Clear a space of about 2 × 2 m</li>
+          <li>Do Session A once, slowly, and note how it felt</li>
+          <li>Rest at least one day between sessions</li>
+        </ul>
+        <div class="closer">
+          <p class="display">Progress,<br /><span>not perfection.</span></p>
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+        </div>
+      </section>
+    </div>
+    </div>
+    </section><div class="round"><h2>Round 1</h2><p>Five broad directions from the lookbook.</p></div>
     <section class="direction" id="d01">
       <header class="direction-head">
         <p class="num">Direction 01</p>

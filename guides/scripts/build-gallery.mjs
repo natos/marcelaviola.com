@@ -24,15 +24,17 @@ const notes = {
   "08": ["Split", "Photo on top, an aubergine block below with a rounded edge. A thin aubergine band carries the cover into every reading page.", "Bebas Neue + Plus Jakarta Sans", "The strongest visual thread from cover to content."],
   "09": ["Framed", "A different condensed voice: Barlow Condensed, italic on the cover for movement. Photo framed with rounded corners instead of full bleed.", "Barlow Condensed + Barlow", "A sportier, more active tone than Bebas."],
   "10": ["Topic Duotone", "The cover photo is tinted in the topic colour, so each guide is recognisable by colour alone. Extra page shows all five topics together.", "Bebas Neue + Plus Jakarta Sans", "A collection that reads as a set at thumbnail size."],
+  "12": ["Editorial", "Marcela's pick: Direction 02 with the tips from 01, checked against her Miro notes. Adds four chart and diagram pages: an effort scale, a progression chart, a movement diagram and a Nutrition bar chart.", "Bebas Neue + Work Sans", "The direction to refine into templates."],
   "11": ["Arch Light", "A light cover with a tall arch portrait and a Bebas title cut into it. Bebas headings run through the reading pages.", "Bebas Neue + Plus Jakarta Sans", "Warmth and personality, with Marcela's face up front."],
 };
 
 const rounds = {
   "01": ["Round 1", "Five broad directions from the lookbook."],
+  "12": ["Round 3", "Marcela chose 02 with the tips from 01, and asked for stronger charts and diagrams."],
   "06": ["Round 2", "The cover from 02 on the reading pages from 01, then five variations on that combination."],
 };
 
-const files = (await readdir(dir)).filter((f) => /^\d\d-.*\.html$/.test(f)).sort();
+const files = (await readdir(dir)).filter((f) => /^\d\d-.*\.html$/.test(f)).sort((a, b) => (b.startsWith("12") ? 1 : 0) - (a.startsWith("12") ? 1 : 0) || a.localeCompare(b));
 const fonts = new Set();
 let styles = "";
 let sections = "";
@@ -106,7 +108,7 @@ const intro = `
   <header class="intro">
     <p class="eyebrow">Strong with Marce · Guides</p>
     <h1>Design directions for the guides</h1>
-    <p>Same sample guide in each, so we compare design and not content. Round 2 builds on the cover from 02 and the reading pages from 01. Each shows a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
+    <p>Same sample guide in each, so we compare design and not content. Round 3 is Marcela's pick. Each shows a cover, an educational page, a practical page and an action plan. Pages are 6 × 9 in and sized to read on a phone. Scroll sideways to see all four pages.</p>
     <nav class="toc" aria-label="Directions">${nav}</nav>
   </header>`;
 

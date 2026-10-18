@@ -1,6 +1,6 @@
 # Guides design system · v0.1 (exploration)
 
-Status: **exploring directions**. Everything in sections 1–4 comes from Marcela's lookbook and holds whichever direction we choose. Section 5 lists what each direction proposes. Section 6 lists the decisions still open.
+Status: **direction chosen: 12 Editorial** (02 with 01's tips). Next: refine charts, then build templates. Everything in sections 1–4 comes from Marcela's lookbook and holds whichever direction we choose. Section 5 lists what each direction proposes. Section 6 lists the decisions still open.
 
 Source: [Visual Identity Lookbook](https://app.notion.com/p/Visual-identity-lookbook-3f8c4e70a1e68069afcefe73ff86857f) ([snapshot](lookbook/visual-identity-lookbook.md)).
 
@@ -20,6 +20,26 @@ From lookbook §1.6 and §2.5. Use them to judge every page.
 | **Confident, not intimidating** | Strong type and contrast. No aggressive fitness imagery, nothing clinical |
 
 The brand is **Fresh, Clean, Professional, Practical, Strong**. Design keywords: *Empower, Active, Confident, Movement, Meaningful.*
+
+## 1b. What Marcela's moodboard says
+
+From her notes on the [Miro board](https://miro.com/app/board/uXjVEZS0RqM=/) (read 18 Oct 2026). These are her own words, summarised.
+
+| She likes | She avoids |
+| --- | --- |
+| Big, quality photos, but not too many | **Black backgrounds** (noted three times) |
+| Clear hierarchy and contrast, type doing the hierarchy | Decoration that isn't about the content ("racer stripes") |
+| Bright colours, clean type, room to breathe | Rounded purple panels behind every section: "redundant" |
+| Graphs, not just photos. Clear, quality charts | Sharp edges and cold palettes: "clinical" |
+| Rounded corners. Handwritten sign-off | Busy photo backgrounds that hide the exercise |
+| Graphics and photos sharing one colour scheme | Low-quality photos and dated Photoshop work |
+| Clean exercise photos on plain backgrounds | Landscape pages. She prefers vertical |
+
+Rules that follow for the system:
+
+- **Light pages by default.** Aubergine is the darkest surface, used for the cover overlay and one closer block. Never black.
+- **One panel per page at most.** Lavender and blush fills are for a tip or a how-to, not a frame for every section.
+- **Charts lead with one big number**, then a simple scale or bar with labels on the marks. This matches her data references (sweat rate, VO2max estimator).
 
 ## 2. Colour
 
@@ -130,6 +150,20 @@ Every direction uses the same sample content (*Strong Foundations*, Training gui
 
 All five fonts are free (SIL Open Font License) and install on a Mac, so they work in Pages.
 
+### Round 3: Marcela's pick
+
+**12 Editorial** = 02 + the tips from 01. Marcela asked for stronger charts and diagrams, so 12 adds four chart pages built from her references:
+
+| Chart | Type | Data |
+| --- | --- | --- |
+| Stat trio + week strip | Big numerals, 7-day strip | WHO 2020 (2+ strength days). 3 × 40 min = 120 min. 12 sessions |
+| Effort scale | 10-step scale, target zone bracketed | RPE 6–8 / 2–4 reps in reserve (coaching guideline) |
+| Progression | Columns, drawn to scale, axis labelled | Example plan: sets × reps × kg = 192 → 300 kg |
+| Movement anatomy | Soft figure, main vs supporting muscles | Goblet squat: quads, glutes, core, upper back |
+| Protein by food | Horizontal bars to scale, Nutrition colour | USDA FoodData Central, rounded |
+
+Chart rules: draw to scale, label on the marks (no legends to decode unless colour encodes a category), name the source under the chart, topic colour for the bars, Bebas for the numbers.
+
 ### Round 2: cover from 02, reading pages from 01
 
 Natan's feedback on round 1: the 02 cover plus the 01 reading pages. Round 2 starts from exactly that (06) and varies the cover and the typography. The 01 page layouts stay the same in all six.
@@ -154,4 +188,4 @@ The open question in round 2 is how far Bebas goes: the cover only (06), numbers
 | **Page size** | 6 × 9 in (above) | Every layout depends on it. Confirm before refining a direction |
 | **Paywall delivery** | Decide later. The design doesn't depend on it | Options: Gumroad / Lemon Squeezy / Stripe links from the site |
 | **Lookbook §9 (technical)** | Fill in with Marcela: file size, links, naming, licensing | Still blank in the lookbook |
-| **Miro moodboard** | Get access and add the key references here. The connected Miro account (Affinidi team) can't open the board yet | Lookbook §3–4 and sample pages point to it |
+| **Miro moodboard** | Done: notes captured in §1b | — |
