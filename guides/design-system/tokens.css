@@ -1,0 +1,59 @@
+/*
+ * Strong with Marce — Guides design tokens (v0.1, exploration)
+ * Source: design-system/lookbook/visual-identity-lookbook.md (§4, §8.2)
+ *
+ * Colour rules (WCAG 2.1, measured on Soft White unless noted):
+ *   - Body text: Deep Aubergine only (12.3:1). Orchid passes for text at 5.3:1
+ *     on white but drops below 4.5 on lavender/blush — use it for headings there.
+ *   - Topic colours are FILLS and ACCENTS, never text on light backgrounds
+ *     (1.9–4.2:1). On a topic fill, set text in Aubergine (Nutrition, Mobility,
+ *     Lifestyle) or white at large sizes (Training, Aerial).
+ */
+
+:root {
+  /* Core palette */
+  --swm-aubergine: #45264f; /* headings, body text, anchors */
+  --swm-orchid: #8755a0; /* signature purple: section heads, icons, highlights */
+  --swm-blush: #f2c2d1; /* tips, callouts, illustrative details */
+  --swm-lavender: #e4d7f1; /* info panels, diagrams, secondary backgrounds */
+  --swm-white: #fcfafd; /* page background */
+
+  /* Topic accents — one per collection */
+  --swm-topic-nutrition: #d995a8; /* Dusty Rose */
+  --swm-topic-training: #8c78b8; /* Warm Purple */
+  --swm-topic-mobility: #9caf9a; /* Soft Sage */
+  --swm-topic-lifestyle: #c5b8a3; /* Warm Sand */
+  --swm-topic-aerial: #986b91; /* Muted Berry */
+
+  /* Derived neutrals (aubergine-tinted, so greys never read as default grey) */
+  --swm-ink-soft: #6b5573; /* secondary text, 6.6:1 on white */
+  --swm-line: #e9e1ef; /* hairlines, table rules */
+
+  /* Page — phone-first, prints at 6 × 9 in */
+  --swm-page-w: 576px;
+  --swm-page-h: 864px;
+  --swm-margin: 44px;
+
+  /* Type scale (px at page size; ~1.25 ratio). Body 20px ≈ 13.5px on a 390px-wide phone. */
+  --swm-text-xs: 14px; /* captions, running footer — never smaller */
+  --swm-text-sm: 16px;
+  --swm-text-base: 20px;
+  --swm-text-md: 25px;
+  --swm-text-lg: 32px;
+  --swm-text-xl: 44px;
+  --swm-text-2xl: 64px;
+  --swm-leading: 1.5;
+
+  /* Spacing (8px grid) */
+  --swm-space-1: 8px;
+  --swm-space-2: 16px;
+  --swm-space-3: 24px;
+  --swm-space-4: 32px;
+  --swm-space-6: 48px;
+
+  /* Shape — rounded edges are part of the identity (lookbook §3.2) */
+  --swm-radius-sm: 10px;
+  --swm-radius-md: 18px;
+  --swm-radius-lg: 32px;
+  --swm-radius-pill: 999px;
+}

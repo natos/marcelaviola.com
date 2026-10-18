@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Direction 03 · Organic Flow — Strong with Marce Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap" />
+    <link rel="stylesheet" href="../design-system/tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <!--direction-style-->
+    <style>
+      /* Direction 03 · Organic Flow
+         Illustration-led. Soft blob shapes, pebble-cropped photos, pill rows and a
+         flowing line that carries the reader from step to step. */
+      .d3 .page {
+        --ink: var(--swm-aubergine);
+        --accent: var(--swm-orchid);
+        --topic: var(--swm-topic-training);
+
+        background: var(--swm-white);
+        color: var(--ink);
+        font-family: Figtree, system-ui, sans-serif;
+        font-size: var(--swm-text-base);
+        line-height: var(--swm-leading);
+        padding: var(--swm-margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--swm-space-3);
+      }
+
+      .d3 .page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .d3 .blob {
+        position: absolute;
+        z-index: 0;
+        border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%;
+      }
+
+      .d3 .pill {
+        align-self: flex-start;
+        border-radius: var(--swm-radius-pill);
+        background: var(--swm-lavender);
+        color: var(--ink);
+        padding: 6px 16px 6px 10px;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .d3 .pill::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--topic);
+      }
+
+      .d3 h1 {
+        font-size: 62px;
+        font-weight: 900;
+        line-height: 0.98;
+        letter-spacing: -0.025em;
+      }
+
+      .d3 h2 {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.015em;
+      }
+
+      .d3 h2 em {
+        font-style: normal;
+        color: var(--accent);
+        background: linear-gradient(transparent 68%, var(--swm-blush) 68% 92%, transparent 92%);
+      }
+
+      .d3 h3 {
+        font-size: var(--swm-text-md);
+        font-weight: 800;
+      }
+
+      .d3 .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+      }
+
+      .d3 .foot b {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--swm-lavender);
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        margin-top: -4px;
+      }
+
+      /* Cover */
+      .d3 .cover {
+        background: var(--swm-lavender);
+      }
+
+      .d3 .cover .pill {
+        background: var(--swm-white);
+      }
+
+      .d3 .cover-photo {
+        width: 380px;
+        height: 370px;
+        align-self: center;
+        object-fit: cover;
+        object-position: 50% 10%;
+        border-radius: 52% 48% 46% 54% / 44% 50% 50% 56%;
+        margin-top: 8px;
+      }
+
+      .d3 .cover p {
+        font-size: var(--swm-text-base);
+        line-height: 1.4;
+      }
+
+      .d3 .cover .brand {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .d3 .cover .signature {
+        width: 120px;
+        color: var(--accent);
+      }
+
+      .d3 .cover .brand span:last-child {
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+      }
+
+      /* Content */
+      .d3 .duo {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: var(--swm-space-3);
+        align-items: center;
+      }
+
+      .d3 .circle-stat {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: var(--swm-blush);
+        display: grid;
+        place-content: center;
+        text-align: center;
+        line-height: 1.1;
+      }
+
+      .d3 .circle-stat b {
+        font-size: 52px;
+        font-weight: 900;
+        color: var(--ink);
+      }
+
+      .d3 .circle-stat span {
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+      }
+
+      .d3 .duo p {
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d3 figure {
+        background: var(--swm-lavender);
+        border-radius: var(--swm-radius-lg);
+        padding: var(--swm-space-2) var(--swm-space-3) var(--swm-space-2);
+      }
+
+      .d3 figure svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .d3 figcaption {
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+        text-align: center;
+      }
+
+      .d3 .tip {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        align-items: center;
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d3 .tip i {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--swm-blush);
+        display: grid;
+        place-items: center;
+      }
+
+      /* Practical */
+      .d3 .pills {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .d3 .pills li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--swm-lavender);
+        border-radius: var(--swm-radius-pill);
+        padding: 10px 10px 10px 22px;
+        font-weight: 700;
+        font-size: var(--swm-text-sm);
+      }
+
+      .d3 .pills span {
+        background: var(--swm-white);
+        border-radius: var(--swm-radius-pill);
+        padding: 4px 14px;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+        font-size: var(--swm-text-xs);
+      }
+
+      .d3 .flow {
+        display: grid;
+        grid-template-columns: 1fr 170px;
+        gap: var(--swm-space-2);
+      }
+
+      .d3 .flow ol {
+        list-style: none;
+        padding: 0;
+        margin-top: 12px;
+        counter-reset: s;
+        position: relative;
+        display: grid;
+        gap: 14px;
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+      }
+
+      .d3 .flow ol::before {
+        content: "";
+        position: absolute;
+        left: 17px;
+        top: 18px;
+        bottom: 18px;
+        border-left: 3px dotted var(--topic);
+      }
+
+      .d3 .flow li {
+        counter-increment: s;
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        align-items: center;
+        position: relative;
+      }
+
+      .d3 .flow li::before {
+        content: counter(s);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--swm-blush);
+        font-weight: 900;
+        display: grid;
+        place-items: center;
+      }
+
+      .d3 .flow img {
+        width: 170px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 46% 54% 50% 50% / 38% 40% 60% 62%;
+        align-self: center;
+      }
+
+      /* Action */
+      .d3 .checks {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .d3 .checks li {
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        gap: 14px;
+        align-items: center;
+        background: var(--swm-white);
+        border: 2px solid var(--swm-lavender);
+        border-radius: var(--swm-radius-md);
+        padding: 8px 14px;
+        line-height: 1.3;
+        font-size: var(--swm-text-sm);
+      }
+
+      .d3 .checks li::before {
+        content: "";
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+      }
+
+      .d3 .checks li.done::before {
+        background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 18px no-repeat;
+      }
+
+      .d3 .closing {
+        margin-top: auto;
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        gap: 4px;
+      }
+
+      .d3 .closing p {
+        font-size: var(--swm-text-base);
+        font-weight: 800;
+        line-height: 1.2;
+        max-width: 380px;
+      }
+
+      .d3 .closing .signature {
+        width: 110px;
+        color: var(--accent);
+      }
+
+      .d3 .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        text-align: center;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+      }
+
+      .d3 .week span {
+        display: grid;
+        place-items: center;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--swm-lavender);
+        color: var(--swm-ink-soft);
+      }
+
+      .d3 .week .on {
+        background: var(--topic);
+        color: #fff;
+      }
+    </style>
+    <!--/direction-style-->
+  </head>
+  <body>
+    <!--direction-pages-->
+    <div class="spread d3">
+      <section class="page cover">
+        <span class="blob" style="width: 380px; height: 360px; right: -90px; top: 60px; background: var(--swm-blush)"></span>
+        <span class="pill">Training · Guide 01</span>
+        <img class="cover-photo" src="../assets/photos/kettlebell-squat.jpg" alt="Marcela holding a kettlebell overhead in a deep squat" />
+        <h1>Strong Foundations</h1>
+        <p>Your first four weeks of strength training. Three 40-minute sessions a week, built around a busy life.</p>
+        <div class="brand"><span class="signature" role="img" aria-label="Marcela Viola"></span><span>Strong with Marce</span></div>
+      </section>
+
+      <section class="page">
+        <span class="blob" style="width: 260px; height: 240px; right: -120px; top: -90px; background: var(--swm-lavender)"></span>
+        <span class="pill">Why strength matters</span>
+        <h2>Muscle is your long-term <em>health investment</em></h2>
+        <p>
+          From around our 30s, muscle and strength start to decline, unless we give the body a reason to keep them.
+          Strength training is that reason.
+        </p>
+        <div class="duo">
+          <div class="circle-stat"><b>2+</b><span>days a week</span></div>
+          <p>The WHO recommends muscle-strengthening activity for all major muscle groups on two or more days a week.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 440 150" role="img" aria-label="Strength stays higher with training and declines without it">
+            <path d="M0 130 C 110 120, 220 70, 330 40 S 420 34, 440 34 V150 H0Z" fill="#fcfafd" opacity="0" />
+            <path d="M0 60 C 110 44, 220 44, 320 54 S 420 70, 440 74 V150 H0Z" fill="#8c78b8" opacity="0.35" />
+            <path d="M0 60 C 110 72, 220 94, 320 116 S 420 130, 440 132 V150 H0Z" fill="#f2c2d1" />
+            <text x="16" y="36" font-size="14" font-weight="800" fill="#45264f">With strength training</text>
+            <text x="300" y="144" font-size="14" font-weight="800" fill="#45264f">Without</text>
+          </svg>
+          <figcaption>Strength across the decades, 30s → 70s. Illustrative.</figcaption>
+        </figure>
+        <aside class="tip">
+          <i><svg width="24" height="24" viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg></i>
+          <p><b>Start lighter than you think.</b> Weeks one and two are about learning each movement well. The weight comes later.</p>
+        </aside>
+        <div class="foot"><span>Strong Foundations</span><b>4</b></div>
+      </section>
+
+      <section class="page">
+        <span class="blob" style="width: 300px; height: 280px; left: -160px; bottom: 60px; background: var(--swm-blush); opacity: 0.6"></span>
+        <span class="pill">Session A · 40 min</span>
+        <h2>Your first <em>full-body</em> session</h2>
+        <ul class="pills">
+          <li>Goblet squat<span>3 × 8 · 90 s</span></li>
+          <li>Incline push-up<span>3 × 8 · 60 s</span></li>
+          <li>One-arm row<span>3 × 10 / side · 60 s</span></li>
+          <li>Glute bridge<span>3 × 12 · 60 s</span></li>
+          <li>Dead bug<span>3 × 6 / side · 45 s</span></li>
+        </ul>
+        <div class="flow">
+          <div>
+            <h3>How to: goblet squat</h3>
+            <ol>
+              <li>Hold the weight at your chest, elbows down.</li>
+              <li>Feet just wider than hips, toes slightly out.</li>
+              <li>Sit down between your heels, chest tall.</li>
+              <li>Push the floor away to stand. Breathe out.</li>
+            </ol>
+          </div>
+          <img src="../assets/photos/med-ball.jpg" alt="Marcela demonstrating a squat holding a weighted ball" />
+        </div>
+        <div class="foot"><span>Strong Foundations</span><b>9</b></div>
+      </section>
+
+      <section class="page">
+        <span class="blob" style="width: 420px; height: 380px; right: -140px; bottom: -150px; background: var(--swm-lavender)"></span>
+        <span class="pill">Action plan</span>
+        <h2>Your <em>first week</em></h2>
+        <ul class="checks">
+          <li class="done">Pick three days and block 40 minutes in your calendar</li>
+          <li>Find a dumbbell or kettlebell. 4–8 kg is a good start</li>
+          <li>Clear a space of about 2 × 2 m</li>
+          <li>Do Session A once, slowly, and note how it felt</li>
+          <li>Rest at least one day between sessions</li>
+        </ul>
+        <h3>Plan your week</h3>
+        <div class="week" aria-label="Example week: training on Monday, Wednesday and Friday">
+          <span class="on">Mon</span><span>Tue</span><span class="on">Wed</span><span>Thu</span><span class="on">Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="closing">
+          <p>Progress, not perfection. Showing up three times this week is the win.</p>
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+        </div>
+      </section>
+    </div>
+    <!--/direction-pages-->
+  </body>
+</html>

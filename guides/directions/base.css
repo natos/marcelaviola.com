@@ -1,0 +1,74 @@
+/* Shared page frame for all directions. Each direction styles inside .page. */
+
+@page {
+  size: 576px 864px;
+  margin: 0;
+}
+
+.spread {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.page {
+  position: relative;
+  box-sizing: border-box;
+  width: 576px;
+  height: 864px;
+  overflow: hidden;
+  flex: none;
+  box-shadow: 0 12px 40px rgb(69 38 79 / 14%);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page :where(h1, h2, h3, h4, p, ul, ol, figure, table) {
+  margin: 0;
+}
+
+.page :where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+.page img {
+  display: block;
+  max-width: none;
+}
+
+/* Marcela's handwritten signature, recoloured with currentColor */
+.signature {
+  display: block;
+  aspect-ratio: 439 / 272;
+  background: currentcolor;
+  mask: url("../assets/brand/signature.png") center / contain no-repeat;
+}
+
+@media print {
+  body {
+    margin: 0;
+    background: none;
+  }
+
+  .spread {
+    display: block;
+    padding: 0;
+  }
+
+  .page {
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .direction-label {
+    display: none;
+  }
+}
