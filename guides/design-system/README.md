@@ -41,6 +41,24 @@ Rules that follow for the system:
 - **One panel per page at most.** Lavender and blush fills are for a tip or a how-to, not a frame for every section.
 - **Charts lead with one big number**, then a simple scale or bar with labels on the marks. This matches her data references (sweat rate, VO2max estimator).
 
+### Her review of Direction 12 (19 Oct 2026)
+
+On the board's "Editorial first review" she ticked all twelve of her review criteria (brand, readability, hierarchy, usability, palette, flexibility). Her sticky notes, by page:
+
+| Page | She said | Action |
+| --- | --- | --- |
+| Cover | Loves the transparent gradient over the photo for legibility | Keep |
+| Cover | Tag is too round: "soft edges, but still a rectangle" | Done: tag radius 6px. **Rule: no pill shapes; corners soft, shapes stay rectangles** |
+| Cover | Wants to explore an update to the signature, "a bit noisy with the current look" | Options A–D in `directions/signature-options.html`. Her call |
+| 01 | Keep the headline + big number component | Keep |
+| Tips | Likes the tip element and the minimal icon | Keep |
+| Session | The photo is not a goblet squat. Always check photos match the content | Done: photo slot marked "to shoot" until a real goblet squat photo exists. **Rule: an exercise photo must show the exercise named** |
+| Effort scale | The paragraph next to "6–8" sat oddly | Done: centred on the numerals |
+| Progression | "Super clear, not too much information" | Keep |
+| Anatomy | "Perfect! Minimal, clear, colours identify the muscles" | Keep. This is the illustration style to brief |
+| Protein | "Very clear and very aesthetic" | Keep |
+| Action plan | "Air, no filler content", likes the closer adding value | Keep |
+
 ## 2. Colour
 
 Tokens: [`tokens.css`](tokens.css).
@@ -189,3 +207,5 @@ The open question in round 2 is how far Bebas goes: the cover only (06), numbers
 | **Paywall delivery** | Decide later. The design doesn't depend on it | Options: Gumroad / Lemon Squeezy / Stripe links from the site |
 | **Lookbook §9 (technical)** | Fill in with Marcela: file size, links, naming, licensing | Still blank in the lookbook |
 | **Miro moodboard** | Done: notes captured in §1b | — |
+| **Signature** | B (her own hand, first name only, re-signed and scanned) | She finds the current one noisy. B keeps the handwritten warmth she asked for; C and D lose it |
+| **Photo shoot list** | Shoot each guide's exercises on a plain background | No goblet squat photo exists yet. Every how-to needs a photo that matches it |

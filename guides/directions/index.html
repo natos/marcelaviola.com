@@ -275,8 +275,8 @@
         justify-self: start;
         background: var(--swm-blush);
         color: var(--ink);
-        border-radius: var(--swm-radius-pill);
-        padding: 6px 16px;
+        border-radius: 6px; /* Marcela: soft corners, but still a rectangle */
+        padding: 6px 14px;
         font-size: var(--swm-text-xs);
         font-weight: 700;
         letter-spacing: 0.12em;
@@ -452,6 +452,34 @@
         object-fit: cover;
       }
 
+      /* Placeholder until the matching exercise photo exists (photos must show the exercise named) */
+      .d12 .band .shot {
+        width: 220px;
+        height: 290px;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 8px;
+        padding: var(--swm-space-3);
+        text-align: center;
+        background: var(--swm-white);
+        border: 2px dashed var(--swm-line);
+        color: var(--swm-ink-soft);
+        font-size: var(--swm-text-xs);
+        line-height: 1.35;
+      }
+
+      .d12 .band .shot svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .d12 .band .shot b {
+        color: var(--ink);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
       .d12 .band > div {
         padding: var(--swm-space-3);
         display: grid;
@@ -535,7 +563,7 @@
 
       .d12 .big {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         gap: 14px;
       }
 
@@ -4833,7 +4861,11 @@
           <li><b>Dead bug</b><span>3 × 6 / side · 45 s</span></li>
         </ol>
         <div class="band">
-          <img src="../assets/photos/med-ball.jpg" alt="Marcela demonstrating a squat holding a weighted ball" />
+          <div class="shot" role="img" aria-label="Photo to shoot: Marcela in a goblet squat">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="26" height="19" rx="4" /><path d="M11 8l2-3h6l2 3" /><circle cx="16" cy="17" r="5" /></svg>
+            <b>Photo to shoot</b>
+            <span>Goblet squat, bottom position. Side-on, plain background, weight at the chest.</span>
+          </div>
           <div>
             <h3>How to: goblet squat</h3>
             <ol>
