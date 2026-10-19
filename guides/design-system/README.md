@@ -168,6 +168,10 @@ Every direction uses the same sample content (*Strong Foundations*, Training gui
 
 All five fonts are free (SIL Open Font License) and install on a Mac, so they work in Pages.
 
+### Round 4: a second guide in Direction 12
+
+**13 Editorial · Mobility** (*Move Freely*) applies every note from her first review to a new topic: soft-rectangle tag, text centred on big numbers, the only exercise photo is the exercise it's labelled with (standing forward fold), and the closer points to the next guide. It tests whether the system holds when the topic colour changes to Soft Sage. Sage stays a fill: numbers and bars, never body text. New chart: the routine as a time bar. Source for the hold times: ACSM's Guidelines, 11th ed. (2021). The signature is still the current one (A) until she chooses.
+
 ### Round 3: Marcela's pick
 
 **12 Editorial** = 02 + the tips from 01. Marcela asked for stronger charts and diagrams, so 12 adds four chart pages built from her references:
