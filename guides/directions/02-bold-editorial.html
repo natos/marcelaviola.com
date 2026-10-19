@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Direction 02 · Bold Editorial — Strong with Marce Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    />
+    <link rel="stylesheet" href="../design-system/tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <!--direction-style-->
+    <style>
+      /* Direction 02 · Bold Editorial
+         The website's typefaces (Bebas Neue + Work Sans) in the new palette.
+         Big condensed headlines, oversized section numbers, full-bleed photos. */
+      .d2 .page {
+        --ink: var(--swm-aubergine);
+        --accent: var(--swm-orchid);
+        --topic: var(--swm-topic-training);
+
+        background: var(--swm-white);
+        color: var(--ink);
+        font-family: "Work Sans", system-ui, sans-serif;
+        font-size: var(--swm-text-base);
+        line-height: var(--swm-leading);
+        padding: var(--swm-margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--swm-space-3);
+      }
+
+      .d2 .display,
+      .d2 h1,
+      .d2 h2 {
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: 0.005em;
+      }
+
+      .d2 h2 {
+        font-size: 52px;
+      }
+
+      .d2 h3 {
+        font-size: var(--swm-text-sm);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .d2 .head {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--swm-space-2);
+        align-items: end;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: var(--swm-space-2);
+      }
+
+      .d2 .num {
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: 150px;
+        line-height: 0.72;
+        color: var(--swm-blush);
+      }
+
+      .d2 .kicker {
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .d2 .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--swm-ink-soft);
+      }
+
+      /* Cover */
+      .d2 .cover {
+        padding: 0;
+        color: #fff;
+        background: var(--ink);
+      }
+
+      .d2 .cover img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 40% 30%;
+      }
+
+      .d2 .cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(69 38 79 / 0%) 35%, rgb(69 38 79 / 92%) 72%);
+      }
+
+      .d2 .cover-body {
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+        padding: var(--swm-margin);
+        display: grid;
+        gap: var(--swm-space-2);
+      }
+
+      .d2 .tag {
+        justify-self: start;
+        background: var(--swm-blush);
+        color: var(--ink);
+        border-radius: var(--swm-radius-pill);
+        padding: 6px 16px;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d2 h1 {
+        font-size: 128px;
+        line-height: 0.84;
+      }
+
+      .d2 h1 span {
+        color: var(--swm-blush);
+      }
+
+      .d2 .cover p {
+        max-width: 400px;
+        font-size: var(--swm-text-base);
+        line-height: 1.4;
+      }
+
+      .d2 .cover .byline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgb(255 255 255 / 30%);
+        padding-top: var(--swm-space-2);
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d2 .cover .signature {
+        width: 110px;
+        color: #fff;
+      }
+
+      /* Content */
+      .d2 .stat {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--swm-space-3);
+        align-items: center;
+      }
+
+      .d2 .stat .display {
+        font-size: 104px;
+        color: var(--accent);
+      }
+
+      .d2 .stat p {
+        font-size: var(--swm-text-sm);
+        line-height: 1.4;
+      }
+
+      .d2 figure svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .d2 figcaption {
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+      }
+
+      .d2 .tip {
+        background: var(--swm-blush);
+        border-radius: 0 var(--swm-radius-lg) var(--swm-radius-lg) var(--swm-radius-lg);
+        padding: var(--swm-space-3);
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d2 .tip b {
+        display: block;
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      /* Practical */
+      .d2 .rows {
+        list-style: none;
+        padding: 0;
+        counter-reset: ex;
+      }
+
+      .d2 .rows li {
+        counter-increment: ex;
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: var(--swm-space-2);
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--swm-line);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .d2 .rows li::before {
+        content: counter(ex, decimal-leading-zero);
+        font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+        font-size: 30px;
+        line-height: 1;
+        color: var(--topic);
+      }
+
+      .d2 .rows b {
+        font-weight: 600;
+      }
+
+      .d2 .rows span {
+        font-size: var(--swm-text-sm);
+        color: var(--swm-ink-soft);
+      }
+
+      .d2 .band {
+        margin: 0 calc(var(--swm-margin) * -1);
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        background: var(--swm-lavender);
+      }
+
+      .d2 .band img {
+        width: 220px;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .d2 .band > div {
+        padding: var(--swm-space-3);
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .d2 .band ol {
+        padding-left: 22px;
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+        display: grid;
+        gap: 8px;
+      }
+
+      .d2 .band li::marker {
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      /* Action */
+      .d2 .checklist {
+        list-style: none;
+        padding: 0;
+      }
+
+      .d2 .checklist li {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--swm-line);
+        line-height: 1.35;
+      }
+
+      .d2 .checklist li::before {
+        content: "";
+        width: 26px;
+        height: 26px;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+      }
+
+      .d2 .closer {
+        margin: auto calc(var(--swm-margin) * -1) calc(var(--swm-margin) * -1);
+        background: var(--ink);
+        color: #fff;
+        padding: var(--swm-space-4) var(--swm-margin);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--swm-space-3);
+        align-items: end;
+      }
+
+      .d2 .closer .display {
+        font-size: 50px;
+      }
+
+      .d2 .closer .display span {
+        color: var(--swm-blush);
+      }
+
+      .d2 .closer .signature {
+        width: 110px;
+        color: var(--swm-blush);
+      }
+    </style>
+    <!--/direction-style-->
+  </head>
+  <body>
+    <!--direction-pages-->
+    <div class="spread d2">
+      <section class="page cover">
+        <img src="../assets/photos/barbell.jpg" alt="Marcela kneeling beside a loaded barbell in a gym" />
+        <div class="cover-body">
+          <span class="tag">Training · Guide 01</span>
+          <h1>Strong<br /><span>Foundations</span></h1>
+          <p>Your first four weeks of strength training. Three 40-minute sessions a week, built around a busy life.</p>
+          <div class="byline"><span>Strong with Marce</span><span class="signature" role="img" aria-label="Marcela Viola"></span></div>
+        </div>
+      </section>
+
+      <section class="page">
+        <div class="head">
+          <span class="num">01</span>
+          <div>
+            <p class="kicker">Why strength matters</p>
+            <h2>Muscle is your long-term health investment</h2>
+          </div>
+        </div>
+        <p>
+          From around our 30s, muscle and strength start to decline, unless we give the body a reason to keep them.
+          Strength training is that reason.
+        </p>
+        <div class="stat">
+          <span class="display">2+</span>
+          <p><b>Days a week.</b> The WHO recommends muscle-strengthening activity for all major muscle groups on two or more days a week.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 150" role="img" aria-label="Strength stays higher with training and declines without it">
+            <path d="M0 130 H488" stroke="#45264f" stroke-width="2" fill="none" />
+            <path d="M10 46 C 120 30, 220 30, 330 42 S 450 62, 478 68" stroke="#8755a0" stroke-width="7" fill="none" stroke-linecap="round" />
+            <path d="M10 46 C 120 58, 220 80, 330 102 S 450 118, 478 122" stroke="#d995a8" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="1 14" />
+            <text x="10" y="20" font-size="14" font-weight="700" fill="#8755a0" letter-spacing="1">WITH STRENGTH TRAINING</text>
+            <text x="150" y="110" font-size="14" font-weight="700" fill="#6b5573" letter-spacing="1">WITHOUT</text>
+            <g font-size="13" font-weight="600" fill="#6b5573"><text x="10" y="148">30s</text><text x="120" y="148">40s</text><text x="230" y="148">50s</text><text x="340" y="148">60s</text><text x="446" y="148">70s</text></g>
+          </svg>
+          <figcaption>Strength across the decades. Illustrative, not to scale.</figcaption>
+        </figure>
+        <aside class="tip"><b>Start lighter than you think</b>Weeks one and two are about learning each movement well. The weight comes later.</aside>
+        <div class="foot"><span>Strong Foundations</span><span>04</span></div>
+      </section>
+
+      <section class="page">
+        <div class="head">
+          <span class="num">03</span>
+          <div>
+            <p class="kicker">Session A · 40 min</p>
+            <h2>Your first full-body session</h2>
+          </div>
+        </div>
+        <ol class="rows">
+          <li><b>Goblet squat</b><span>3 × 8 · 90 s</span></li>
+          <li><b>Incline push-up</b><span>3 × 8 · 60 s</span></li>
+          <li><b>One-arm row</b><span>3 × 10 / side · 60 s</span></li>
+          <li><b>Glute bridge</b><span>3 × 12 · 60 s</span></li>
+          <li><b>Dead bug</b><span>3 × 6 / side · 45 s</span></li>
+        </ol>
+        <div class="band">
+          <img src="../assets/photos/med-ball.jpg" alt="Marcela demonstrating a squat holding a weighted ball" />
+          <div>
+            <h3>How to: goblet squat</h3>
+            <ol>
+              <li>Hold the weight at your chest, elbows pointing down.</li>
+              <li>Feet just wider than hips, toes slightly out.</li>
+              <li>Sit down between your heels, chest tall.</li>
+              <li>Push the floor away to stand. Breathe out on the way up.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="foot"><span>Strong Foundations</span><span>09</span></div>
+      </section>
+
+      <section class="page">
+        <div class="head">
+          <span class="num">→</span>
+          <div>
+            <p class="kicker">Action plan</p>
+            <h2>Your first week</h2>
+          </div>
+        </div>
+        <ul class="checklist">
+          <li>Pick three days and block 40 minutes in your calendar</li>
+          <li>Find a dumbbell or kettlebell. 4–8 kg is a good start</li>
+          <li>Clear a space of about 2 × 2 m</li>
+          <li>Do Session A once, slowly, and note how it felt</li>
+          <li>Rest at least one day between sessions</li>
+        </ul>
+        <div class="closer">
+          <p class="display">Progress,<br /><span>not perfection.</span></p>
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+        </div>
+      </section>
+    </div>
+    <!--/direction-pages-->
+  </body>
+</html>

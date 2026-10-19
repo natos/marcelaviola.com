@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Direction 01 · Signature — Strong with Marce Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap"
+    />
+    <link rel="stylesheet" href="../design-system/tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <!--direction-style-->
+    <style>
+      /* Direction 01 · Signature
+         Soft White pages, arch-cropped photos, lavender panels and Marcela's
+         handwritten signature as the recurring personal mark. */
+      .d1 .page {
+        --ink: var(--swm-aubergine);
+        --accent: var(--swm-orchid);
+        --topic: var(--swm-topic-training);
+
+        background: var(--swm-white);
+        color: var(--ink);
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: var(--swm-text-base);
+        line-height: var(--swm-leading);
+        padding: var(--swm-margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--swm-space-3);
+      }
+
+      .d1 .eyebrow {
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .d1 .eyebrow::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--topic);
+      }
+
+      .d1 h1 {
+        font-size: 60px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+
+      .d1 h2 {
+        font-size: var(--swm-text-lg);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+
+      .d1 h3 {
+        font-size: var(--swm-text-base);
+        font-weight: 800;
+      }
+
+      .d1 .lede {
+        font-size: var(--swm-text-base);
+        color: var(--swm-ink-soft);
+      }
+
+      .d1 .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+        border-top: 1px solid var(--swm-line);
+        padding-top: var(--swm-space-2);
+      }
+
+      /* Cover */
+      .d1 .cover {
+        gap: var(--swm-space-2);
+      }
+
+      .d1 .cover-photo {
+        position: relative;
+        height: 470px;
+        margin: calc(var(--swm-margin) * -1) calc(var(--swm-margin) * -1) var(--swm-space-2);
+        background: var(--swm-lavender);
+        border-radius: 0 0 288px 288px / 0 0 120px 120px;
+        overflow: hidden;
+      }
+
+      .d1 .cover-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 0%;
+      }
+
+      .d1 .cover .brandline {
+        margin-top: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .d1 .cover .signature {
+        width: 132px;
+        color: var(--ink);
+      }
+
+      .d1 .cover .brandline small {
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+        text-align: right;
+      }
+
+      /* Content */
+      .d1 .stat-row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: var(--swm-space-2);
+        align-items: center;
+        background: var(--swm-lavender);
+        border-radius: var(--swm-radius-md);
+        padding: var(--swm-space-2) var(--swm-space-3);
+      }
+
+      .d1 .stat-row b {
+        font-size: var(--swm-text-xl);
+        font-weight: 800;
+        line-height: 1;
+        color: var(--accent);
+      }
+
+      .d1 .stat-row b span {
+        display: block;
+        font-size: var(--swm-text-sm);
+        color: var(--ink);
+      }
+
+      .d1 .stat-row p {
+        font-size: var(--swm-text-sm);
+        line-height: 1.4;
+      }
+
+      .d1 figure svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .d1 figcaption {
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+      }
+
+      .d1 .tip {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        background: var(--swm-blush);
+        border-radius: var(--swm-radius-md);
+        padding: var(--swm-space-2) var(--swm-space-3);
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d1 .tip svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Practical */
+      .d1 table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--swm-text-sm);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .d1 th {
+        text-align: left;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        padding: 0 0 8px;
+      }
+
+      .d1 td {
+        padding: 13px 0;
+        border-top: 1px solid var(--swm-line);
+      }
+
+      .d1 td:first-child {
+        font-weight: 700;
+      }
+
+      .d1 .howto {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: var(--swm-space-3);
+        background: var(--swm-lavender);
+        border-radius: var(--swm-radius-lg);
+        padding: var(--swm-space-3);
+      }
+
+      .d1 .howto img {
+        width: 170px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 85px 85px var(--swm-radius-md) var(--swm-radius-md);
+      }
+
+      .d1 .howto ol {
+        list-style: none;
+        padding: 0;
+        counter-reset: step;
+        display: grid;
+        gap: 10px;
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+      }
+
+      .d1 .howto li {
+        counter-increment: step;
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+      }
+
+      .d1 .howto li::before {
+        content: counter(step);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+        display: grid;
+        place-items: center;
+      }
+
+      /* Action */
+      .d1 .checklist {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .d1 .checklist li {
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        gap: 14px;
+        align-items: start;
+        line-height: 1.35;
+      }
+
+      .d1 .checklist li::before {
+        content: "";
+        width: 26px;
+        height: 26px;
+        margin-top: 1px;
+        border: 2.5px solid var(--accent);
+        border-radius: 8px;
+      }
+
+      .d1 .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        text-align: center;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+      }
+
+      .d1 .week span {
+        display: grid;
+        place-items: center;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px dashed var(--swm-lavender);
+        color: var(--swm-ink-soft);
+      }
+
+      .d1 .week .on {
+        border: 0;
+        background: var(--topic);
+        color: #fff;
+      }
+
+      .d1 .signoff {
+        margin-top: auto;
+        background: var(--swm-lavender);
+        border-radius: var(--swm-radius-lg) var(--swm-radius-lg) var(--swm-radius-lg) 4px;
+        padding: var(--swm-space-3);
+        display: grid;
+        gap: 6px;
+      }
+
+      .d1 .signoff p {
+        font-size: var(--swm-text-md);
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .d1 .signoff .signature {
+        width: 120px;
+        color: var(--accent);
+        justify-self: end;
+      }
+    </style>
+    <!--/direction-style-->
+  </head>
+  <body>
+    <!--direction-pages-->
+    <div class="spread d1">
+      <!-- Cover -->
+      <section class="page cover">
+        <div class="cover-photo">
+          <img src="../assets/photos/kettlebell-squat.jpg" alt="Marcela holding a kettlebell overhead in a deep squat" />
+        </div>
+        <p class="eyebrow">Training · Guide 01</p>
+        <h1>Strong Foundations</h1>
+        <p class="lede">Your first four weeks of strength training. Three 40-minute sessions a week, built around a busy life.</p>
+        <div class="brandline">
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+          <small>Strong with Marce<br />Personal trainer &amp; aerialist</small>
+        </div>
+      </section>
+
+      <!-- Educational content -->
+      <section class="page">
+        <p class="eyebrow">01 · Why strength matters</p>
+        <h2>Muscle is your long-term health investment</h2>
+        <p>
+          From around our 30s, muscle and strength start to decline, unless we give the body a reason to keep them.
+          Strength training is that reason.
+        </p>
+        <div class="stat-row">
+          <b>2+<span>days a week</span></b>
+          <p>The WHO recommends muscle-strengthening activity for all major muscle groups on two or more days a week.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 170" role="img" aria-label="Two curves: strength stays higher with training and declines without it">
+            <path d="M0 150 H488" stroke="#e9e1ef" stroke-width="2" fill="none" />
+            <path d="M10 60 C 120 40, 220 38, 330 52 S 450 74, 478 80" stroke="#8755a0" stroke-width="6" fill="none" stroke-linecap="round" />
+            <path d="M10 60 C 120 70, 220 92, 330 118 S 450 138, 478 142" stroke="#f2c2d1" stroke-width="6" fill="none" stroke-linecap="round" />
+            <circle cx="478" cy="80" r="8" fill="#8755a0" />
+            <circle cx="478" cy="142" r="8" fill="#f2c2d1" />
+            <text x="250" y="30" font-size="14" font-weight="700" fill="#8755a0">With strength training</text>
+            <text x="240" y="138" font-size="14" font-weight="700" fill="#6b5573">Without</text>
+            <g font-size="13" fill="#6b5573"><text x="10" y="168">30s</text><text x="120" y="168">40s</text><text x="230" y="168">50s</text><text x="340" y="168">60s</text><text x="446" y="168">70s</text></g>
+          </svg>
+          <figcaption>Strength across the decades. Illustrative, not to scale.</figcaption>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Start lighter than you think.</b> Weeks one and two are about learning each movement well. The weight comes later.</p>
+        </aside>
+        <div class="foot"><span>Strong Foundations</span><span>4</span></div>
+      </section>
+
+      <!-- Practical -->
+      <section class="page">
+        <p class="eyebrow">03 · Session A</p>
+        <h2>Your first full-body session</h2>
+        <table>
+          <thead><tr><th>Exercise</th><th>Sets × reps</th><th>Rest</th></tr></thead>
+          <tbody>
+            <tr><td>Goblet squat</td><td>3 × 8</td><td>90 s</td></tr>
+            <tr><td>Incline push-up</td><td>3 × 8</td><td>60 s</td></tr>
+            <tr><td>One-arm row</td><td>3 × 10 / side</td><td>60 s</td></tr>
+            <tr><td>Glute bridge</td><td>3 × 12</td><td>60 s</td></tr>
+            <tr><td>Dead bug</td><td>3 × 6 / side</td><td>45 s</td></tr>
+          </tbody>
+        </table>
+        <div class="howto">
+          <img src="../assets/photos/med-ball.jpg" alt="Marcela demonstrating a squat holding a weighted ball" />
+          <div>
+            <h3>How to: goblet squat</h3>
+            <ol>
+              <li>Hold the weight at your chest, elbows pointing down.</li>
+              <li>Feet just wider than hips, toes slightly out.</li>
+              <li>Sit down between your heels, chest tall.</li>
+              <li>Push the floor away to stand. Breathe out on the way up.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="foot"><span>Strong Foundations</span><span>9</span></div>
+      </section>
+
+      <!-- Checklist / action plan -->
+      <section class="page">
+        <p class="eyebrow">Action plan</p>
+        <h2>Your first week</h2>
+        <ul class="checklist">
+          <li>Pick three days and block 40 minutes in your calendar</li>
+          <li>Find a dumbbell or kettlebell. 4–8 kg is a good start</li>
+          <li>Clear a space of about 2 × 2 m</li>
+          <li>Do Session A once, slowly, and note how it felt</li>
+          <li>Rest at least one day between sessions</li>
+        </ul>
+        <h3>Plan your week</h3>
+        <div class="week" aria-label="Example week: training on Monday, Wednesday and Friday">
+          <span class="on">Mon</span><span>Tue</span><span class="on">Wed</span><span>Thu</span><span class="on">Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+        <div class="signoff">
+          <p>Progress, not perfection. Showing up three times this week is the win.</p>
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+        </div>
+        <div class="foot"><span>Strong Foundations</span><span>14</span></div>
+      </section>
+    </div>
+    <!--/direction-pages-->
+  </body>
+</html>

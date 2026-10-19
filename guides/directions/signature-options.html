@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Signature options — Strong with Marce Guides</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Allura&display=swap"
+    />
+    <link rel="stylesheet" href="../design-system/tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      /* Marcela on Direction 12: "I'd like to explore an update to the signature,
+         it's a little noisy against the current look." Each option is shown in
+         the two places the signature appears: the cover byline and the closer. */
+      body {
+        background: var(--swm-lavender);
+        font-family: "Work Sans", system-ui, sans-serif;
+        color: var(--swm-aubergine);
+        padding: 40px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 300px);
+        gap: 24px;
+      }
+
+      .opt {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .opt h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 1;
+      }
+
+      .opt p {
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .byline,
+      .closer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(180deg, #5a3666, #45264f);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        min-height: 92px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .closer {
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 0.95;
+        letter-spacing: 0;
+        min-height: 120px;
+        white-space: nowrap;
+        gap: 12px;
+      }
+
+      .closer em {
+        font-style: normal;
+        color: var(--swm-blush);
+      }
+
+      .signature {
+        width: 110px;
+      }
+
+      .closer .sig {
+        color: var(--swm-blush);
+      }
+
+      /* A: current, unchanged */
+      /* B: same handwriting, lighter: smaller, thinner presence, no "Viola" line */
+      .b .signature {
+        width: 84px;
+        opacity: 0.85;
+        mask-size: 100% auto;
+        mask-position: top;
+        aspect-ratio: 439 / 175;
+      }
+
+      /* C: script first name only, set in a font so it stays crisp at any size */
+      .c .sig {
+        font-family: "Allura", cursive;
+        font-size: 40px;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: none;
+        font-weight: 400;
+      }
+
+      /* D: no script at all. A typographic sign-off that matches the Bebas system */
+      .d .sig {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 2px solid currentcolor;
+        border-radius: 6px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <section class="opt">
+        <h2>A · Current</h2>
+        <div class="byline"><span>Strong with Marce</span><span class="signature sig" role="img" aria-label="Marcela Viola"></span></div>
+        <div class="closer"><span>Progress,<br /><em>not perfection.</em></span><span class="signature sig" role="img" aria-label="Marcela Viola"></span></div>
+        <p>Her real handwriting. Two lines and a loose flourish, so it gets busy next to the condensed Bebas titles.</p>
+      </section>
+      <section class="opt b">
+        <h2>B · Quieter hand</h2>
+        <div class="byline"><span>Strong with Marce</span><span class="signature sig" role="img" aria-label="Marcela"></span></div>
+        <div class="closer"><span>Progress,<br /><em>not perfection.</em></span><span class="signature sig" role="img" aria-label="Marcela"></span></div>
+        <p>Same handwriting, first name only and smaller. Keeps it personal with less noise. Best done properly by re-signing "Marce" on paper and scanning it.</p>
+      </section>
+      <section class="opt c">
+        <h2>C · Script "Marce"</h2>
+        <div class="byline"><span>Strong with Marce</span><span class="sig">Marce</span></div>
+        <div class="closer"><span>Progress,<br /><em>not perfection.</em></span><span class="sig">Marce</span></div>
+        <p>A script typeface (Allura). Crisp at any size and easy to use in Pages, but it is a font, not her hand.</p>
+      </section>
+      <section class="opt d">
+        <h2>D · Monogram</h2>
+        <div class="byline"><span>Strong with Marce</span><span class="sig">MV</span></div>
+        <div class="closer"><span>Progress,<br /><em>not perfection.</em></span><span class="sig">MV</span></div>
+        <p>No script. A small Bebas monogram that matches the system and could double as the guide's icon. Loses the handwritten warmth she liked in the moodboard.</p>
+      </section>
+    </div>
+  </body>
+</html>
