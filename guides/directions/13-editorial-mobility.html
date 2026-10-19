@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Direction 13 · Editorial, Mobility example — Strong with Marce Guides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    />
+    <link rel="stylesheet" href="../design-system/tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <!--direction-style-->
+    <style>
+      /* Direction 12 · Editorial (Marcela's pick)
+         Direction 02 with the tips from 01, checked against the Miro moodboard:
+         light pages, no black, one panel per page at most. Charts follow her
+         references: big numerals, horizontal scales, labels on the marks. */
+      .d12 .page {
+        --ink: var(--swm-aubergine);
+        --accent: var(--swm-orchid);
+        --topic: var(--swm-topic-training);
+        --display: "Bebas Neue", "Arial Narrow", sans-serif;
+
+        background: var(--swm-white);
+        color: var(--ink);
+        font-family: "Work Sans", system-ui, sans-serif;
+        font-size: var(--swm-text-base);
+        line-height: var(--swm-leading);
+        padding: var(--swm-margin);
+        display: flex;
+        flex-direction: column;
+        gap: var(--swm-space-3);
+      }
+
+      .d12 .page.nutrition {
+        --topic: var(--swm-topic-nutrition);
+      }
+
+      .d12 .display,
+      .d12 h1,
+      .d12 h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        line-height: 0.92;
+        letter-spacing: 0.005em;
+      }
+
+      .d12 h2 {
+        font-size: 52px;
+      }
+
+      .d12 h3 {
+        font-size: var(--swm-text-sm);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .d12 .head {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--swm-space-2);
+        align-items: end;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: var(--swm-space-2);
+      }
+
+      .d12 .num {
+        font-family: var(--display);
+        font-size: 128px;
+        line-height: 0.72;
+        color: var(--swm-blush);
+      }
+
+      .d12 .nutrition .num {
+        color: var(--topic);
+      }
+
+      .d12 .kicker {
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      .d12 .foot {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .source {
+        font-size: var(--swm-text-xs);
+        line-height: 1.4;
+        color: var(--swm-ink-soft);
+      }
+
+      /* Cover (from 02) */
+      .d12 .cover {
+        padding: 0;
+        color: #fff;
+        background: var(--ink);
+      }
+
+      .d12 .cover img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 40% 30%;
+      }
+
+      .d12 .cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(69 38 79 / 0%) 35%, rgb(69 38 79 / 92%) 72%);
+      }
+
+      .d12 .cover-body {
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+        padding: var(--swm-margin);
+        display: grid;
+        gap: var(--swm-space-2);
+      }
+
+      .d12 .tag {
+        justify-self: start;
+        background: var(--swm-blush);
+        color: var(--ink);
+        border-radius: 6px; /* Marcela: soft corners, but still a rectangle */
+        padding: 6px 14px;
+        font-size: var(--swm-text-xs);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d12 h1 {
+        font-size: 128px;
+        line-height: 0.84;
+      }
+
+      .d12 h1 span {
+        color: var(--swm-blush);
+      }
+
+      .d12 .cover p {
+        max-width: 400px;
+        line-height: 1.4;
+      }
+
+      .d12 .cover .byline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgb(255 255 255 / 30%);
+        padding-top: var(--swm-space-2);
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .d12 .cover .signature {
+        width: 110px;
+        color: #fff;
+      }
+
+      /* Tip (from 01) */
+      .d12 .tip {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        background: var(--swm-blush);
+        border-radius: var(--swm-radius-md);
+        padding: var(--swm-space-2) var(--swm-space-3);
+        font-size: var(--swm-text-sm);
+        line-height: 1.45;
+      }
+
+      .d12 .tip svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      /* Stat trio */
+      .d12 .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--swm-line);
+      }
+
+      .d12 .stats div {
+        padding: 14px 12px 0 0;
+        display: grid;
+        gap: 6px;
+        align-content: start;
+      }
+
+      .d12 .stats div + div {
+        border-left: 1px solid var(--swm-line);
+        padding-left: 14px;
+      }
+
+      .d12 .stats .display {
+        font-size: 68px;
+        line-height: 0.8;
+        color: var(--accent);
+      }
+
+      .d12 .stats p {
+        font-size: var(--swm-text-xs);
+        line-height: 1.35;
+      }
+
+      .d12 .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+      }
+
+      .d12 .week span {
+        display: grid;
+        place-items: center;
+        height: 54px;
+        border-radius: var(--swm-radius-sm);
+        border: 2px solid var(--swm-line);
+        font-family: var(--display);
+        font-size: 24px;
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .week .on {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .d12 .legend {
+        display: flex;
+        gap: var(--swm-space-3);
+        font-size: var(--swm-text-xs);
+        color: var(--swm-ink-soft);
+        margin-top: -12px;
+      }
+
+      .d12 .legend span::before {
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        margin-right: 6px;
+        vertical-align: -1px;
+        background: var(--c);
+        border: 2px solid var(--b, var(--c));
+      }
+
+      /* Practical (from 02) */
+      .d12 .rows {
+        list-style: none;
+        padding: 0;
+        counter-reset: ex;
+      }
+
+      .d12 .rows li {
+        counter-increment: ex;
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: var(--swm-space-2);
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--swm-line);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .d12 .rows li::before {
+        content: counter(ex, decimal-leading-zero);
+        font-family: var(--display);
+        font-size: 30px;
+        line-height: 1;
+        color: var(--topic);
+      }
+
+      .d12 .rows b {
+        font-weight: 600;
+      }
+
+      .d12 .rows span {
+        font-size: var(--swm-text-sm);
+        color: var(--swm-ink-soft);
+      }
+
+      .d12 .band {
+        margin: 0 calc(var(--swm-margin) * -1);
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        background: var(--swm-lavender);
+      }
+
+      .d12 .band img {
+        width: 220px;
+        height: 290px;
+        object-fit: cover;
+      }
+
+      /* Placeholder until the matching exercise photo exists (photos must show the exercise named) */
+      .d12 .band .shot {
+        width: 220px;
+        height: 290px;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 8px;
+        padding: var(--swm-space-3);
+        text-align: center;
+        background: var(--swm-white);
+        border: 2px dashed var(--swm-line);
+        color: var(--swm-ink-soft);
+        font-size: var(--swm-text-xs);
+        line-height: 1.35;
+      }
+
+      .d12 .band .shot svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .d12 .band .shot b {
+        color: var(--ink);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .d12 .band > div {
+        padding: var(--swm-space-3);
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+
+      .d12 .band ol {
+        padding-left: 22px;
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+        display: grid;
+        gap: 8px;
+      }
+
+      .d12 .band li::marker {
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      /* Action */
+      .d12 .checklist {
+        list-style: none;
+        padding: 0;
+      }
+
+      .d12 .checklist li {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 12px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--swm-line);
+        line-height: 1.35;
+      }
+
+      .d12 .checklist li::before {
+        content: "";
+        width: 26px;
+        height: 26px;
+        border: 3px solid var(--ink);
+        border-radius: 6px;
+      }
+
+      .d12 .closer {
+        margin: auto calc(var(--swm-margin) * -1) calc(var(--swm-margin) * -1);
+        background: var(--ink);
+        color: #fff;
+        padding: var(--swm-space-4) var(--swm-margin);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--swm-space-3);
+        align-items: end;
+        border-radius: var(--swm-radius-lg) var(--swm-radius-lg) 0 0;
+      }
+
+      .d12 .closer .display {
+        font-size: 50px;
+      }
+
+      .d12 .closer .display span {
+        color: var(--swm-blush);
+      }
+
+      .d12 .closer .signature {
+        width: 110px;
+        color: var(--swm-blush);
+      }
+
+      /* Charts */
+      .d12 figure {
+        display: grid;
+        gap: 10px;
+      }
+
+      .d12 figure svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+
+      .d12 .big {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .d12 .big .display {
+        font-size: 112px;
+        line-height: 0.8;
+        color: var(--accent);
+      }
+
+      .d12 .big p {
+        font-size: var(--swm-text-sm);
+        line-height: 1.35;
+        max-width: 250px;
+      }
+
+      .d12 .zones {
+        display: grid;
+        grid-template-columns: 5fr 3fr 2fr;
+        gap: 6px;
+        font-size: var(--swm-text-xs);
+        line-height: 1.3;
+      }
+
+      .d12 .zones b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .d12 .zones .target b {
+        color: var(--accent);
+      }
+
+      /* Direction 13 · Editorial, second example (Mobility)
+         The same system after Marcela's first review: soft-rectangle tags,
+         big numbers with text centred on them, every exercise photo shows the
+         exercise named, no filler, the closer adds a next step. */
+      .d12 .page.mobility {
+        --topic: var(--swm-topic-mobility);
+      }
+
+      .d12 .mobility .num {
+        color: var(--topic);
+      }
+
+      .d12 .next {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgb(255 255 255 / 30%);
+        padding-top: var(--swm-space-2);
+        margin-top: var(--swm-space-1);
+        grid-column: 1 / -1;
+        font-size: var(--swm-text-xs);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .d12 .next b {
+        color: var(--swm-blush);
+        font-weight: 600;
+      }
+
+      .d12 .routine {
+        display: grid;
+        gap: 10px;
+      }
+    </style>
+    <!--/direction-style-->
+  </head>
+  <body>
+    <!--direction-pages-->
+    <div class="spread d12">
+      <!-- Cover -->
+      <section class="page cover mobility">
+        <img src="../assets/photos/portrait.jpg" alt="Marcela smiling, in a white top and sage leggings" />
+        <div class="cover-body">
+          <span class="tag">Mobility · Guide 01</span>
+          <h1>Move<br /><span>Freely</span></h1>
+          <p>Ten minutes a day to loosen your hips, back and hamstrings. No equipment, just a mat.</p>
+          <div class="byline"><span>Strong with Marce</span><span class="signature" role="img" aria-label="Marcela Viola"></span></div>
+        </div>
+      </section>
+
+      <!-- Educational content -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">01</span>
+          <div>
+            <p class="kicker">Why mobility matters</p>
+            <h2>Stiffness is a habit you can undo</h2>
+          </div>
+        </div>
+        <p>
+          Hours at a desk teach the hips and upper back to stay short and still. A few minutes of gentle stretching every day
+          teaches them the opposite.
+        </p>
+        <div class="stats">
+          <div><span class="display">2–3+</span><p>days a week. Daily works best</p></div>
+          <div><span class="display">30 s</span><p>per hold. Shorter is fine to start</p></div>
+          <div><span class="display">60 s</span><p>in total for each stretch</p></div>
+        </div>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Breathe out into the stretch.</b> A slow exhale helps the muscle let go. Holding your breath does the opposite.</p>
+        </aside>
+        <p class="source">ACSM’s Guidelines for Exercise Testing and Prescription, 11th edition, 2021.</p>
+        <div class="foot"><span>Move Freely</span><span>04</span></div>
+      </section>
+
+      <!-- Practical -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">02</span>
+          <div>
+            <p class="kicker">Daily routine · 10 min</p>
+            <h2>Five moves for a looser body</h2>
+          </div>
+        </div>
+        <ol class="rows">
+          <li><b>Cat–cow</b><span>10 slow rounds</span></li>
+          <li><b>Kneeling hip flexor stretch</b><span>2 × 30 s / side</span></li>
+          <li><b>Standing forward fold</b><span>2 × 30 s</span></li>
+          <li><b>Open book</b><span>8 / side</span></li>
+          <li><b>Deep squat hold</b><span>2 × 30 s</span></li>
+        </ol>
+        <div class="band">
+          <img src="../assets/photos/forward-fold.jpg" alt="Marcela in a standing forward fold, hands reaching to her feet" />
+          <div>
+            <h3>How to: standing forward fold</h3>
+            <ol>
+              <li>Stand with feet hip-width apart, knees soft.</li>
+              <li>Hinge at the hips and let your upper body hang.</li>
+              <li>Bend your knees as much as you need to reach.</li>
+              <li>Let your head go heavy. Breathe out to sink a little lower.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="foot"><span>Move Freely</span><span>07</span></div>
+      </section>
+
+      <!-- Diagram: stretch intensity scale -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">03</span>
+          <div>
+            <p class="kicker">How far should you go?</p>
+            <h2>Stretch to a 4 to 6 out of 10</h2>
+          </div>
+        </div>
+        <div class="big">
+          <span class="display">4–6</span>
+          <p>A clear pull you can <b>breathe through</b>. If you have to hold your breath, back off a little.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 120" role="img" aria-label="Stretch intensity scale from 1 to 10. Levels 4 to 6 are the target zone. 7 to 8 is too far. 9 to 10 is pain.">
+            <g font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="26" text-anchor="middle">
+              <rect x="0" y="34" width="44" height="52" rx="10" fill="#eef2ed" /><text x="22" y="70" fill="#45264f">1</text>
+              <rect x="49" y="34" width="44" height="52" rx="10" fill="#e3eae2" /><text x="71" y="70" fill="#45264f">2</text>
+              <rect x="98" y="34" width="44" height="52" rx="10" fill="#d6e0d5" /><text x="120" y="70" fill="#45264f">3</text>
+              <rect x="147" y="34" width="44" height="52" rx="10" fill="#b4c4b3" /><text x="169" y="70" fill="#45264f">4</text>
+              <rect x="196" y="34" width="44" height="52" rx="10" fill="#9caf9a" /><text x="218" y="70" fill="#45264f">5</text>
+              <rect x="245" y="34" width="44" height="52" rx="10" fill="#8aa088" /><text x="267" y="70" fill="#45264f">6</text>
+              <rect x="294" y="34" width="44" height="52" rx="10" fill="#e4d7f1" /><text x="316" y="70" fill="#45264f">7</text>
+              <rect x="343" y="34" width="44" height="52" rx="10" fill="#cbb6e2" /><text x="365" y="70" fill="#45264f">8</text>
+              <rect x="392" y="34" width="44" height="52" rx="10" fill="#653b7c" /><text x="414" y="70" fill="#fff">9</text>
+              <rect x="441" y="34" width="44" height="52" rx="10" fill="#45264f" /><text x="463" y="70" fill="#fff">10</text>
+              </g>
+            <path d="M147 22 V12 H289 V22" stroke="#7f957d" stroke-width="3" fill="none" stroke-linecap="round" />
+            <text x="218" y="8" font-size="13" font-weight="700" fill="#45264f" text-anchor="middle" letter-spacing="1">YOUR STRETCH ZONE</text>
+            <path d="M147 98 H289" stroke="#9caf9a" stroke-width="8" stroke-linecap="round" />
+          </svg>
+          <div class="zones" style="grid-template-columns: 3fr 3fr 2fr 2fr">
+            <div><b>1–3</b>Barely there. A warm-up</div>
+            <div class="target"><b>4–6</b>A clear pull, easy breath</div>
+            <div><b>7–8</b>Too far. Ease off</div>
+            <div><b>9–10</b>Pain. Stop</div>
+          </div>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Stretching should never hurt.</b> Sharp or pinching pain means stop and come out of the position slowly.</p>
+        </aside>
+        <div class="foot"><span>Move Freely</span><span>08</span></div>
+      </section>
+
+      <!-- Chart: hold time progression (to scale) -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">04</span>
+          <div>
+            <p class="kicker">Progress you can feel</p>
+            <h2>Build up to 60 seconds a stretch</h2>
+          </div>
+        </div>
+        <p>Start with short holds and add five seconds each week. By week four, each stretch gets its full minute.</p>
+        <figure>
+          <svg viewBox="0 0 488 300" role="img" aria-label="Column chart of total seconds held per stretch: week 1 30 s, week 2 40 s, week 3 50 s, week 4 60 s">
+            <!-- scale: 60 s = 220 px, baseline y=250 -->
+            <g stroke="#e9e1ef" stroke-width="1"><path d="M40 30 H488 M40 103.3 H488 M40 176.7 H488" /></g>
+            <path d="M40 250 H488" stroke="#45264f" stroke-width="2" />
+            <g font-size="12" fill="#6b5573" text-anchor="end"><text x="32" y="34">60</text><text x="32" y="107">40</text><text x="32" y="181">20</text><text x="32" y="254">0 s</text></g>
+            <rect x="62" y="140" width="80" height="110" rx="12" fill="#e3eae2" />
+            <rect x="170" y="103.3" width="80" height="146.7" rx="12" fill="#cbd8ca" />
+            <rect x="278" y="66.7" width="80" height="183.3" rx="12" fill="#b4c4b3" />
+            <rect x="386" y="30" width="80" height="220" rx="12" fill="#9caf9a" />
+            <g font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="30" text-anchor="middle" fill="#45264f">
+              <text x="102" y="131">30</text><text x="210" y="94">40</text><text x="318" y="58">50</text><text x="426" y="60">60</text>
+            </g>
+            <g font-size="13" font-weight="600" fill="#45264f" text-anchor="middle">
+              <text x="102" y="272">Week 1</text><text x="210" y="272">Week 2</text><text x="318" y="272">Week 3</text><text x="426" y="272">Week 4</text>
+            </g>
+            <g font-size="12" fill="#6b5573" text-anchor="middle">
+              <text x="102" y="290">2 × 15 s</text><text x="210" y="290">2 × 20 s</text><text x="318" y="290">2 × 25 s</text><text x="426" y="290">2 × 30 s</text>
+            </g>
+          </svg>
+          <p class="source">Total seconds per stretch = holds × seconds. Week 4 matches the ACSM 60-second target.</p>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Same time, same place.</b> Stretch after brushing your teeth or before bed. Linking it to a habit makes it stick.</p>
+        </aside>
+        <div class="foot"><span>Move Freely</span><span>09</span></div>
+      </section>
+
+      <!-- Diagram: movement anatomy -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">05</span>
+          <div>
+            <p class="kicker">Inside the movement</p>
+            <h2>What a hip flexor stretch opens</h2>
+          </div>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 360" role="img" aria-label="Side view of a person in a kneeling hip flexor stretch. Main: hip flexors and front of the back thigh. Supporting: glutes and core.">
+            <ellipse cx="220" cy="336" rx="170" ry="10" fill="#e3eae2" />
+            <!-- body -->
+            <g stroke="#d8c7ea" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <path d="M222 112 L216 208" stroke-width="44" />
+              <path d="M216 214 L300 230" stroke-width="40" />
+              <path d="M300 230 L304 318" stroke-width="30" />
+              <path d="M298 326 L346 326" stroke-width="18" />
+              <path d="M210 216 L160 290" stroke-width="38" />
+              <path d="M160 296 L72 316" stroke-width="28" />
+              <path d="M224 124 L232 176 L262 214" stroke-width="18" />
+            </g>
+            <circle cx="226" cy="74" r="28" fill="#d8c7ea" />
+            <!-- main: hip flexors + front of back thigh -->
+            <path d="M204 206 L172 268" stroke="#7f957d" stroke-width="16" stroke-linecap="round" />
+            <ellipse cx="214" cy="200" rx="14" ry="12" fill="#7f957d" />
+            <!-- supporting: glutes, core -->
+            <ellipse cx="196" cy="214" rx="16" ry="18" fill="#d995a8" />
+            <path d="M232 132 L230 184" stroke="#d995a8" stroke-width="9" stroke-linecap="round" />
+            <!-- labels -->
+            <g font-size="14" font-weight="700" fill="#45264f">
+              <path d="M222 196 L330 160 H350" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="356" y="156">Hip flexors</text><text x="356" y="173" font-weight="400" font-size="12" fill="#6b5573">front of the hip</text>
+              <path d="M178 250 L90 232 H64" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="0" y="214">Quads</text><text x="0" y="231" font-weight="400" font-size="12" fill="#6b5573">back leg</text>
+              <path d="M184 214 L140 150 H126" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="0" y="146">Glutes</text><text x="0" y="163" font-weight="400" font-size="12" fill="#6b5573">squeeze to go deeper</text>
+              <path d="M234 150 L330 104 H350" stroke="#45264f" stroke-width="1.5" fill="none" /><text x="356" y="100">Core</text><text x="356" y="117" font-weight="400" font-size="12" fill="#6b5573">ribs down, tall spine</text>
+            </g>
+          </svg>
+        </figure>
+        <p class="legend"><span style="--c: #7f957d">Stretched</span><span style="--c: var(--swm-topic-nutrition)">Working to support</span></p>
+        <p>Sitting keeps the front of the hip short all day. This stretch gives it back its length, which can ease a tight lower back too.</p>
+        <div class="foot"><span>Move Freely</span><span>10</span></div>
+      </section>
+
+      <!-- Chart: routine as a time bar -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">06</span>
+          <div>
+            <p class="kicker">Your 10 minutes</p>
+            <h2>Where the time goes</h2>
+          </div>
+        </div>
+        <div class="big">
+          <span class="display">10</span>
+          <p>minutes, five moves, <b>about two minutes each</b> with time to settle in. Follow the bar from left to right.</p>
+        </div>
+        <figure>
+          <svg viewBox="0 0 488 150" role="img" aria-label="Ten-minute routine split into five blocks of about two minutes: cat-cow, hip flexor stretch, forward fold, open book, deep squat hold">
+            <!-- scale: 10 min = 488 px, 2 min = 97.6 px -->
+            <g>
+              <rect x="0" y="40" width="94" height="56" rx="10" fill="#e3eae2" />
+              <rect x="97.6" y="40" width="94" height="56" rx="10" fill="#cbd8ca" />
+              <rect x="195.2" y="40" width="94" height="56" rx="10" fill="#b4c4b3" />
+              <rect x="292.8" y="40" width="94" height="56" rx="10" fill="#9caf9a" />
+              <rect x="390.4" y="40" width="97.6" height="56" rx="10" fill="#7f957d" />
+            </g>
+            <g font-family="Bebas Neue, Arial Narrow, sans-serif" font-size="26" fill="#45264f" text-anchor="middle">
+              <text x="47" y="77">01</text><text x="144.6" y="77">02</text><text x="242.2" y="77">03</text><text x="339.8" y="77">04</text><text x="439.2" y="77">05</text>
+            </g>
+            <g font-size="12" font-weight="600" fill="#45264f" text-anchor="middle">
+              <text x="47" y="118">Cat–cow</text><text x="144.6" y="118">Hip flexor</text><text x="242.2" y="118">Forward fold</text><text x="339.8" y="118">Open book</text><text x="439.2" y="118">Deep squat</text>
+            </g>
+            <g font-size="12" fill="#6b5573" text-anchor="middle">
+              <text x="47" y="136">10 rounds</text><text x="144.6" y="136">2 × 30 s / side</text><text x="242.2" y="136">2 × 30 s</text><text x="339.8" y="136">8 / side</text><text x="439.2" y="136">2 × 30 s</text>
+            </g>
+            <g font-size="12" fill="#6b5573"><text x="0" y="24">0 min</text><text x="488" y="24" text-anchor="end">10 min</text></g>
+            <path d="M44 20 H436" stroke="#e9e1ef" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round" />
+          </svg>
+        </figure>
+        <aside class="tip">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#45264f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 21c0-3-4-5-4-10a9 9 0 0 1 18 0c0 5-4 7-4 10Z" /><path d="M12 25h8M13.5 29h5" /></svg>
+          <p><b>Short on time?</b> Do moves 02 and 05 only. Four minutes still counts.</p>
+        </aside>
+        <div class="foot"><span>Move Freely</span><span>11</span></div>
+      </section>
+
+      <!-- Checklist / action plan -->
+      <section class="page mobility">
+        <div class="head">
+          <span class="num">→</span>
+          <div>
+            <p class="kicker">Action plan</p>
+            <h2>Your first week</h2>
+          </div>
+        </div>
+        <ul class="checklist">
+          <li>Pick a daily anchor: after coffee, or before bed</li>
+          <li>Put a mat where you will see it</li>
+          <li>Do the routine with 15-second holds</li>
+          <li>Notice one thing that feels easier by Sunday</li>
+          <li>Skip any move that hurts and tell me about it</li>
+        </ul>
+        <div class="closer">
+          <p class="display">Move a little,<br /><span>every day.</span></p>
+          <span class="signature" role="img" aria-label="Marcela Viola"></span>
+          <p class="next"><span>Next guide</span><b>Strong Foundations · Training</b></p>
+        </div>
+      </section>
+    </div>
+    <!--/direction-pages-->
+  </body>
+</html>

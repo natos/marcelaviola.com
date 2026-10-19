@@ -25,16 +25,18 @@ const notes = {
   "09": ["Framed", "A different condensed voice: Barlow Condensed, italic on the cover for movement. Photo framed with rounded corners instead of full bleed.", "Barlow Condensed + Barlow", "A sportier, more active tone than Bebas."],
   "10": ["Topic Duotone", "The cover photo is tinted in the topic colour, so each guide is recognisable by colour alone. Extra page shows all five topics together.", "Bebas Neue + Plus Jakarta Sans", "A collection that reads as a set at thumbnail size."],
   "12": ["Editorial", "Marcela's pick: Direction 02 with the tips from 01, checked against her Miro notes. Adds four chart and diagram pages: an effort scale, a progression chart, a movement diagram and a Nutrition bar chart.", "Bebas Neue + Work Sans", "The direction to refine into templates."],
+  "13": ["Editorial · Mobility", "A second Direction 12 guide after Marcela's first review: soft-rectangle tag, text centred on big numbers, an exercise photo that shows the exercise named, and a closer that points to the next guide. Shows the system switching to the Mobility colour.", "Bebas Neue + Work Sans", "Checking the system holds up on a new topic."],
   "11": ["Arch Light", "A light cover with a tall arch portrait and a Bebas title cut into it. Bebas headings run through the reading pages.", "Bebas Neue + Plus Jakarta Sans", "Warmth and personality, with Marcela's face up front."],
 };
 
 const rounds = {
   "01": ["Round 1", "Five broad directions from the lookbook."],
+  "13": ["Round 4", "Direction 12 after Marcela's first review, applied to a new guide."],
   "12": ["Round 3", "Marcela chose 02 with the tips from 01, and asked for stronger charts and diagrams."],
   "06": ["Round 2", "The cover from 02 on the reading pages from 01, then five variations on that combination."],
 };
 
-const files = (await readdir(dir)).filter((f) => /^\d\d-.*\.html$/.test(f)).sort((a, b) => (b.startsWith("12") ? 1 : 0) - (a.startsWith("12") ? 1 : 0) || a.localeCompare(b));
+const files = (await readdir(dir)).filter((f) => /^\d\d-.*\.html$/.test(f)).sort((a, b) => ((b.startsWith("13") ? 2 : 0) + (b.startsWith("12") ? 1 : 0)) - ((a.startsWith("13") ? 2 : 0) + (a.startsWith("12") ? 1 : 0)) || a.localeCompare(b));
 const fonts = new Set();
 let styles = "";
 let sections = "";
